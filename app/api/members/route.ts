@@ -1,6 +1,6 @@
 import { asc, desc, eq } from "drizzle-orm";
 import { getDb } from "../../../db";
-import { members, reservations } from "../../../db/schema";
+import { attendances, members, reservations } from "../../../db/schema";
 import { hashPassword, hashTc } from "../../../lib/member-security";
 
 type MemberPayload = {
@@ -29,7 +29,8 @@ export async function GET() {
   try {
     const rows = await getDb().select().from(members).orderBy(desc(members.createdAt));
     const bookings = await getDb().select().from(reservations).orderBy(asc(reservations.date), asc(reservations.timeSlot));
-    return Response.json({ members: rows.map(({ passwordHash, passwordSalt, tcHash, ...row }) => ({ ...row, hasPassword: !!passwordHash, reservations: bookings.filter((booking) => booking.memberId === row.id) })) });
+    const visits = await getDb().select().from(attendances).orderBy(desc(attendances.checkedInAt));
+    return Response.json({ members: rows.map(({ passwordHash, passwordSalt, tcHash, ...row }) => ({ ...row, hasPassword: !!passwordHash, reservations: bookings.filter((booking) => booking.memberId === row.id), attendances: visits.filter((visit) => visit.memberId === row.id), visitCount: visits.filter((visit) => visit.memberId === row.id).length })) });
   } catch (error) { return Response.json({ error: message(error) }, { status: 500 }); }
 }
 

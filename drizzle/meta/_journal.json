@@ -29,6 +29,13 @@
       "when": 1790711200000,
       "tag": "0003_clear_member_data",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1790712100000,
+      "tag": "0004_add_attendances",
+      "breakpoints": true
     }
   ]
 }

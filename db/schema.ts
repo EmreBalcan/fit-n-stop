@@ -1,4 +1,4 @@
-import { integer, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
+import { index, integer, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
 
 export const members = sqliteTable("members", {
   id: integer("id").primaryKey({ autoIncrement: true }),
@@ -25,3 +25,14 @@ export const reservations = sqliteTable("reservations", {
   timeSlot: text("time_slot").notNull(),
   createdAt: text("created_at").notNull(),
 }, (table) => [uniqueIndex("reservations_member_date_unique").on(table.memberId, table.date)]);
+
+export const attendances = sqliteTable("attendances", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  memberId: integer("member_id").notNull().references(() => members.id, { onDelete: "cascade" }),
+  date: text("date").notNull(),
+  checkedInAt: text("checked_in_at").notNull(),
+  reservationTimeSlot: text("reservation_time_slot").notNull(),
+}, (table) => [
+  uniqueIndex("attendances_member_date_unique").on(table.memberId, table.date),
+  index("attendances_date_idx").on(table.date),
+]);
