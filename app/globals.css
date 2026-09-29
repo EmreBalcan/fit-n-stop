@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./mobile-fixes.css";
 
 :root { --green:#a7ef22; --ink:#111312; --muted:#737a76; --line:#e7ebe8; --bg:#f4f6f4; }
 * { box-sizing:border-box; }

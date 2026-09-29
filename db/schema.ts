@@ -17,3 +17,11 @@ export const members = sqliteTable("members", {
   passwordSalt: text("password_salt"),
   mustChangePassword: integer("must_change_password", { mode: "boolean" }).notNull().default(true),
 }, (table) => [uniqueIndex("members_tc_hash_unique").on(table.tcHash)]);
+
+export const reservations = sqliteTable("reservations", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  memberId: integer("member_id").notNull().references(() => members.id, { onDelete: "cascade" }),
+  date: text("date").notNull(),
+  timeSlot: text("time_slot").notNull(),
+  createdAt: text("created_at").notNull(),
+}, (table) => [uniqueIndex("reservations_member_date_unique").on(table.memberId, table.date)]);

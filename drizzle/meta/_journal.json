@@ -15,6 +15,13 @@
       "when": 1790708409828,
       "tag": "0001_oval_loa",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1790709889115,
+      "tag": "0002_flashy_stardust",
+      "breakpoints": true
     }
   ]
 }
