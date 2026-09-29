@@ -1,11 +1,12 @@
 import { desc, eq } from "drizzle-orm";
 import { getDb } from "../../../db";
 import { members } from "../../../db/schema";
+import { hashPassword, hashTc } from "../../../lib/member-security";
 
 type MemberPayload = {
   id?: number; fullName?: string; phone?: string; email?: string;
   startDate?: string; endDate?: string;
-  status?: "active" | "frozen" | "cancelled"; notes?: string;
+  status?: "active" | "frozen" | "cancelled"; notes?: string; tcNo?: string; password?: string;
 };
 
 function message(error: unknown) {
@@ -27,16 +28,21 @@ function clean(payload: MemberPayload) {
 export async function GET() {
   try {
     const rows = await getDb().select().from(members).orderBy(desc(members.createdAt));
-    return Response.json({ members: rows });
+    return Response.json({ members: rows.map(({ passwordHash, passwordSalt, tcHash, ...row }) => ({ ...row, hasPassword: !!passwordHash })) });
   } catch (error) { return Response.json({ error: message(error) }, { status: 500 }); }
 }
 
 export async function POST(request: Request) {
   try {
-    const payload = clean((await request.json()) as MemberPayload);
+    const raw = (await request.json()) as MemberPayload;
+    const payload = clean(raw);
+    if (!/^\d{11}$/.test(raw.tcNo ?? "")) throw new Error("TC kimlik numarası 11 haneli olmalıdır.");
+    if ((raw.password?.length ?? 0) < 6) throw new Error("Geçici şifre en az 6 karakter olmalıdır.");
+    const credentials = await hashPassword(raw.password!);
     const now = new Date().toISOString();
-    const [member] = await getDb().insert(members).values({ ...payload, createdAt: now, updatedAt: now }).returning();
-    return Response.json({ member }, { status: 201 });
+    const [member] = await getDb().insert(members).values({ ...payload, tcHash: await hashTc(raw.tcNo!), tcLast4: raw.tcNo!.slice(-4), passwordHash: credentials.hash, passwordSalt: credentials.salt, mustChangePassword: true, createdAt: now, updatedAt: now }).returning();
+    const { passwordHash, passwordSalt, tcHash, ...safeMember } = member;
+    return Response.json({ member: { ...safeMember, hasPassword: !!passwordHash } }, { status: 201 });
   } catch (error) { return Response.json({ error: message(error) }, { status: 400 }); }
 }
 
@@ -47,7 +53,8 @@ export async function PUT(request: Request) {
     const payload = clean(raw);
     const [member] = await getDb().update(members).set({ ...payload, updatedAt: new Date().toISOString() }).where(eq(members.id, raw.id)).returning();
     if (!member) return Response.json({ error: "Üye bulunamadı." }, { status: 404 });
-    return Response.json({ member });
+    const { passwordHash, passwordSalt, tcHash, ...safeMember } = member;
+    return Response.json({ member: { ...safeMember, hasPassword: !!passwordHash } });
   } catch (error) { return Response.json({ error: message(error) }, { status: 400 }); }
 }
 
