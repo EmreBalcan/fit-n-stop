@@ -51,7 +51,10 @@ export async function PUT(request: Request) {
     const raw = (await request.json()) as MemberPayload;
     if (!raw.id) throw new Error("Üye kimliği eksik.");
     const payload = clean(raw);
-    const [member] = await getDb().update(members).set({ ...payload, updatedAt: new Date().toISOString() }).where(eq(members.id, raw.id)).returning();
+    const credentialUpdate: Record<string, unknown> = {};
+    if (raw.tcNo) { if (!/^\d{11}$/.test(raw.tcNo)) throw new Error("TC kimlik numarası 11 haneli olmalıdır."); credentialUpdate.tcHash = await hashTc(raw.tcNo); credentialUpdate.tcLast4 = raw.tcNo.slice(-4); }
+    if (raw.password) { if (raw.password.length < 6) throw new Error("Geçici şifre en az 6 karakter olmalıdır."); const secured = await hashPassword(raw.password); credentialUpdate.passwordHash = secured.hash; credentialUpdate.passwordSalt = secured.salt; credentialUpdate.mustChangePassword = true; }
+    const [member] = await getDb().update(members).set({ ...payload, ...credentialUpdate, updatedAt: new Date().toISOString() }).where(eq(members.id, raw.id)).returning();
     if (!member) return Response.json({ error: "Üye bulunamadı." }, { status: 404 });
     const { passwordHash, passwordSalt, tcHash, ...safeMember } = member;
     return Response.json({ member: { ...safeMember, hasPassword: !!passwordHash } });
