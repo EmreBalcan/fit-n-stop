@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CalendarDays, Check, ChevronRight, Clock3, Dumbbell, Eye, EyeOff, Home, LogOut, QrCode, ShieldCheck, UserRound, X } from "lucide-react";
+import { CalendarDays, Check, ChevronRight, Clock3, Dumbbell, Eye, EyeOff, Home, LogOut, Plus, QrCode, ShieldCheck, UserRound, X } from "lucide-react";
 
 type Slot = { id:number; time:string; count:number; capacity:number; mine:boolean };
 const initialSlots: Slot[] = [
