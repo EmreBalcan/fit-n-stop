@@ -1,6 +1,6 @@
-import { desc, eq } from "drizzle-orm";
+import { asc, desc, eq } from "drizzle-orm";
 import { getDb } from "../../../db";
-import { members } from "../../../db/schema";
+import { members, reservations } from "../../../db/schema";
 import { hashPassword, hashTc } from "../../../lib/member-security";
 
 type MemberPayload = {
@@ -28,7 +28,8 @@ function clean(payload: MemberPayload) {
 export async function GET() {
   try {
     const rows = await getDb().select().from(members).orderBy(desc(members.createdAt));
-    return Response.json({ members: rows.map(({ passwordHash, passwordSalt, tcHash, ...row }) => ({ ...row, hasPassword: !!passwordHash })) });
+    const bookings = await getDb().select().from(reservations).orderBy(asc(reservations.date), asc(reservations.timeSlot));
+    return Response.json({ members: rows.map(({ passwordHash, passwordSalt, tcHash, ...row }) => ({ ...row, hasPassword: !!passwordHash, reservations: bookings.filter((booking) => booking.memberId === row.id) })) });
   } catch (error) { return Response.json({ error: message(error) }, { status: 500 }); }
 }
 
