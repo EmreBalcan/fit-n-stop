@@ -77,9 +77,9 @@ export default function MobileAppPreview(){
   }
   function isPast(slot:Slot){
     if(selectedDate!==today)return false;
-    const start=slot.time.match(/^(\d{2})\.(\d{2})/);if(!start)return false;
+    const end=slot.time.match(/–\s*(\d{2})\.(\d{2})/);if(!end)return false;
     const parts=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Istanbul",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).format(new Date()).split(":");
-    return Number(start[1])*60+Number(start[2]) < Number(parts[0])*60+Number(parts[1]);
+    return Number(end[1])*60+Number(end[2]) <= Number(parts[0])*60+Number(parts[1]);
   }
   function reservationEnded(timeSlot:string){const end=timeSlot.match(/–\s*(\d{2})\.(\d{2})/);if(!end)return false;const parts=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Istanbul",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).format(new Date()).split(":");return Number(end[1])*60+Number(end[2])<=Number(parts[0])*60+Number(parts[1]);}
   async function chooseDate(date:string){if(!date)return;setSelectedDate(date);setTab("appointments");setError("");setNotice("");await loadDate(date);}

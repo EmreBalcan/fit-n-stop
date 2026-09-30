@@ -11,8 +11,8 @@ function istanbulNow() {
   return { date: `${get("year")}-${get("month")}-${get("day")}`, minutes: Number(get("hour")) * 60 + Number(get("minute")) };
 }
 
-function slotStart(slot: string) {
-  const match = slot.match(/^(\d{2})\.(\d{2})/);
+function slotEnd(slot: string) {
+  const match = slot.match(/–\s*(\d{2})\.(\d{2})/);
   return match ? Number(match[1]) * 60 + Number(match[2]) : -1;
 }
 
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
   if (!memberId || !date || !validDate(date) || !timeSlot || !SLOTS.includes(timeSlot)) return Response.json({ error: "Randevu bilgileri eksik veya geçersiz." }, { status: 400 });
   const now = istanbulNow();
   if (date < now.date) return Response.json({ error: "Geçmiş bir güne randevu alınamaz." }, { status: 400 });
-  if (date === now.date && slotStart(timeSlot) < now.minutes) return Response.json({ error: "Başlangıç saati geçmiş bir seans seçilemez." }, { status: 400 });
+  if (date === now.date && slotEnd(timeSlot) <= now.minutes) return Response.json({ error: "Bitiş saati geçmiş bir seans seçilemez." }, { status: 400 });
   const [closed]=await getDb().select().from(closedDays).where(eq(closedDays.date,date)).limit(1);
   if(closed)return Response.json({error:closed.reason||"Salon seçilen tarihte kapalı."},{status:400});
   const [member] = await getDb().select({ id: members.id, startDate: members.startDate, endDate: members.endDate, status: members.status }).from(members).where(eq(members.id, memberId)).limit(1);
