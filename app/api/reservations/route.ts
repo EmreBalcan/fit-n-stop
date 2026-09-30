@@ -1,6 +1,6 @@
 import { and, asc, eq, sql } from "drizzle-orm";
 import { getDb } from "../../../db";
-import { members, reservations } from "../../../db/schema";
+import { closedDays, members, reservations } from "../../../db/schema";
 
 const CAPACITY = 25;
 const SLOTS = ["06.00 – 08.00", "08.00 – 10.00", "10.00 – 12.00", "12.00 – 14.00", "14.00 – 16.00", "16.00 – 18.00", "18.00 – 20.00", "20.00 – 22.00"];
@@ -26,7 +26,8 @@ export async function GET(request: Request) {
   const rows = await getDb().select({ id: reservations.id, memberId: reservations.memberId, date: reservations.date, timeSlot: reservations.timeSlot, fullName: members.fullName, phone: members.phone, email: members.email, tcLast4: members.tcLast4 }).from(reservations).innerJoin(members, eq(reservations.memberId, members.id)).where(eq(reservations.date, date)).orderBy(asc(reservations.timeSlot), asc(members.fullName));
   const counts = Object.fromEntries(SLOTS.map((slot) => [slot, rows.filter((row) => row.timeSlot === slot).length]));
   const reservation = memberId ? rows.find((row) => row.memberId === memberId) ?? null : null;
-  return Response.json({ date, capacity: CAPACITY, slots: SLOTS, counts, reservation, reservations: rows });
+  const [closed]=await getDb().select().from(closedDays).where(eq(closedDays.date,date)).limit(1);
+  return Response.json({ date, capacity: CAPACITY, slots: SLOTS, counts, reservation, reservations: rows, closedDay:closed??null });
 }
 
 export async function POST(request: Request) {
@@ -35,9 +36,11 @@ export async function POST(request: Request) {
   const now = istanbulNow();
   if (date < now.date) return Response.json({ error: "Geçmiş bir güne randevu alınamaz." }, { status: 400 });
   if (date === now.date && slotStart(timeSlot) < now.minutes) return Response.json({ error: "Başlangıç saati geçmiş bir seans seçilemez." }, { status: 400 });
+  const [closed]=await getDb().select().from(closedDays).where(eq(closedDays.date,date)).limit(1);
+  if(closed)return Response.json({error:closed.reason||"Salon seçilen tarihte kapalı."},{status:400});
   const [member] = await getDb().select({ id: members.id, startDate: members.startDate, endDate: members.endDate, status: members.status }).from(members).where(eq(members.id, memberId)).limit(1);
   if (!member) return Response.json({ error: "Üye bulunamadı." }, { status: 404 });
-  if (member.status !== "active" || date < member.startDate || date > member.endDate) return Response.json({ error: "Seçilen tarih aktif üyelik süresinin dışında." }, { status: 400 });
+  if (member.status !== "active" || date < member.startDate || date > member.endDate) return Response.json({ error: member.status==="frozen"?"Üyeliğiniz dondurulmuş durumda.":"Seçilen tarih aktif üyelik süresinin dışında." }, { status: 400 });
   const [occupancy] = await getDb().select({ count: sql<number>`count(*)` }).from(reservations).where(and(eq(reservations.date, date), eq(reservations.timeSlot, timeSlot)));
   const [existing] = await getDb().select().from(reservations).where(and(eq(reservations.memberId, memberId), eq(reservations.date, date))).limit(1);
   if ((!existing || existing.timeSlot !== timeSlot) && Number(occupancy?.count ?? 0) >= CAPACITY) return Response.json({ error: "Bu seans dolu." }, { status: 409 });

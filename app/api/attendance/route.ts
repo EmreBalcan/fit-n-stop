@@ -19,3 +19,8 @@ export async function POST(request:Request){
   const [attendance]=await getDb().insert(attendances).values({memberId,date:now.date,checkedInAt:now.time,reservationTimeSlot:reservation.timeSlot}).returning();
   return Response.json({attendance,alreadyEntered:false});
 }
+export async function GET(request:Request){
+  const memberId=Number(new URL(request.url).searchParams.get("memberId"));if(!memberId)return Response.json({attendance:null});
+  const now=nowInIstanbul();const [attendance]=await getDb().select().from(attendances).where(and(eq(attendances.memberId,memberId),eq(attendances.date,now.date))).limit(1);
+  return Response.json({attendance:attendance||null});
+}

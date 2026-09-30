@@ -16,6 +16,8 @@ export const members = sqliteTable("members", {
   passwordHash: text("password_hash"),
   passwordSalt: text("password_salt"),
   mustChangePassword: integer("must_change_password", { mode: "boolean" }).notNull().default(true),
+  freezeUsed: integer("freeze_used", { mode: "boolean" }).notNull().default(false),
+  frozenUntil: text("frozen_until"),
 }, (table) => [uniqueIndex("members_tc_hash_unique").on(table.tcHash)]);
 
 export const reservations = sqliteTable("reservations", {
@@ -36,3 +38,15 @@ export const attendances = sqliteTable("attendances", {
   uniqueIndex("attendances_member_date_unique").on(table.memberId, table.date),
   index("attendances_date_idx").on(table.date),
 ]);
+
+export const closedDays = sqliteTable("closed_days", {
+  date: text("date").primaryKey(),
+  reason: text("reason").notNull().default("Salon kapalı"),
+  createdAt: text("created_at").notNull(),
+});
+
+export const gymSettings = sqliteTable("gym_settings", {
+  key: text("key").primaryKey(),
+  value: text("value").notNull(),
+  updatedAt: text("updated_at").notNull(),
+});

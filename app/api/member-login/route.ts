@@ -9,6 +9,6 @@ export async function POST(request: Request) {
   if (!member?.passwordSalt || !member.passwordHash) return Response.json({ error: "TC kimlik numarası veya şifre hatalı." }, { status: 401 });
   const attempt = await hashPassword(password!, member.passwordSalt);
   if (attempt.hash !== member.passwordHash) return Response.json({ error: "TC kimlik numarası veya şifre hatalı." }, { status: 401 });
-  if (member.status !== "active") return Response.json({ error: "Üyeliğiniz aktif değil. Salon yönetimiyle görüşün." }, { status: 403 });
-  return Response.json({ member: { id: member.id, fullName: member.fullName, phone:member.phone, email:member.email, startDate: member.startDate, endDate: member.endDate, tcLast4:member.tcLast4, mustChangePassword: member.mustChangePassword } });
+  if (member.status === "cancelled") return Response.json({ error: "Üyeliğiniz aktif değil. Salon yönetimiyle görüşün." }, { status: 403 });
+  return Response.json({ member: { id: member.id, fullName: member.fullName, phone:member.phone, email:member.email, startDate: member.startDate, endDate: member.endDate, tcLast4:member.tcLast4, mustChangePassword: member.mustChangePassword, status:member.status, freezeUsed:member.freezeUsed, frozenUntil:member.frozenUntil } });
 }

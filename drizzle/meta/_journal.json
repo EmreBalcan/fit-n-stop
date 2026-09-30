@@ -36,6 +36,13 @@
       "when": 1790712100000,
       "tag": "0004_add_attendances",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1790751000000,
+      "tag": "0005_closures_freeze_settings",
+      "breakpoints": true
     }
   ]
 }
