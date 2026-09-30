@@ -32,7 +32,8 @@ export function rowToReservation(row: Record<string, any>) {
 }
 
 export function rowToAttendance(row: Record<string, any>) {
-  return { id: row.id, memberId: row.member_id, date: row.entry_date, checkedInAt: row.entry_time, reservationTimeSlot: row.reserved_time_slot };
+  const checkedInAt = row.entry_time ? new Intl.DateTimeFormat("tr-TR", { timeZone: "Europe/Istanbul", hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23" }).format(new Date(row.entry_time)) : "";
+  return { id: row.id, memberId: row.member_id, date: row.entry_date, checkedInAt, reservationTimeSlot: row.reserved_time_slot };
 }
 
 export function unwrap<T>(result: { data: T; error: { message: string } | null }): NonNullable<T> {

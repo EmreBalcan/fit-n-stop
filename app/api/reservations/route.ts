@@ -34,11 +34,11 @@ export async function POST(request: Request) {
     const member = unwrap(await db.from("members").select("*").eq("id", memberId).single());
     if (member.status !== "active" || date < member.start_date || date > member.end_date) throw new Error("Seçilen tarih aktif üyelik süresinin dışında.");
     const existing = unwrap(await db.from("reservations").select("*").eq("member_id", memberId).eq("reservation_date", date).maybeSingle());
-    const { count: occupancy } = await db.from("reservations").select("id", { count: "exact", head: true }).eq("reservation_date", date).eq("time_slot", timeSlot);
+    const { count: occupancy, error: countError } = await db.from("reservations").select("id", { count: "exact", head: true }).eq("reservation_date", date).eq("time_slot", timeSlot);
+    if (countError) throw countError;
     const capacity = unwrap(await db.from("gym_settings").select("capacity").eq("id", 1).single()).capacity || CAPACITY;
     if ((!existing || existing.time_slot !== timeSlot) && (occupancy || 0) >= capacity) return Response.json({ error: "Bu seans dolu." }, { status: 409 });
-    if (existing) unwrap(await db.from("reservations").delete().eq("id", existing.id));
-    const row = unwrap(await db.from("reservations").insert({ member_id: memberId, reservation_date: date, time_slot: timeSlot, created_at: new Date().toISOString() }).select().single());
+    const row = unwrap(await db.from("reservations").upsert({ member_id: memberId, reservation_date: date, time_slot: timeSlot, created_at: existing?.created_at || new Date().toISOString() }, { onConflict: "member_id,reservation_date" }).select().single());
     await broadcastGymChange("reservations", date);
     return Response.json({ reservation: rowToReservation(row) });
   } catch (error) { return apiError(error); }
