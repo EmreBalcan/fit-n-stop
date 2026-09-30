@@ -19,7 +19,7 @@ export const authEmail = (tc: string) => `${tc}@fitnstop.app`;
 export function rowToMember(row: Record<string, any>) {
   return {
     id: row.id, fullName: row.full_name, phone: row.phone, email: row.email,
-    startDate: row.start_date, endDate: row.end_date, status: row.status,
+    startDate: row.start_date, endDate: row.end_date, status: row.status === "expired" ? "cancelled" : row.status,
     notes: row.notes || "", createdAt: row.created_at, updatedAt: row.updated_at,
     tcLast4: row.tc_no?.slice(-4), mustChangePassword: row.must_change_password,
     freezeUsed: row.freeze_used, frozenUntil: row.frozen_until,

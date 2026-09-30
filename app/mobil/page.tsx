@@ -18,6 +18,8 @@ export default function MobileAppPreview(){
   const picker=useRef<HTMLInputElement>(null);
   const [loggedIn,setLoggedIn]=useState(false);
   const [accessToken,setAccessToken]=useState("");
+  const tokenRef=useRef("");
+  const refreshRef=useRef("");
   const [member,setMember]=useState<Member|null>(null);
   const [changeRequired,setChangeRequired]=useState(false);
   const [newPassword,setNewPassword]=useState(""); const [newPassword2,setNewPassword2]=useState("");
@@ -30,10 +32,18 @@ export default function MobileAppPreview(){
   const [closedDay,setClosedDay]=useState<{date:string;reason:string}|null>(null);
   const [qr,setQr]=useState(false); const [entered,setEntered]=useState(false);
 
-  const memberFetch=(url:string,init:RequestInit={})=>fetch(url,{...init,headers:{...init.headers,Authorization:`Bearer ${accessToken}`}});
-  async function loadDate(date:string,current=member,token=accessToken){
+  const memberFetch=async(url:string,init:RequestInit={})=>{
+    const send=(token:string)=>fetch(url,{...init,headers:{...init.headers,Authorization:`Bearer ${token}`}});
+    let response=await send(tokenRef.current);
+    if(response.status===403&&refreshRef.current){
+      const renewed=await fetch("/api/member-refresh",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({refreshToken:refreshRef.current})});
+      if(renewed.ok){const data:any=await renewed.json();tokenRef.current=data.accessToken;refreshRef.current=data.refreshToken;setAccessToken(data.accessToken);response=await send(data.accessToken);}
+    }
+    return response;
+  };
+  async function loadDate(date:string,current=member){
     if(!current)return;
-    const response=await fetch(`/api/reservations?memberId=${current.id}&date=${date}`,{cache:"no-store",headers:{Authorization:`Bearer ${token}`}});
+    const response=await memberFetch(`/api/reservations?memberId=${current.id}&date=${date}`,{cache:"no-store"});
     const data:any=await response.json();
     if(!response.ok){setError(data.error||"Randevular yüklenemedi.");return;}
     setSlots(data.slots.map((time:string,index:number)=>({id:index+1,time,count:Number(data.counts[time]||0),capacity:data.capacity,mine:data.reservation?.timeSlot===time})));
@@ -47,9 +57,9 @@ export default function MobileAppPreview(){
     if(tc.length!==11||password.length<6){setError("TC kimlik numarası 11 hane, şifre en az 6 karakter olmalıdır.");return;}
     const response=await fetch("/api/member-login",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({tcNo:tc,password})});
     const data:any=await response.json(); if(!response.ok){setError(data.error||"Giriş yapılamadı.");return;}
-    setAccessToken(data.accessToken);setMember(data.member); if(data.member.mustChangePassword){setChangeRequired(true);return;} await finishLogin(data.member,data.accessToken);
+    tokenRef.current=data.accessToken;refreshRef.current=data.refreshToken;setAccessToken(data.accessToken);setMember(data.member); if(data.member.mustChangePassword){setChangeRequired(true);return;} await finishLogin(data.member);
   }
-  async function finishLogin(current:Member|null,token=accessToken){if(!current)return;setLoggedIn(true);setChangeRequired(false);setSelectedDate(today);await loadDate(today,current,token);const response=await fetch(`/api/attendance?memberId=${current.id}`,{headers:{Authorization:`Bearer ${token}`}});const data:any=await response.json();setEntered(!!data.attendance);}
+  async function finishLogin(current:Member|null){if(!current)return;setLoggedIn(true);setChangeRequired(false);setSelectedDate(today);await loadDate(today,current);const response=await memberFetch(`/api/attendance?memberId=${current.id}`);const data:any=await response.json();setEntered(!!data.attendance);}
   async function changePassword(e:React.FormEvent){
     e.preventDefault();setError("");
     if(newPassword.length<6||newPassword!==newPassword2){setError("Şifreler aynı olmalı ve en az 6 karakter içermelidir.");return;}
@@ -95,7 +105,7 @@ export default function MobileAppPreview(){
   if(!loggedIn)return <div className="mobile-preview login-scene"><div className="athlete-shape a1"/><div className="athlete-shape a2"/><div className="login-card"><div className="mobile-brand"><b>FİT</b><i>N</i><strong>STOP</strong></div><div className="login-copy"><span>ÜYE GİRİŞİ</span><h1>Bugünkü antrenmanın<br/>burada başlıyor.</h1><p>Randevunu oluştur, salon girişini QR kod ile tamamla.</p></div><form onSubmit={login}><label>TC Kimlik Numarası<input inputMode="numeric" maxLength={11} value={tc} onChange={e=>setTc(e.target.value.replace(/\D/g,""))} placeholder="11 haneli TC kimlik numarası"/></label><label>Şifre<div className="password-field"><input type={show?"text":"password"} value={password} onChange={e=>setPassword(e.target.value)} placeholder="Geçici veya kişisel şifreniz"/><button type="button" onClick={()=>setShow(!show)}>{show?<EyeOff/>:<Eye/>}</button></div></label>{error&&<div className="mobile-error">{error}</div>}<button className="login-button">Giriş Yap <ChevronRight/></button><small>İlk giriş şifrenizi salon yönetiminden alabilirsiniz.</small></form></div></div>;
 
   return <div className="mobile-preview app-scene"><div className="phone-app">
-    <header className="mobile-header"><div className="mini-brand"><b>FİT</b><i>N</i><strong>STOP</strong></div><button onClick={()=>{setLoggedIn(false);setMember(null);setAccessToken("")}}><LogOut/></button></header>
+    <header className="mobile-header"><div className="mini-brand"><b>FİT</b><i>N</i><strong>STOP</strong></div><button onClick={()=>{setLoggedIn(false);setMember(null);setAccessToken("");tokenRef.current="";refreshRef.current=""}}><LogOut/></button></header>
     <main className="mobile-content">
       {tab==="home"&&<><section className="member-hero"><div className="hero-silhouette"/><span>HOŞ GELDİN</span><h1>{member?.fullName}</h1><p><ShieldCheck/> {member?.status==="frozen"?"Üyelik Donduruldu":"Aktif Üye"}</p><div className="membership-dates"><div><small>Başlangıç</small><strong>{member&&fmt(member.startDate)}</strong></div><i/><div><small>Bitiş</small><strong>{member&&fmt(member.endDate)}</strong></div></div></section>
       <section className={`today-card ${missed?"missed-card":""}`}><div className="section-line"><div><span>BUGÜN</span><h2>{missed?"Randevuya katılmadın":todayReservation?"Randevun":"Henüz randevun yok"}</h2></div><button className="calendar-pick" onClick={()=>picker.current?.showPicker()} aria-label="Başka gün seç"><CalendarDays/><input ref={picker} type="date" min={today} value={selectedDate} onChange={e=>chooseDate(e.target.value)}/></button></div>{todayReservation?<div className="appointment-row"><div className="date-box"><b>{today.slice(-2)}</b><small>{missed?"GEÇTİ":"BUGÜN"}</small></div><div><strong>{todayReservation.timeSlot}</strong><span>{missed?"Randevu saati geçti · Giriş yapılmadı":`${todaySlot?.count??0} / 25 kişi katılıyor`}</span></div><button onClick={()=>chooseDate(today)}><ChevronRight/></button></div>:<button className="empty-appointment" onClick={()=>chooseDate(today)}><Plus/> Bugün için randevu al</button>}</section>
