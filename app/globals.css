@@ -122,6 +122,20 @@ td { padding:15px 18px; border-bottom:1px solid #eff2f0; color:#474e4a; font-siz
 .one-booking{color:#aab2ac}
 @media(min-width:700px){.phone-app{height:calc(100vh - 60px);max-height:920px}.app-scene{padding:30px}.bottom-nav{border-radius:0 0 30px 30px}}
 
+/* Show the gym atmosphere inside the actual mobile application. */
+.phone-app{background-image:linear-gradient(180deg,rgba(9,12,9,.69),rgba(7,9,7,.82)),url('/gym-atmosphere-v1.png');background-size:cover;background-position:center;background-repeat:no-repeat}
+
+/* Brighter appointment workspace with readable expired sessions. */
+.slots-screen{min-height:calc(100% + 16px);margin:-2px -2px 0;padding:20px 14px 110px;border-radius:24px 24px 0 0;background:linear-gradient(180deg,rgba(248,250,247,.98),rgba(236,241,233,.97));color:#171a18;box-shadow:0 -10px 35px rgba(0,0,0,.14)}
+.slots-screen .screen-title h1{color:#171a18}.slots-screen .screen-title p{color:#6f7771}.slots-screen .screen-title>div>span{color:#6e9c18;font-weight:900}
+.slots-screen .date-control{background:#182016;box-shadow:0 7px 18px rgba(30,45,18,.16)}
+.slots-screen .slot-list article{background:#fff;border-color:#dfe5df;box-shadow:0 5px 14px rgba(22,35,24,.06)}
+.slots-screen .slot-list article.past{opacity:1;background:#e7ebe7;border-color:#d8ddd8;color:#626963;box-shadow:none}
+.slots-screen .slot-list article.past svg{color:#7c887d}.slots-screen .slot-list article.past small{color:#747b75}
+.slots-screen .slot-list article.past button{background:#dde2dd;border-color:#cfd5cf;color:#757c76}
+.slots-screen .slot-list article.selected{background:#f3fbe7;border-color:#8dc91c;color:#182016}
+.slots-screen .one-booking{color:#68716a}
+
 /* Admin scheduling, QR and compact dashboard */
 .dashboard-date{font-size:0}.dashboard-date input{font-size:11px}
 .dashboard-with-qr{position:relative}.dashboard-qr{position:absolute;left:0;top:91px;width:255px;z-index:2}.dashboard-with-qr .hour-section{margin-left:275px;min-height:474px}.dashboard-with-qr .hour-grid{gap:7px}.dashboard-with-qr .hour-grid>button{padding:9px;min-height:102px}.dashboard-with-qr .hour-numbers{margin-top:9px}.dashboard-with-qr .occupancy{margin-top:8px}
