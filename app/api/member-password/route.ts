@@ -1,13 +1,15 @@
-import { eq } from "drizzle-orm";
-import { getDb } from "../../../db";
-import { members } from "../../../db/schema";
-import { hashPassword, hashTc } from "../../../lib/member-security";
-export async function POST(request:Request){
-  const {tcNo,currentPassword,newPassword}=await request.json() as {tcNo?:string;currentPassword?:string;newPassword?:string};
-  if(!/^\d{11}$/.test(tcNo??"")||!currentPassword||!newPassword||newPassword.length<6)return Response.json({error:"Bilgileri kontrol edin. Yeni şifre en az 6 karakter olmalıdır."},{status:400});
-  const [member]=await getDb().select().from(members).where(eq(members.tcHash,await hashTc(tcNo!))).limit(1);
-  if(!member?.passwordSalt||!member.passwordHash)return Response.json({error:"Üye bulunamadı."},{status:404});
-  const attempt=await hashPassword(currentPassword,member.passwordSalt);if(attempt.hash!==member.passwordHash)return Response.json({error:"Geçici şifre hatalı."},{status:401});
-  const next=await hashPassword(newPassword);await getDb().update(members).set({passwordHash:next.hash,passwordSalt:next.salt,mustChangePassword:false,updatedAt:new Date().toISOString()}).where(eq(members.id,member.id));
-  return Response.json({success:true});
+import { apiError, requireMember } from "../../../lib/api-auth";
+import { adminSupabase, unwrap } from "../../../lib/supabase";
+
+export async function POST(request: Request) {
+  try {
+    const { newPassword } = await request.json() as { newPassword?: string };
+    if (!newPassword || newPassword.length < 6) throw new Error("Yeni şifre en az 6 karakter olmalıdır.");
+    const member = await requireMember(request);
+    const db = adminSupabase();
+    const { error } = await db.auth.admin.updateUserById(member.auth_user_id, { password: newPassword });
+    if (error) throw error;
+    unwrap(await db.from("members").update({ must_change_password: false, updated_at: new Date().toISOString() }).eq("id", member.id));
+    return Response.json({ success: true });
+  } catch (error) { return apiError(error); }
 }

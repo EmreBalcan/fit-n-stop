@@ -1,13 +1,17 @@
-import { eq } from "drizzle-orm";
-import { getDb } from "../../../db";
-import { closedDays, reservations } from "../../../db/schema";
+import { apiError, requireAdmin } from "../../../lib/api-auth";
+import { adminSupabase, broadcastGymChange, unwrap } from "../../../lib/supabase";
 
-export async function GET(){return Response.json({closedDays:await getDb().select().from(closedDays)});}
-export async function POST(request:Request){
-  const {date,reason}=await request.json() as {date?:string;reason?:string};
-  if(!date||!/^\d{4}-\d{2}-\d{2}$/.test(date))return Response.json({error:"Geçerli bir tarih seçin."},{status:400});
-  await getDb().delete(reservations).where(eq(reservations.date,date));
-  await getDb().insert(closedDays).values({date,reason:reason?.trim()||"Salon kapalı",createdAt:new Date().toISOString()}).onConflictDoUpdate({target:closedDays.date,set:{reason:reason?.trim()||"Salon kapalı"}});
-  return Response.json({success:true});
+export async function GET(request: Request) { try { requireAdmin(request); const rows = unwrap(await adminSupabase().from("closed_days").select("*").order("closed_date")); return Response.json({ closedDays: rows.map((row) => ({ date: row.closed_date, reason: row.reason })) }); } catch (error) { return apiError(error); } }
+export async function POST(request: Request) {
+  try {
+    requireAdmin(request);
+    const { date, reason } = await request.json() as { date?: string; reason?: string };
+    if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error("Geçerli bir tarih seçin.");
+    const db = adminSupabase();
+    unwrap(await db.from("reservations").delete().eq("reservation_date", date));
+    unwrap(await db.from("closed_days").upsert({ closed_date: date, reason: reason?.trim() || "Salon kapalı", created_at: new Date().toISOString() }));
+    await broadcastGymChange("closed_days", date);
+    return Response.json({ success: true });
+  } catch (error) { return apiError(error); }
 }
-export async function DELETE(request:Request){const date=new URL(request.url).searchParams.get("date");if(date)await getDb().delete(closedDays).where(eq(closedDays.date,date));return Response.json({success:true});}
+export async function DELETE(request: Request) { try { requireAdmin(request); const date = new URL(request.url).searchParams.get("date"); if (date) { unwrap(await adminSupabase().from("closed_days").delete().eq("closed_date", date)); await broadcastGymChange("closed_days", date); } return Response.json({ success: true }); } catch (error) { return apiError(error); } }

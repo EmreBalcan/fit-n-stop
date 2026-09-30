@@ -1,26 +1,27 @@
-import { and, eq } from "drizzle-orm";
-import { getDb } from "../../../db";
-import { attendances, reservations } from "../../../db/schema";
+import { apiError, requireMember } from "../../../lib/api-auth";
+import { adminSupabase, broadcastGymChange, rowToAttendance, unwrap } from "../../../lib/supabase";
 
-const nowInIstanbul = () => {
-  const date = new Intl.DateTimeFormat("en-CA",{timeZone:"Europe/Istanbul",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
-  const time = new Intl.DateTimeFormat("tr-TR",{timeZone:"Europe/Istanbul",hour:"2-digit",minute:"2-digit",second:"2-digit",hourCycle:"h23"}).format(new Date());
-  return {date,time};
-};
-
-export async function POST(request:Request){
-  const {memberId}=await request.json() as {memberId?:number};
-  if(!memberId)return Response.json({error:"Üye bilgisi eksik."},{status:400});
-  const now=nowInIstanbul();
-  const [reservation]=await getDb().select().from(reservations).where(and(eq(reservations.memberId,memberId),eq(reservations.date,now.date))).limit(1);
-  if(!reservation)return Response.json({error:"Bugün için randevu bulunamadı."},{status:400});
-  const [existing]=await getDb().select().from(attendances).where(and(eq(attendances.memberId,memberId),eq(attendances.date,now.date))).limit(1);
-  if(existing)return Response.json({attendance:existing,alreadyEntered:true});
-  const [attendance]=await getDb().insert(attendances).values({memberId,date:now.date,checkedInAt:now.time,reservationTimeSlot:reservation.timeSlot}).returning();
-  return Response.json({attendance,alreadyEntered:false});
+function now() { return { date: new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Istanbul", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()), time: new Intl.DateTimeFormat("tr-TR", { timeZone: "Europe/Istanbul", hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23" }).format(new Date()) }; }
+export async function GET(request: Request) {
+  try {
+    const memberId = Number(new URL(request.url).searchParams.get("memberId"));
+    await requireMember(request, memberId);
+    const row = unwrap(await adminSupabase().from("attendances").select("*").eq("member_id", memberId).eq("entry_date", now().date).maybeSingle());
+    return Response.json({ attendance: row ? rowToAttendance(row) : null });
+  } catch (error) { return apiError(error); }
 }
-export async function GET(request:Request){
-  const memberId=Number(new URL(request.url).searchParams.get("memberId"));if(!memberId)return Response.json({attendance:null});
-  const now=nowInIstanbul();const [attendance]=await getDb().select().from(attendances).where(and(eq(attendances.memberId,memberId),eq(attendances.date,now.date))).limit(1);
-  return Response.json({attendance:attendance||null});
+export async function POST(request: Request) {
+  try {
+    const { memberId } = await request.json() as { memberId?: number };
+    if (!memberId) throw new Error("Üye bilgisi eksik.");
+    await requireMember(request, memberId);
+    const db = adminSupabase(), current = now();
+    const reservation = unwrap(await db.from("reservations").select("*").eq("member_id", memberId).eq("reservation_date", current.date).maybeSingle());
+    if (!reservation) throw new Error("Bugün için randevu bulunamadı.");
+    const existing = unwrap(await db.from("attendances").select("*").eq("member_id", memberId).eq("entry_date", current.date).maybeSingle());
+    if (existing) return Response.json({ attendance: rowToAttendance(existing), alreadyEntered: true });
+    const row = unwrap(await db.from("attendances").insert({ member_id: memberId, reservation_id: reservation.id, entry_date: current.date, entry_time: new Date().toISOString(), reserved_time_slot: reservation.time_slot }).select().single());
+    await broadcastGymChange("attendances", current.date);
+    return Response.json({ attendance: rowToAttendance(row), alreadyEntered: false });
+  } catch (error) { return apiError(error); }
 }

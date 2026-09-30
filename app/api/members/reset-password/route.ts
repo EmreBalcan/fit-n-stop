@@ -1,12 +1,18 @@
-import { eq } from "drizzle-orm";
-import { getDb } from "../../../../db";
-import { members } from "../../../../db/schema";
-import { hashPassword, temporaryPassword } from "../../../../lib/member-security";
+import { apiError, requireAdmin } from "../../../../lib/api-auth";
+import { adminSupabase, unwrap } from "../../../../lib/supabase";
+import { temporaryPassword } from "../../../../lib/member-security";
+
 export async function POST(request: Request) {
-  const { id } = await request.json() as { id?: number };
-  if (!id) return Response.json({ error: "Üye kimliği eksik." }, { status: 400 });
-  const password = temporaryPassword(); const secured = await hashPassword(password);
-  const [member] = await getDb().update(members).set({ passwordHash: secured.hash, passwordSalt: secured.salt, mustChangePassword: true, updatedAt: new Date().toISOString() }).where(eq(members.id, id)).returning();
-  if (!member) return Response.json({ error: "Üye bulunamadı." }, { status: 404 });
-  return Response.json({ password });
+  try {
+    requireAdmin(request);
+    const { id } = await request.json() as { id?: number };
+    if (!id) throw new Error("Üye kimliği eksik.");
+    const db = adminSupabase(), member = unwrap(await db.from("members").select("*").eq("id", id).single());
+    if (!member.auth_user_id) throw new Error("Üyenin giriş hesabı bulunamadı.");
+    const password = temporaryPassword();
+    const { error } = await db.auth.admin.updateUserById(member.auth_user_id, { password });
+    if (error) throw error;
+    unwrap(await db.from("members").update({ must_change_password: true, updated_at: new Date().toISOString() }).eq("id", id));
+    return Response.json({ password });
+  } catch (error) { return apiError(error); }
 }
