@@ -59,7 +59,7 @@
 .bottom-nav.training-nav .scan-fab{width:52px;height:52px}
 
 /* Premium 3D training visual system. The anatomy and exercise art is packaged in the APK. */
-.training-assistant{background:#0a0a0a;color:#f5f5f5}
+.training-assistant{background:transparent;color:#f5f5f5}
 .training-intro{background:linear-gradient(135deg,#182016,#0a0a0a);border-color:#365026}
 .training-home-grid>button,.training-exercise-card,.training-program-card,.training-edit-row,.training-history-row,.training-history-set{background:#182016;color:#f5f5f5;border-color:#334331}
 .training-home-grid>button>svg:first-child{background:#263a1c;color:#a7ef22}
