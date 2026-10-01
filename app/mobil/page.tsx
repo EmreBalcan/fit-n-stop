@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { CalendarDays, Check, ChevronRight, Clock3, Dumbbell, Eye, EyeOff, Home, LogOut, Plus, QrCode, ShieldCheck, UserRound, X } from "lucide-react";
 import { createClient } from "@supabase/supabase-js";
+import jsQR from "jsqr";
 
 type Member = { id:number; fullName:string; phone:string; email:string|null; startDate:string; endDate:string; tcLast4:string; mustChangePassword:boolean; status:"active"|"frozen"; freezeUsed:boolean; frozenUntil:string|null };
 type Slot = { id:number; time:string; count:number; capacity:number; mine:boolean };
@@ -31,6 +32,9 @@ export default function MobileAppPreview(){
   const [todayReservation,setTodayReservation]=useState<Reservation|null>(null);
   const [closedDay,setClosedDay]=useState<{date:string;reason:string}|null>(null);
   const [qr,setQr]=useState(false); const [entered,setEntered]=useState(false);
+  const videoRef=useRef<HTMLVideoElement>(null);
+  const scanBusy=useRef(false);
+  const [cameraError,setCameraError]=useState("");
 
   const memberFetch=async(url:string,init:RequestInit={})=>{
     const send=(token:string)=>fetch(url,{...init,headers:{...init.headers,Authorization:`Bearer ${token}`}});
@@ -51,6 +55,45 @@ export default function MobileAppPreview(){
     if(date===today)setTodayReservation(data.reservation);
   }
   useEffect(()=>{if(!loggedIn||!member||!accessToken)return;let active=true,cleanup=()=>{};fetch("/api/public-config").then(r=>r.json()).then((config:any)=>{if(!active||!config.url||!config.key)return;const client=createClient(config.url,config.key,{auth:{persistSession:false}});client.realtime.setAuth(accessToken);const channel=client.channel("gym-updates").on("broadcast",{event:"changed"},()=>loadDate(selectedDate,member)).subscribe();cleanup=()=>{client.removeChannel(channel);};}).catch(()=>{});const timer=window.setInterval(()=>loadDate(selectedDate,member),15000);return()=>{active=false;cleanup();window.clearInterval(timer);};},[loggedIn,member,selectedDate,accessToken]);
+  useEffect(()=>{
+    if(!qr||entered||!todayReservation)return;
+    let cancelled=false,frame=0,lastScan=0;scanBusy.current=false;setCameraError("");
+    let stream:MediaStream|null=null;
+    const canvas=document.createElement("canvas");
+    const context=canvas.getContext("2d",{willReadFrequently:true});
+    const scan=(timestamp:number)=>{
+      if(cancelled||scanBusy.current)return;
+      const video=videoRef.current;
+      if(video&&context&&video.readyState>=HTMLMediaElement.HAVE_CURRENT_DATA&&timestamp-lastScan>140){
+        lastScan=timestamp;
+        canvas.width=Math.min(video.videoWidth,640);
+        canvas.height=Math.round(canvas.width*video.videoHeight/video.videoWidth);
+        if(canvas.width&&canvas.height){
+          context.drawImage(video,0,0,canvas.width,canvas.height);
+          const pixels=context.getImageData(0,0,canvas.width,canvas.height);
+          const code=jsQR(pixels.data,pixels.width,pixels.height,{inversionAttempts:"attemptBoth"});
+          if(code?.data){
+            if(code.data.startsWith("FITNSTOP-GIRIS:")){scanBusy.current=true;void checkIn(code.data);return;}
+            setCameraError("Bu kod salon giriş kodu değil. Yönetici panelindeki Giriş QR kodunu okutun.");
+          }
+        }
+      }
+      frame=requestAnimationFrame(scan);
+    };
+    const start=async()=>{
+      try{
+        if(!navigator.mediaDevices?.getUserMedia)throw new Error("Kamera bu cihazda kullanılamıyor.");
+        stream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:"environment"}}});
+        if(cancelled){stream.getTracks().forEach(track=>track.stop());return;}
+        if(!videoRef.current)return;
+        videoRef.current.srcObject=stream;
+        await videoRef.current.play();
+        frame=requestAnimationFrame(scan);
+      }catch{if(!cancelled)setCameraError("Kamera açılamadı. Uygulamanın kamera iznini kontrol edip yeniden deneyin.");}
+    };
+    void start();
+    return()=>{cancelled=true;cancelAnimationFrame(frame);stream?.getTracks().forEach(track=>track.stop());if(videoRef.current)videoRef.current.srcObject=null;};
+  },[qr,entered,todayReservation?.id]);
 
   async function login(e:React.FormEvent){
     e.preventDefault(); setError("");
@@ -76,9 +119,9 @@ export default function MobileAppPreview(){
     const data:any=await response.json(); if(!response.ok){setError(data.error||"Randevu işlemi tamamlanamadı.");return;}
     setNotice(slot.mine?"Randevun iptal edildi.":"Randevun oluşturuldu."); await loadDate(selectedDate,member);
   }
-  async function checkIn(){
+  async function checkIn(qrValue:string){
     if(!member)return;setError("");
-    const response=await memberFetch("/api/attendance",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({memberId:member.id})});
+    const response=await memberFetch("/api/attendance",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({memberId:member.id,qrValue})});
     const data:any=await response.json();if(!response.ok){setError(data.error||"Giriş kaydedilemedi.");setQr(false);return;}
     setEntered(true);
   }
@@ -117,6 +160,6 @@ export default function MobileAppPreview(){
       {tab==="profile"&&<section className="profile-screen"><div className="profile-avatar">{member?.fullName.split(" ").map(x=>x[0]).join("").slice(0,2)}</div><h1>{member?.fullName}</h1><span>{member?.status==="frozen"?"Üyelik Donduruldu":"Aktif Üye"}</span><div className="profile-list"><div><small>TC Kimlik Numarası</small><strong>*******{member?.tcLast4}</strong></div><div><small>Telefon</small><strong>{member?.phone}</strong></div><div><small>Üyelik Başlangıcı</small><strong>{member&&fmt(member.startDate)}</strong></div><div><small>Üyelik Bitişi</small><strong>{member&&fmt(member.endDate)}</strong></div></div><div className="profile-actions"><button onClick={()=>{setChangeRequired(true);setNewPassword("");setNewPassword2("")}}>Şifremi Değiştir</button><button className="freeze-button" disabled={member?.freezeUsed} onClick={freezeMembership}>{member?.freezeUsed?"Dondurma hakkı kullanıldı":"Üyeliğimi 1 ay dondur"}</button></div>{error&&<div className="booking-error">{error}</div>}</section>}
     </main>
     <nav className="bottom-nav"><button className={tab==="home"?"active":""} onClick={()=>setTab("home")}><Home/><span>Ana Sayfa</span></button><button className={tab==="appointments"?"active":""} onClick={()=>chooseDate(selectedDate)}><CalendarDays/><span>Randevu</span></button><button className="scan-fab" onClick={()=>{if(todayReservation)setQr(true)}}><QrCode/></button><button className={tab==="profile"?"active":""} onClick={()=>setTab("profile")}><UserRound/><span>Profilim</span></button><button onClick={()=>setTab("home")}><Dumbbell/><span>Salon</span></button></nav>
-    {qr&&todayReservation&&<div className="qr-sheet"><button className="close-qr" onClick={()=>setQr(false)}><X/></button>{entered?<div className="qr-success"><div><Check/></div><span>GİRİŞ BAŞARILI</span><h2>İyi antrenmanlar!</h2><p>Bugünkü salon girişin kaydedildi.</p><button onClick={()=>setQr(false)}>Ana Sayfaya Dön</button></div>:<div className="scanner"><span>QR KODU OKUT</span><h2>Telefonunu girişteki<br/>QR koda doğrult</h2><div className="camera-box"><div className="scan-corners"/><QrCode/></div><p>Randevu: Bugün, {todayReservation.timeSlot}</p><button onClick={checkIn}>Demo QR Kodunu Okut</button></div>}</div>}
+    {qr&&todayReservation&&<div className="qr-sheet"><button className="close-qr" onClick={()=>setQr(false)} aria-label="Kamerayı kapat"><X/></button>{entered?<div className="qr-success"><div><Check/></div><span>GİRİŞ BAŞARILI</span><h2>İyi antrenmanlar!</h2><p>Bugünkü salon girişin kaydedildi.</p><button onClick={()=>setQr(false)}>Ana Sayfaya Dön</button></div>:<div className="scanner"><span>QR KODU OKUT</span><h2>Telefonunu girişteki<br/>QR koda doğrult</h2><div className="camera-box"><video ref={videoRef} autoPlay muted playsInline/><div className="scan-corners"/></div><p>{cameraError||`Randevu: Bugün, ${todayReservation.timeSlot}`}</p>{cameraError&&<button onClick={()=>{setQr(false);window.setTimeout(()=>setQr(true),100)}}>Kamerayı Yeniden Aç</button>}</div>}</div>}
   </div></div>;
 }

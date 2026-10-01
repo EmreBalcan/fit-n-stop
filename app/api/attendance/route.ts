@@ -12,10 +12,12 @@ export async function GET(request: Request) {
 }
 export async function POST(request: Request) {
   try {
-    const { memberId } = await request.json() as { memberId?: number };
+    const { memberId, qrValue } = await request.json() as { memberId?: number; qrValue?: string };
     if (!memberId) throw new Error("Üye bilgisi eksik.");
     await requireMember(request, memberId);
     const db = adminSupabase(), current = now();
+    const settings = unwrap(await db.from("gym_settings").select("entrance_qr_token").eq("id", 1).single());
+    if (!settings.entrance_qr_token || qrValue !== `FITNSTOP-GIRIS:${settings.entrance_qr_token}`) throw new Error("Giriş QR kodu geçersiz. Salondaki güncel kodu okutun.");
     const reservation = unwrap(await db.from("reservations").select("*").eq("member_id", memberId).eq("reservation_date", current.date).maybeSingle());
     if (!reservation) throw new Error("Bugün için randevu bulunamadı.");
     const existing = unwrap(await db.from("attendances").select("*").eq("member_id", memberId).eq("entry_date", current.date).maybeSingle());
