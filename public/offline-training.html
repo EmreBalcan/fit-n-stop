@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>FİT N STOP · Antrenman</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#0a0a0a;color:#f5f5f5;font-family:Arial,sans-serif}button,input{font:inherit}button{cursor:pointer}.page{max-width:540px;margin:auto;min-height:100dvh;padding:24px 18px 92px;background:linear-gradient(#182016,#0a0a0a 250px)}header{display:flex;justify-content:space-between;align-items:center}.brand{font-size:20px;font-weight:950}.brand b{color:#a7ef22}.offline{font-size:11px;background:#263823;padding:8px;border-radius:8px;color:#d6edc7}h1{font-size:29px;letter-spacing:-1px;margin:28px 0 8px}p{color:#a8b0a8;line-height:1.45;font-size:13px}.search{width:100%;height:50px;background:#182016;border:1px solid #45513d;color:#fff;border-radius:12px;padding:0 14px;margin:14px 0}.regions{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.region,.exercise{background:#182016;border:1px solid #3b4736;border-radius:16px;color:#fff;padding:12px;text-align:left}.region.active{border-color:#a7ef22;background:#2d3d25}.region img{width:100%;height:100px;object-fit:cover;display:block;margin:0 0 9px;border-radius:10px}.region span{font-weight:800;font-size:13px}.list{display:grid;gap:10px;margin-top:15px}.exercise{width:100%;display:flex;gap:12px;align-items:center}.exercise img{width:65px;height:65px;object-fit:cover;border-radius:8px}.exercise strong,.exercise small{display:block}.exercise small{color:#a8b0a8;margin-top:5px;font-size:11px}.view{display:none}.view.active{display:block}.back{border:0;background:#2b3825;color:#a7ef22;padding:10px 14px;border-radius:9px;font-weight:800}.hero{width:100%;aspect-ratio:1;object-fit:contain;border-radius:18px;background:#121812}.equipment{width:140px;border-radius:12px}.chip{display:inline-block;background:#2f3e2a;color:#c0e990;padding:8px 10px;border-radius:8px;font-size:11px;margin:4px 4px 4px 0}.step{padding:11px;border-bottom:1px solid #344030;color:#e4ebe0;font-size:13px;line-height:1.45}.warning{padding:14px;background:#344028;border:1px solid #677b47;border-radius:12px;color:#e3efce;font-size:12px;margin:18px 0}.retry{width:100%;padding:14px;border:0;border-radius:12px;background:#a7ef22;font-weight:900;color:#111511;margin-top:20px}.empty{padding:18px;background:#273025;border-radius:12px;color:#b7c4b5;font-size:13px}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header><div class="brand">FİT <b>N</b> STOP</div><div class="offline">Çevrim dışı kütüphane</div></header>
+    <section id="browse" class="view active"><h1>Antrenman Asistanı</h1><p>Hareketler ve 3D sabit önizlemeler telefonunda kayıtlı. Program ve geçmiş için internet bağlantısı gerekir.</p><input id="search" class="search" placeholder="Türkçe veya İngilizce hareket ara"><div id="regions" class="regions"></div><div id="list" class="list"></div></section>
+    <section id="detail" class="view"><button id="back" class="back">← Hareketlere dön</button><h1 id="title"></h1><p id="subtitle"></p><img id="preview" class="hero" alt="Hareketin 3D sabit önizlemesi"><img id="equipment" class="equipment" alt="Ekipman"><div id="facts"></div><h2>Uygulama</h2><div id="steps"></div><h2>Dikkat edilmesi gerekenler</h2><div id="safety"></div><div class="warning">Herhangi bir sakatlığınız veya sağlık probleminiz varsa hareketi uygulamadan önce eğitmeninize veya sağlık uzmanınıza danışın.</div></section>
+    <button id="retry" class="retry">Bağlanınca uygulamayı yeniden aç</button>
+  </main>
+  <script>
+    const names={chest:'Göğüs',back:'Sırt',shoulders:'Omuz',biceps:'Ön Kol – Biceps',triceps:'Arka Kol – Triceps',legs:'Bacak',abs:'Karın',glutes:'Kalça',cardio:'Kardiyo','full-body':'Tüm Vücut'};
+    let exercises=[],region='';const $=id=>document.getElementById(id);
+    function render(){const q=$('search').value.toLocaleLowerCase('tr');$('regions').innerHTML=Object.entries(names).map(([id,name])=>`<button class="region ${id===region?'active':''}" data-region="${id}"><img src="${exercises.find(x=>x.bodyRegion===id)?.previewAsset||''}" alt=""><span>${name}</span></button>`).join('');const rows=exercises.filter(x=>(!region||x.bodyRegion===region)&&(!q||`${x.turkishName} ${x.englishName}`.toLocaleLowerCase('tr').includes(q)));$('list').innerHTML=rows.length?rows.map(x=>`<button class="exercise" data-exercise="${x.id}"><img src="${x.previewAsset}" alt=""><span><strong>${x.turkishName}</strong><small>${x.englishName} · ${x.difficulty} · ${x.equipment}</small></span></button>`).join(''):'<div class="empty">Bu aramada hareket bulunamadı.</div>'}
+    $('regions').onclick=e=>{const button=e.target.closest('[data-region]');if(button){region=region===button.dataset.region?'':button.dataset.region;render()}};
+    $('list').onclick=e=>{const button=e.target.closest('[data-exercise]');if(button)show(exercises.find(x=>x.id===button.dataset.exercise))};
+    $('search').oninput=render;
+    function show(x){if(!x)return;$('browse').classList.remove('active');$('detail').classList.add('active');$('title').textContent=x.turkishName;$('subtitle').textContent=x.englishName;$('preview').src=x.previewAsset;$('equipment').src=x.equipmentImageAsset||x.previewAsset;$('equipment').alt=x.equipment;$('facts').innerHTML=`<span class="chip">${x.primaryMuscles.join(', ')}</span><span class="chip">${x.equipment}</span><span class="chip">${x.difficulty}</span><span class="chip">${x.recommendedSets} set · ${x.recommendedReps}</span><span class="chip">${x.restSeconds} sn dinlenme</span>`;$('steps').innerHTML=x.instructions.map((step,i)=>`<div class="step">${i+1}. ${step}</div>`).join('')+`<div class="step">Nefes: ${x.breathing}</div>`;$('safety').innerHTML=[...x.commonMistakes,...x.safetyWarnings].map(item=>`<div class="step">${item}</div>`).join('');window.scrollTo(0,0)}
+    $('back').onclick=()=>{$('detail').classList.remove('active');$('browse').classList.add('active')};
+    $('retry').onclick=()=>location.href='/mobil';
+    Promise.all(['/training-assets/exercises.json?v=3','/training-assets/visuals.json?v=3'].map(path=>fetch(path).then(r=>{if(!r.ok)throw Error(path);return r.json()}))).then(([data,visuals])=>{exercises=data.map(x=>({...x,previewAsset:visuals[x.previewAsset]||'',equipmentImageAsset:visuals[x.equipmentImageAsset]||''}));render()}).catch(()=>{$('list').innerHTML='<div class="empty">Yerel hareket kataloğu açılamadı.</div>'});
+  </script>
+</body>
+</html>
+

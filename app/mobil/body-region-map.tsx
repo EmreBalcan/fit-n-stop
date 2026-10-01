@@ -22,14 +22,15 @@ const BACK: Hotspot[] = [
   { region: "legs", label: "Baldır", x: 51, y: 81 },
 ];
 
-export default function BodyRegionMap({ onSelect }: { onSelect: (region: string) => void }) {
+export default function BodyRegionMap({ onSelect, visuals }: { onSelect: (region: string) => void; visuals: Record<string,string> }) {
   const [view, setView] = useState<View>("front");
   const [highlight, setHighlight] = useState("");
   const points = view === "front" ? FRONT : BACK;
   const highlighted = `${view}-${highlight}`;
-  const image = highlight && ["front-chest", "front-shoulders", "front-biceps", "front-abs", "front-legs", "back-back", "back-shoulders", "back-triceps", "back-glutes", "back-legs"].includes(highlighted)
+  const imagePath = highlight && ["front-chest", "front-shoulders", "front-biceps", "front-abs", "front-legs", "back-back", "back-shoulders", "back-triceps", "back-glutes", "back-legs"].includes(highlighted)
     ? `/training-assets/body-model/highlights/${highlighted}.webp`
     : `/training-assets/body-model/${view}.webp`;
+  const image = visuals[imagePath] || "";
   return <section className="training-body-map" aria-label="Vücut bölgesi seçimi">
     <div className="training-map-heading"><div><span>İNTERAKTİF KAS HARİTASI</span><h3>Bölgeye dokun</h3></div><div className="training-map-switch"><button className={view === "front" ? "active" : ""} onClick={() => { setView("front"); setHighlight(""); }}>Ön</button><button className={view === "back" ? "active" : ""} onClick={() => { setView("back"); setHighlight(""); }}>Arka</button></div></div>
     <div className="training-map-stage">
