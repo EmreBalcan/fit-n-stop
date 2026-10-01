@@ -9,9 +9,9 @@ export async function POST(request: Request) {
     if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error("Geçerli bir tarih seçin.");
     const db = adminSupabase();
     unwrap(await db.from("closed_days").upsert({ closed_date: date, reason: reason?.trim() || "Salon kapalı", created_at: new Date().toISOString() }));
-    unwrap(await db.from("reservations").delete().eq("reservation_date", date));
-    await broadcastGymChange("closed_days", date);
+    const cancelled = unwrap(await db.from("reservations").delete().eq("reservation_date", date).select("id"));
+    if (cancelled.length) await broadcastGymChange("reservations", date);
     return Response.json({ success: true });
   } catch (error) { return apiError(error); }
 }
-export async function DELETE(request: Request) { try { requireAdmin(request); const date = new URL(request.url).searchParams.get("date"); if (date) { unwrap(await adminSupabase().from("closed_days").delete().eq("closed_date", date)); await broadcastGymChange("closed_days", date); } return Response.json({ success: true }); } catch (error) { return apiError(error); } }
+export async function DELETE(request: Request) { try { requireAdmin(request); const date = new URL(request.url).searchParams.get("date"); if (date) unwrap(await adminSupabase().from("closed_days").delete().eq("closed_date", date)); return Response.json({ success: true }); } catch (error) { return apiError(error); } }

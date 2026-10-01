@@ -15,7 +15,15 @@ function validSet(value: unknown): value is CompletedSet {
 export async function GET(request: Request) {
   try {
     const member = await requireMember(request);
-    const rows = unwrap(await adminSupabase().from("training_sessions").select("*").eq("member_id", member.id).order("finished_at", { ascending: false }).limit(200));
+    const date = new URL(request.url).searchParams.get("date");
+    if (date && !/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error("Geçerli bir tarih seçin.");
+    let query = adminSupabase().from("training_sessions").select("*").eq("member_id", member.id);
+    if (date) {
+      const start = new Date(`${date}T00:00:00+03:00`);
+      if (!Number.isFinite(start.getTime())) throw new Error("Geçerli bir tarih seçin.");
+      query = query.gte("finished_at", start.toISOString()).lt("finished_at", new Date(start.getTime() + 86_400_000).toISOString());
+    }
+    const rows = unwrap(await query.order("finished_at", { ascending: false }).limit(date ? 100 : 200));
     return Response.json({ sessions: rows });
   } catch (error) { return apiError(error); }
 }

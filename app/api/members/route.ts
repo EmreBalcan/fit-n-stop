@@ -1,5 +1,5 @@
 import { requireAdmin, apiError } from "../../../lib/api-auth";
-import { adminSupabase, authEmail, broadcastGymChange, rowToAttendance, rowToMember, rowToReservation, unwrap } from "../../../lib/supabase";
+import { adminSupabase, authEmail, rowToAttendance, rowToMember, rowToReservation, unwrap } from "../../../lib/supabase";
 
 type Payload = { id?: number; fullName?: string; phone?: string; email?: string; startDate?: string; endDate?: string; status?: "active" | "frozen" | "cancelled"; notes?: string; tcNo?: string; password?: string };
 function clean(raw: Payload) {
@@ -33,7 +33,6 @@ export async function POST(request: Request) {
     try {
       const now = new Date().toISOString();
       const row = unwrap(await db.from("members").insert({ ...data, auth_user_id: auth.user.id, tc_no: tc, must_change_password: true, freeze_used: false, created_at: now, updated_at: now }).select().single());
-      await broadcastGymChange("members");
       return Response.json({ member: { ...rowToMember(row), notes: raw.notes?.trim() || "", reservations: [], attendances: [], visitCount: 0 } }, { status: 201 });
     } catch (error) { await db.auth.admin.deleteUser(auth.user.id); throw error; }
   } catch (error) { return apiError(error); }
@@ -50,7 +49,6 @@ export async function PUT(request: Request) {
     if (raw.password) { if (raw.password.length < 6) throw new Error("Geçici şifre en az 6 karakter olmalıdır."); if (!prior.auth_user_id) throw new Error("Üyenin giriş hesabı bulunamadı."); const { error } = await db.auth.admin.updateUserById(prior.auth_user_id, { password: raw.password }); if (error) throw error; update.must_change_password = true; }
     if (prior.auth_user_id) { const { error } = await db.auth.admin.updateUserById(prior.auth_user_id, { user_metadata: { notes: raw.notes?.trim() || "" } }); if (error) throw error; }
     const row = unwrap(await db.from("members").update(update).eq("id", raw.id).select().single());
-    await broadcastGymChange("members");
     return Response.json({ member: { ...rowToMember(row), notes: raw.notes?.trim() || "", reservations: [], attendances: [], visitCount: 0 } });
   } catch (error) { return apiError(error); }
 }
@@ -62,7 +60,7 @@ export async function DELETE(request: Request) {
     const db = adminSupabase(), row = unwrap(await db.from("members").select("*").eq("id", id).single());
     if (row.auth_user_id) { const { error } = await db.auth.admin.deleteUser(row.auth_user_id); if (error) throw error; }
     unwrap(await db.from("members").delete().eq("id", id));
-    await broadcastGymChange("members");
     return Response.json({ success: true });
   } catch (error) { return apiError(error); }
 }
+

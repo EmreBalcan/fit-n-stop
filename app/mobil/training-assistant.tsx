@@ -51,8 +51,9 @@ export default function TrainingAssistant({memberId,request}:{memberId:number;re
     const saved=getLocal<ActiveWorkout|null>("active",null);if(saved){setWorkout(saved);setScreen("workout")}
     void refreshOnline().then(()=>flushPending());
     const online=()=>{void flushPending();void refreshOnline()};window.addEventListener("online",online);
-    const retry=window.setInterval(()=>{void flushPending()},30000);
-    return()=>{live=false;window.removeEventListener("online",online);window.clearInterval(retry)};
+    const focus=()=>{if(document.visibilityState==="visible")void flushPending()};
+    window.addEventListener("focus",focus);
+    return()=>{live=false;window.removeEventListener("online",online);window.removeEventListener("focus",focus)};
   },[memberId]);
 
   useEffect(()=>{if(workout)putLocal("active",workout);else localStorage.removeItem(`${key}:active`)},[workout,memberId]);
@@ -70,7 +71,7 @@ export default function TrainingAssistant({memberId,request}:{memberId:number;re
 
   function sessionFromPayload(payload:Record<string,unknown>):Session{return {client_session_id:payload.clientSessionId as string,program_id:payload.programId as string|null,program_name:payload.programName as string,started_at:payload.startedAt as string,finished_at:payload.finishedAt as string,duration_seconds:payload.durationSeconds as number,sets:payload.sets as CompletedSet[],pending:true}}
   async function flushPending(){
-    if(syncing.current||!navigator.onLine)return;
+    if(syncing.current||!navigator.onLine||!getLocal<PendingAction[]>("pending",[]).length)return;
     syncing.current=true;
     try{
       let pending=getLocal<PendingAction[]>("pending",[]);
