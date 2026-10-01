@@ -40,7 +40,7 @@ export async function POST(request: Request) {
     if ((!existing || existing.time_slot !== timeSlot) && (occupancy || 0) >= capacity) return Response.json({ error: "Bu seans dolu." }, { status: 409 });
     const row = existing
       ? unwrap(await db.from("reservations").update({ time_slot: timeSlot }).eq("id", existing.id).select().single())
-      : unwrap(await db.from("reservations").insert({ member_id: memberId, reservation_date: date, time_slot: timeSlot }).select().single());
+      : unwrap(await db.from("reservations").insert({ member_id: memberId, reservation_date: date, time_slot: timeSlot, created_at: new Date().toISOString() }).select().single());
     await broadcastGymChange("reservations", date);
     return Response.json({ reservation: rowToReservation(row) });
   } catch (error) { return apiError(error); }
