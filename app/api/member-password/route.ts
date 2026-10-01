@@ -1,5 +1,5 @@
 import { apiError, requireMember } from "../../../lib/api-auth";
-import { adminSupabase, unwrap } from "../../../lib/supabase";
+import { adminSupabase, authEmail, publicSupabase, unwrap } from "../../../lib/supabase";
 
 export async function POST(request: Request) {
   try {
@@ -10,6 +10,8 @@ export async function POST(request: Request) {
     const { error } = await db.auth.admin.updateUserById(member.auth_user_id, { password: newPassword });
     if (error) throw error;
     unwrap(await db.from("members").update({ must_change_password: false, updated_at: new Date().toISOString() }).eq("id", member.id));
-    return Response.json({ success: true });
+    const signedIn = await publicSupabase().auth.signInWithPassword({ email: authEmail(member.tc_no), password: newPassword });
+    if (signedIn.error || !signedIn.data.session) throw new Error("Şifre kaydedildi. Yeni şifrenizle tekrar giriş yapın.");
+    return Response.json({ success: true, accessToken: signedIn.data.session.access_token, refreshToken: signedIn.data.session.refresh_token });
   } catch (error) { return apiError(error); }
 }

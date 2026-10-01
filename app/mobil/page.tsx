@@ -65,6 +65,7 @@ export default function MobileAppPreview(){
     if(newPassword.length<6||newPassword!==newPassword2){setError("Şifreler aynı olmalı ve en az 6 karakter içermelidir.");return;}
     const response=await memberFetch("/api/member-password",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({newPassword})});
     const data:any=await response.json();if(!response.ok){setError(data.error||"Şifre değiştirilemedi.");return;}
+    tokenRef.current=data.accessToken;refreshRef.current=data.refreshToken;setAccessToken(data.accessToken);
     setPassword(newPassword);const updated=member?{...member,mustChangePassword:false}:null;setMember(updated);await finishLogin(updated);
   }
   async function reserve(slot:Slot){

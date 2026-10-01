@@ -38,7 +38,9 @@ export async function POST(request: Request) {
     if (countError) throw countError;
     const capacity = unwrap(await db.from("gym_settings").select("capacity").eq("id", 1).single()).capacity || CAPACITY;
     if ((!existing || existing.time_slot !== timeSlot) && (occupancy || 0) >= capacity) return Response.json({ error: "Bu seans dolu." }, { status: 409 });
-    const row = unwrap(await db.from("reservations").upsert({ member_id: memberId, reservation_date: date, time_slot: timeSlot, created_at: existing?.created_at || new Date().toISOString() }, { onConflict: "member_id,reservation_date" }).select().single());
+    const row = existing
+      ? unwrap(await db.from("reservations").update({ time_slot: timeSlot }).eq("id", existing.id).select().single())
+      : unwrap(await db.from("reservations").insert({ member_id: memberId, reservation_date: date, time_slot: timeSlot }).select().single());
     await broadcastGymChange("reservations", date);
     return Response.json({ reservation: rowToReservation(row) });
   } catch (error) { return apiError(error); }
