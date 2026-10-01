@@ -1,0 +1,260 @@
+[
+  {
+    "id": "bench-press",
+    "name": "Düz Bench Press",
+    "expectedAsset": "/training-assets/exercise-animations/chest/bench-press.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "incline-dumbbell-press",
+    "name": "Eğimli Dambıl Press",
+    "expectedAsset": "/training-assets/exercise-animations/chest/incline-dumbbell-press.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "chest-press",
+    "name": "Göğüs Press Makinesi",
+    "expectedAsset": "/training-assets/exercise-animations/chest/chest-press.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "pec-deck-fly",
+    "name": "Pec Deck Açış",
+    "expectedAsset": "/training-assets/exercise-animations/chest/pec-deck-fly.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "push-up",
+    "name": "Şınav",
+    "expectedAsset": "/training-assets/exercise-animations/chest/push-up.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "lat-pulldown",
+    "name": "Lat Çekiş",
+    "expectedAsset": "/training-assets/exercise-animations/back/lat-pulldown.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "seated-cable-row",
+    "name": "Oturarak Kablo Kürek",
+    "expectedAsset": "/training-assets/exercise-animations/back/seated-cable-row.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "barbell-row",
+    "name": "Barla Eğilerek Kürek",
+    "expectedAsset": "/training-assets/exercise-animations/back/barbell-row.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "one-arm-dumbbell-row",
+    "name": "Tek Kol Dambıl Kürek",
+    "expectedAsset": "/training-assets/exercise-animations/back/one-arm-dumbbell-row.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "assisted-pull-up",
+    "name": "Destekli Barfiks",
+    "expectedAsset": "/training-assets/exercise-animations/back/assisted-pull-up.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "shoulder-press",
+    "name": "Omuz Press",
+    "expectedAsset": "/training-assets/exercise-animations/shoulders/shoulder-press.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "lateral-raise",
+    "name": "Yana Dambıl Açış",
+    "expectedAsset": "/training-assets/exercise-animations/shoulders/lateral-raise.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "front-raise",
+    "name": "Öne Dambıl Kaldırış",
+    "expectedAsset": "/training-assets/exercise-animations/shoulders/front-raise.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "reverse-pec-deck",
+    "name": "Ters Pec Deck",
+    "expectedAsset": "/training-assets/exercise-animations/shoulders/reverse-pec-deck.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "face-pull",
+    "name": "Yüze Kablo Çekiş",
+    "expectedAsset": "/training-assets/exercise-animations/shoulders/face-pull.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "dumbbell-curl",
+    "name": "Dambıl Biceps Kıvırma",
+    "expectedAsset": "/training-assets/exercise-animations/biceps/dumbbell-curl.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "barbell-curl",
+    "name": "Barla Biceps Kıvırma",
+    "expectedAsset": "/training-assets/exercise-animations/biceps/barbell-curl.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "hammer-curl",
+    "name": "Çekiç Kıvırma",
+    "expectedAsset": "/training-assets/exercise-animations/biceps/hammer-curl.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "cable-curl",
+    "name": "Kablo Biceps Kıvırma",
+    "expectedAsset": "/training-assets/exercise-animations/biceps/cable-curl.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "cable-pushdown",
+    "name": "Kablo Triceps İtiş",
+    "expectedAsset": "/training-assets/exercise-animations/triceps/cable-pushdown.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "overhead-triceps-extension",
+    "name": "Baş Üstü Triceps Açış",
+    "expectedAsset": "/training-assets/exercise-animations/triceps/overhead-triceps-extension.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "bench-dip",
+    "name": "Sehpa Dip",
+    "expectedAsset": "/training-assets/exercise-animations/triceps/bench-dip.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "close-grip-bench-press",
+    "name": "Dar Tutuş Bench Press",
+    "expectedAsset": "/training-assets/exercise-animations/triceps/close-grip-bench-press.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "squat",
+    "name": "Çömelme",
+    "expectedAsset": "/training-assets/exercise-animations/legs/squat.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "leg-press",
+    "name": "Bacak Press",
+    "expectedAsset": "/training-assets/exercise-animations/legs/leg-press.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "leg-extension",
+    "name": "Bacak Açma",
+    "expectedAsset": "/training-assets/exercise-animations/legs/leg-extension.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "leg-curl",
+    "name": "Bacak Bükme",
+    "expectedAsset": "/training-assets/exercise-animations/legs/leg-curl.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "calf-raise",
+    "name": "Baldır Yükseltme",
+    "expectedAsset": "/training-assets/exercise-animations/legs/calf-raise.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "walking-lunge",
+    "name": "Yürüyen Hamle",
+    "expectedAsset": "/training-assets/exercise-animations/legs/walking-lunge.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "crunch",
+    "name": "Mekik Kıvırma",
+    "expectedAsset": "/training-assets/exercise-animations/abs/crunch.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "plank",
+    "name": "Ön Plank",
+    "expectedAsset": "/training-assets/exercise-animations/abs/plank.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "leg-raise",
+    "name": "Bacak Kaldırma",
+    "expectedAsset": "/training-assets/exercise-animations/abs/leg-raise.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "cable-crunch",
+    "name": "Kabloyla Karın Kıvırma",
+    "expectedAsset": "/training-assets/exercise-animations/abs/cable-crunch.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "hip-thrust",
+    "name": "Kalça İtişi",
+    "expectedAsset": "/training-assets/exercise-animations/glutes/hip-thrust.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "glute-bridge",
+    "name": "Kalça Köprüsü",
+    "expectedAsset": "/training-assets/exercise-animations/glutes/glute-bridge.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "cable-kickback",
+    "name": "Kabloyla Kalça İtişi",
+    "expectedAsset": "/training-assets/exercise-animations/glutes/cable-kickback.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "romanian-deadlift",
+    "name": "Romen Deadlift",
+    "expectedAsset": "/training-assets/exercise-animations/glutes/romanian-deadlift.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "treadmill",
+    "name": "Koşu Bandı",
+    "expectedAsset": "/training-assets/exercise-animations/cardio/treadmill.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "elliptical",
+    "name": "Eliptik Bisiklet",
+    "expectedAsset": "/training-assets/exercise-animations/cardio/elliptical.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "stationary-bike",
+    "name": "Kondisyon Bisikleti",
+    "expectedAsset": "/training-assets/exercise-animations/cardio/stationary-bike.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "rowing-machine",
+    "name": "Kürek Makinesi",
+    "expectedAsset": "/training-assets/exercise-animations/cardio/rowing-machine.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "burpee",
+    "name": "Burpee",
+    "expectedAsset": "/training-assets/exercise-animations/full-body/burpee.mp4",
+    "status": "gerçek form videosu gerekli"
+  },
+  {
+    "id": "jumping-jack",
+    "name": "Aç-Kapa Sıçrama",
+    "expectedAsset": "/training-assets/exercise-animations/full-body/jumping-jack.mp4",
+    "status": "gerçek form videosu gerekli"
+  }
+]

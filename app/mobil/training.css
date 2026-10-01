@@ -57,3 +57,59 @@
 .bottom-nav.training-nav button{min-width:0;font-size:8px}
 .bottom-nav.training-nav button span{white-space:nowrap}
 .bottom-nav.training-nav .scan-fab{width:52px;height:52px}
+
+/* Premium 3D training visual system. The anatomy and exercise art is packaged in the APK. */
+.training-assistant{background:#0a0a0a;color:#f5f5f5}
+.training-intro{background:linear-gradient(135deg,#182016,#0a0a0a);border-color:#365026}
+.training-home-grid>button,.training-exercise-card,.training-program-card,.training-edit-row,.training-history-row,.training-history-set{background:#182016;color:#f5f5f5;border-color:#334331}
+.training-home-grid>button>svg:first-child{background:#263a1c;color:#a7ef22}
+.training-home-grid small,.training-exercise-info small,.training-exercise-info span,.training-program-card>small,.training-history-row small,.training-history-set span{color:#a8b0a8}
+.training-search,.training-field input,.training-edit-fields input,.training-set-inputs input{background:#182016;color:#f5f5f5;border-color:#3b5036}
+.training-search::placeholder{color:#a8b0a8}
+.training-region-grid button{background:#182016;border-color:#354a32;min-height:190px;padding:0;overflow:hidden}
+.training-region-grid img{width:100%;height:125px;object-fit:cover;margin:0 0 8px;display:block}
+.training-region-grid strong,.training-region-grid small{margin-left:10px;margin-right:10px}
+.training-region-grid small{margin-bottom:11px;color:#a8b0a8}
+.training-exercise-card{grid-template-columns:94px 1fr;gap:12px}
+.training-preview{width:94px;height:94px;position:relative;overflow:hidden;border-radius:12px;background:#121812;border:1px solid #395034}
+.training-preview img{width:100%;height:100%;object-fit:cover;display:block}
+.training-preview.large{width:100%;height:auto;aspect-ratio:1;border-radius:18px;margin-bottom:13px;border-color:#4c693f}
+.training-preview.large img{object-fit:contain}
+.training-preview.large span{position:absolute;bottom:0;left:0;right:0;padding:10px 12px;background:linear-gradient(transparent,#090e09e8);font-size:9px;font-weight:900;letter-spacing:.7px;color:#d5eecc;text-align:center}
+.training-card-actions button,.training-program-card>div button,.training-alternatives button{background:#253421;color:#dbf4d2;border-color:#4f7045}
+.training-card-actions button:last-child,.training-program-card>div button:nth-child(2){background:#a7ef22;color:#121812;border-color:#a7ef22}
+.training-facts span{background:#182016;color:#e4eee1;border:1px solid #31452e}
+.training-summary-grid>div{background:#182016;color:#f5f5f5;border:1px solid #344d2f}
+.training-summary-grid small{color:#a8b0a8}
+.training-edit-title button{background:#263922;color:#d4efc6}
+.training-edit-fields label{color:#c5d7be}
+.training-en-name{color:#a8b0a8;font-size:13px;margin:-13px 0 15px}
+.training-detail-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;background:#182016;padding:4px;border-radius:11px;margin:13px 0}
+.training-detail-tabs button{min-width:0;min-height:42px;padding:4px 2px;background:transparent;border:0;color:#a8b0a8;font-size:10px;font-weight:800;border-radius:8px}
+.training-detail-tabs button.active{background:#a7ef22;color:#10150b}
+.training-visual-note{background:#182016;border:1px solid #30462a;border-radius:10px;padding:12px;color:#c7d7c2;font-size:11px;line-height:1.5}
+.training-muscle-views{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.training-muscle-views img{width:100%;aspect-ratio:2/3;object-fit:contain;background:#0a0a0a;border:1px solid #385132;border-radius:13px}
+.training-equipment-panel{display:grid;gap:8px;background:#182016;border:1px solid #36502f;border-radius:13px;padding:11px}
+.training-equipment-panel img{width:100%;aspect-ratio:1;object-fit:contain;border-radius:9px;background:#0a0a0a}
+.training-equipment-panel strong{font-size:14px}.training-equipment-panel small{color:#a8b0a8;font-size:11px}
+.training-body-map{background:#121812;border:1px solid #30452c;border-radius:17px;padding:13px;margin:0 0 15px}
+.training-map-heading{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.training-map-heading span{font-size:9px;font-weight:900;letter-spacing:1px;color:#a7ef22}
+.training-map-heading h3{margin:4px 0 0;font-size:17px}
+.training-map-switch{display:flex;gap:3px;background:#263121;padding:3px;border-radius:8px}
+.training-map-switch button{border:0;background:transparent;color:#a8b0a8;border-radius:6px;padding:8px 10px;font-size:10px;font-weight:850}
+.training-map-switch button.active{background:#a7ef22;color:#111811}
+.training-map-stage{position:relative;width:min(100%,310px);aspect-ratio:2/3;margin:10px auto 0;background:#0a0a0a;border-radius:14px;overflow:hidden}
+.training-map-stage>img{width:100%;height:100%;object-fit:contain;display:block}
+.training-map-hotspot{position:absolute;transform:translate(-50%,-50%);padding:8px 10px;min-height:36px;background:#a7ef22e6;color:#10170b;border:1px solid #d7ff9b;border-radius:99px;font-size:9px;font-weight:900;box-shadow:0 0 0 4px #a7ef2226,0 2px 9px #000a;white-space:nowrap}
+.training-body-map>p{color:#a8b0a8;font-size:10px;line-height:1.4;margin:10px 3px 2px;text-align:center}
+.training-level-list{display:grid;gap:9px;margin:5px 0 20px}
+.training-level-card{display:grid;grid-template-columns:104px minmax(0,1fr);gap:12px;background:#182016;border:1px solid #31492b;border-radius:14px;padding:9px;color:#f5f5f5;min-width:0}
+.training-level-card>img{width:104px;height:100%;min-height:132px;object-fit:cover;border-radius:9px;background:#0a0a0a}
+.training-level-card>div{display:grid;align-content:center;gap:5px;min-width:0}
+.training-level-card strong{font-size:13px;line-height:1.25}.training-level-card small{font-size:10px;line-height:1.3;color:#a8b0a8}
+.training-level-card span{display:flex;gap:4px}.training-level-card span i{display:block;width:15px;height:5px;border-radius:10px;background:#4b5849}.training-level-card span i.on{background:#a7ef22}
+.training-level-card button{display:flex;align-items:center;justify-content:center;gap:3px;border:0;background:#a7ef22;color:#151b10;border-radius:8px;padding:8px;font-size:10px;font-weight:900;margin-top:3px}
+.training-level-card button svg{width:14px;height:14px}
+@media(max-width:370px){.training-level-card{grid-template-columns:87px minmax(0,1fr)}.training-level-card>img{width:87px}.training-map-hotspot{font-size:8px;padding:6px}}

@@ -35,9 +35,10 @@
       "chest-press",
       "pec-deck-fly"
     ],
-    "animationAsset": "/training-assets/exercises/chest/bench-press.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/barbell.png",
-    "muscleImageAsset": "/training-assets/muscles/chest.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/bench-press.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-chest.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/bench-press.webp"
   },
   {
     "id": "incline-dumbbell-press",
@@ -75,9 +76,10 @@
       "chest-press",
       "pec-deck-fly"
     ],
-    "animationAsset": "/training-assets/exercises/chest/incline-dumbbell-press.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/dumbbell.png",
-    "muscleImageAsset": "/training-assets/muscles/chest.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/incline-dumbbell-press.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-chest.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/incline-dumbbell-press.webp"
   },
   {
     "id": "chest-press",
@@ -115,9 +117,10 @@
       "incline-dumbbell-press",
       "pec-deck-fly"
     ],
-    "animationAsset": "/training-assets/exercises/chest/chest-press.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/machine.png",
-    "muscleImageAsset": "/training-assets/muscles/chest.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/chest-press.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-chest.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/chest-press.webp"
   },
   {
     "id": "pec-deck-fly",
@@ -155,9 +158,10 @@
       "incline-dumbbell-press",
       "chest-press"
     ],
-    "animationAsset": "/training-assets/exercises/chest/pec-deck-fly.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/machine.png",
-    "muscleImageAsset": "/training-assets/muscles/chest.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/pec-deck-fly.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-chest.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/pec-deck-fly.webp"
   },
   {
     "id": "push-up",
@@ -195,9 +199,10 @@
       "incline-dumbbell-press",
       "chest-press"
     ],
-    "animationAsset": "/training-assets/exercises/chest/push-up.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
-    "muscleImageAsset": "/training-assets/muscles/chest.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/push-up.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-chest.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/push-up.webp"
   },
   {
     "id": "lat-pulldown",
@@ -236,9 +241,10 @@
       "barbell-row",
       "one-arm-dumbbell-row"
     ],
-    "animationAsset": "/training-assets/exercises/back/lat-pulldown.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/cable.png",
-    "muscleImageAsset": "/training-assets/muscles/back.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/lat-pulldown.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/back-back.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/lat-pulldown.webp"
   },
   {
     "id": "seated-cable-row",
@@ -277,9 +283,10 @@
       "barbell-row",
       "one-arm-dumbbell-row"
     ],
-    "animationAsset": "/training-assets/exercises/back/seated-cable-row.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/cable.png",
-    "muscleImageAsset": "/training-assets/muscles/back.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/seated-cable-row.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/back-back.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/seated-cable-row.webp"
   },
   {
     "id": "barbell-row",
@@ -318,9 +325,10 @@
       "seated-cable-row",
       "one-arm-dumbbell-row"
     ],
-    "animationAsset": "/training-assets/exercises/back/barbell-row.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/barbell.png",
-    "muscleImageAsset": "/training-assets/muscles/back.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/barbell-row.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/back-back.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/barbell-row.webp"
   },
   {
     "id": "one-arm-dumbbell-row",
@@ -359,9 +367,10 @@
       "seated-cable-row",
       "barbell-row"
     ],
-    "animationAsset": "/training-assets/exercises/back/one-arm-dumbbell-row.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/dumbbell.png",
-    "muscleImageAsset": "/training-assets/muscles/back.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/one-arm-dumbbell-row.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/back-back.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/one-arm-dumbbell-row.webp"
   },
   {
     "id": "assisted-pull-up",
@@ -400,9 +409,10 @@
       "seated-cable-row",
       "barbell-row"
     ],
-    "animationAsset": "/training-assets/exercises/back/assisted-pull-up.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/machine.png",
-    "muscleImageAsset": "/training-assets/muscles/back.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/assisted-pull-up.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/back-back.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/assisted-pull-up.webp"
   },
   {
     "id": "shoulder-press",
@@ -440,9 +450,10 @@
       "front-raise",
       "reverse-pec-deck"
     ],
-    "animationAsset": "/training-assets/exercises/shoulders/shoulder-press.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/dumbbell.png",
-    "muscleImageAsset": "/training-assets/muscles/shoulders.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/shoulder-press.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-shoulders.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/shoulder-press.webp"
   },
   {
     "id": "lateral-raise",
@@ -480,9 +491,10 @@
       "front-raise",
       "reverse-pec-deck"
     ],
-    "animationAsset": "/training-assets/exercises/shoulders/lateral-raise.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/dumbbell.png",
-    "muscleImageAsset": "/training-assets/muscles/shoulders.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/lateral-raise.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-shoulders.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/lateral-raise.webp"
   },
   {
     "id": "front-raise",
@@ -520,9 +532,10 @@
       "lateral-raise",
       "reverse-pec-deck"
     ],
-    "animationAsset": "/training-assets/exercises/shoulders/front-raise.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/dumbbell.png",
-    "muscleImageAsset": "/training-assets/muscles/shoulders.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/front-raise.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-shoulders.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/front-raise.webp"
   },
   {
     "id": "reverse-pec-deck",
@@ -560,9 +573,10 @@
       "lateral-raise",
       "front-raise"
     ],
-    "animationAsset": "/training-assets/exercises/shoulders/reverse-pec-deck.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/machine.png",
-    "muscleImageAsset": "/training-assets/muscles/shoulders.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/reverse-pec-deck.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-shoulders.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/reverse-pec-deck.webp"
   },
   {
     "id": "face-pull",
@@ -600,9 +614,10 @@
       "lateral-raise",
       "front-raise"
     ],
-    "animationAsset": "/training-assets/exercises/shoulders/face-pull.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/cable.png",
-    "muscleImageAsset": "/training-assets/muscles/shoulders.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/face-pull.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-shoulders.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/face-pull.webp"
   },
   {
     "id": "dumbbell-curl",
@@ -639,9 +654,10 @@
       "hammer-curl",
       "cable-curl"
     ],
-    "animationAsset": "/training-assets/exercises/biceps/dumbbell-curl.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/dumbbell.png",
-    "muscleImageAsset": "/training-assets/muscles/biceps.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/dumbbell-curl.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-biceps.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/dumbbell-curl.webp"
   },
   {
     "id": "barbell-curl",
@@ -678,9 +694,10 @@
       "hammer-curl",
       "cable-curl"
     ],
-    "animationAsset": "/training-assets/exercises/biceps/barbell-curl.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/barbell.png",
-    "muscleImageAsset": "/training-assets/muscles/biceps.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/barbell-curl.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-biceps.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/barbell-curl.webp"
   },
   {
     "id": "hammer-curl",
@@ -717,9 +734,10 @@
       "barbell-curl",
       "cable-curl"
     ],
-    "animationAsset": "/training-assets/exercises/biceps/hammer-curl.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/dumbbell.png",
-    "muscleImageAsset": "/training-assets/muscles/biceps.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/hammer-curl.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-biceps.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/hammer-curl.webp"
   },
   {
     "id": "cable-curl",
@@ -756,9 +774,10 @@
       "barbell-curl",
       "hammer-curl"
     ],
-    "animationAsset": "/training-assets/exercises/biceps/cable-curl.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/cable.png",
-    "muscleImageAsset": "/training-assets/muscles/biceps.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/cable-curl.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-biceps.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/cable-curl.webp"
   },
   {
     "id": "cable-pushdown",
@@ -795,9 +814,10 @@
       "bench-dip",
       "close-grip-bench-press"
     ],
-    "animationAsset": "/training-assets/exercises/triceps/cable-pushdown.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/cable.png",
-    "muscleImageAsset": "/training-assets/muscles/triceps.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/cable-pushdown.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/back-triceps.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/cable-pushdown.webp"
   },
   {
     "id": "overhead-triceps-extension",
@@ -834,9 +854,10 @@
       "bench-dip",
       "close-grip-bench-press"
     ],
-    "animationAsset": "/training-assets/exercises/triceps/overhead-triceps-extension.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/dumbbell.png",
-    "muscleImageAsset": "/training-assets/muscles/triceps.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/overhead-triceps-extension.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/back-triceps.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/overhead-triceps-extension.webp"
   },
   {
     "id": "bench-dip",
@@ -873,9 +894,10 @@
       "overhead-triceps-extension",
       "close-grip-bench-press"
     ],
-    "animationAsset": "/training-assets/exercises/triceps/bench-dip.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
-    "muscleImageAsset": "/training-assets/muscles/triceps.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/bench-dip.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/back-triceps.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/bench-dip.webp"
   },
   {
     "id": "close-grip-bench-press",
@@ -912,9 +934,10 @@
       "overhead-triceps-extension",
       "bench-dip"
     ],
-    "animationAsset": "/training-assets/exercises/triceps/close-grip-bench-press.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/barbell.png",
-    "muscleImageAsset": "/training-assets/muscles/triceps.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/close-grip-bench-press.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/back-triceps.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/close-grip-bench-press.webp"
   },
   {
     "id": "squat",
@@ -953,9 +976,10 @@
       "leg-extension",
       "leg-curl"
     ],
-    "animationAsset": "/training-assets/exercises/legs/squat.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
-    "muscleImageAsset": "/training-assets/muscles/legs.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/squat.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-legs.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/squat.webp"
   },
   {
     "id": "leg-press",
@@ -994,9 +1018,10 @@
       "leg-extension",
       "leg-curl"
     ],
-    "animationAsset": "/training-assets/exercises/legs/leg-press.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/machine.png",
-    "muscleImageAsset": "/training-assets/muscles/legs.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/leg-press.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-legs.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/leg-press.webp"
   },
   {
     "id": "leg-extension",
@@ -1035,9 +1060,10 @@
       "leg-press",
       "leg-curl"
     ],
-    "animationAsset": "/training-assets/exercises/legs/leg-extension.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/machine.png",
-    "muscleImageAsset": "/training-assets/muscles/legs.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/leg-extension.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-legs.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/leg-extension.webp"
   },
   {
     "id": "leg-curl",
@@ -1076,9 +1102,10 @@
       "leg-press",
       "leg-extension"
     ],
-    "animationAsset": "/training-assets/exercises/legs/leg-curl.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/machine.png",
-    "muscleImageAsset": "/training-assets/muscles/legs.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/leg-curl.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-legs.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/leg-curl.webp"
   },
   {
     "id": "calf-raise",
@@ -1117,9 +1144,10 @@
       "leg-press",
       "leg-extension"
     ],
-    "animationAsset": "/training-assets/exercises/legs/calf-raise.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/machine.png",
-    "muscleImageAsset": "/training-assets/muscles/legs.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/calf-raise.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-legs.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/calf-raise.webp"
   },
   {
     "id": "walking-lunge",
@@ -1158,9 +1186,10 @@
       "leg-press",
       "leg-extension"
     ],
-    "animationAsset": "/training-assets/exercises/legs/walking-lunge.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
-    "muscleImageAsset": "/training-assets/muscles/legs.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/walking-lunge.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-legs.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/walking-lunge.webp"
   },
   {
     "id": "crunch",
@@ -1197,9 +1226,10 @@
       "leg-raise",
       "cable-crunch"
     ],
-    "animationAsset": "/training-assets/exercises/abs/crunch.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
-    "muscleImageAsset": "/training-assets/muscles/abs.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/crunch.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-abs.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/crunch.webp"
   },
   {
     "id": "plank",
@@ -1236,9 +1266,10 @@
       "leg-raise",
       "cable-crunch"
     ],
-    "animationAsset": "/training-assets/exercises/abs/plank.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
-    "muscleImageAsset": "/training-assets/muscles/abs.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/plank.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-abs.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/plank.webp"
   },
   {
     "id": "leg-raise",
@@ -1275,9 +1306,10 @@
       "plank",
       "cable-crunch"
     ],
-    "animationAsset": "/training-assets/exercises/abs/leg-raise.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
-    "muscleImageAsset": "/training-assets/muscles/abs.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/leg-raise.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-abs.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/leg-raise.webp"
   },
   {
     "id": "cable-crunch",
@@ -1314,9 +1346,10 @@
       "plank",
       "leg-raise"
     ],
-    "animationAsset": "/training-assets/exercises/abs/cable-crunch.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/cable.png",
-    "muscleImageAsset": "/training-assets/muscles/abs.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/cable-crunch.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/front-abs.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/cable-crunch.webp"
   },
   {
     "id": "hip-thrust",
@@ -1353,9 +1386,10 @@
       "cable-kickback",
       "romanian-deadlift"
     ],
-    "animationAsset": "/training-assets/exercises/glutes/hip-thrust.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/barbell.png",
-    "muscleImageAsset": "/training-assets/muscles/glutes.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/hip-thrust.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/back-glutes.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/hip-thrust.webp"
   },
   {
     "id": "glute-bridge",
@@ -1392,9 +1426,10 @@
       "cable-kickback",
       "romanian-deadlift"
     ],
-    "animationAsset": "/training-assets/exercises/glutes/glute-bridge.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
-    "muscleImageAsset": "/training-assets/muscles/glutes.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/glute-bridge.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/back-glutes.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/glute-bridge.webp"
   },
   {
     "id": "cable-kickback",
@@ -1431,9 +1466,10 @@
       "glute-bridge",
       "romanian-deadlift"
     ],
-    "animationAsset": "/training-assets/exercises/glutes/cable-kickback.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/cable.png",
-    "muscleImageAsset": "/training-assets/muscles/glutes.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/cable-kickback.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/back-glutes.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/cable-kickback.webp"
   },
   {
     "id": "romanian-deadlift",
@@ -1470,9 +1506,10 @@
       "glute-bridge",
       "cable-kickback"
     ],
-    "animationAsset": "/training-assets/exercises/glutes/romanian-deadlift.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/dumbbell.png",
-    "muscleImageAsset": "/training-assets/muscles/glutes.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/romanian-deadlift.webp",
+    "muscleImageAsset": "/training-assets/body-model/highlights/back-glutes.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/romanian-deadlift.webp"
   },
   {
     "id": "treadmill",
@@ -1510,9 +1547,10 @@
       "stationary-bike",
       "rowing-machine"
     ],
-    "animationAsset": "/training-assets/exercises/cardio/treadmill.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/treadmill.png",
-    "muscleImageAsset": "/training-assets/muscles/cardio.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/treadmill.webp",
+    "muscleImageAsset": "/training-assets/body-model/front.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/treadmill.webp"
   },
   {
     "id": "elliptical",
@@ -1550,9 +1588,10 @@
       "stationary-bike",
       "rowing-machine"
     ],
-    "animationAsset": "/training-assets/exercises/cardio/elliptical.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/elliptical.png",
-    "muscleImageAsset": "/training-assets/muscles/cardio.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/elliptical.webp",
+    "muscleImageAsset": "/training-assets/body-model/front.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/elliptical.webp"
   },
   {
     "id": "stationary-bike",
@@ -1590,9 +1629,10 @@
       "elliptical",
       "rowing-machine"
     ],
-    "animationAsset": "/training-assets/exercises/cardio/stationary-bike.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/bike.png",
-    "muscleImageAsset": "/training-assets/muscles/cardio.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/stationary-bike.webp",
+    "muscleImageAsset": "/training-assets/body-model/front.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/stationary-bike.webp"
   },
   {
     "id": "rowing-machine",
@@ -1630,9 +1670,10 @@
       "elliptical",
       "stationary-bike"
     ],
-    "animationAsset": "/training-assets/exercises/cardio/rowing-machine.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/rower.png",
-    "muscleImageAsset": "/training-assets/muscles/cardio.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/rowing-machine.webp",
+    "muscleImageAsset": "/training-assets/body-model/front.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/rowing-machine.webp"
   },
   {
     "id": "burpee",
@@ -1669,9 +1710,10 @@
     "alternativeExerciseIds": [
       "jumping-jack"
     ],
-    "animationAsset": "/training-assets/exercises/full-body/burpee.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
-    "muscleImageAsset": "/training-assets/muscles/full-body.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/burpee.webp",
+    "muscleImageAsset": "/training-assets/body-model/front.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/burpee.webp"
   },
   {
     "id": "jumping-jack",
@@ -1708,8 +1750,9 @@
     "alternativeExerciseIds": [
       "burpee"
     ],
-    "animationAsset": "/training-assets/exercises/full-body/jumping-jack.mp4",
-    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
-    "muscleImageAsset": "/training-assets/muscles/full-body.png"
+    "animationAsset": null,
+    "equipmentImageAsset": "/training-assets/exercise-thumbnails/jumping-jack.webp",
+    "muscleImageAsset": "/training-assets/body-model/front.webp",
+    "previewAsset": "/training-assets/exercise-thumbnails/jumping-jack.webp"
   }
 ]
