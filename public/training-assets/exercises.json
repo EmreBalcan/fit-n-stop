@@ -1,0 +1,1715 @@
+[
+  {
+    "id": "bench-press",
+    "turkishName": "Düz Bench Press",
+    "englishName": "Bench Press",
+    "bodyRegion": "chest",
+    "primaryMuscles": [
+      "Göğüs"
+    ],
+    "secondaryMuscles": [
+      "Ön omuz",
+      "Triceps"
+    ],
+    "equipment": "Bar",
+    "equipmentType": "Bar",
+    "difficulty": "Orta",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 90,
+    "instructions": [
+      "Sırtını sehpaya yerleştir; ayakların yerde sabit kalsın.",
+      "Barı göğsünün orta hattına kontrollü indir, ardından dirseklerini kilitlemeden yukarı it.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İndirirken nefes al, iterken nefes ver.",
+    "commonMistakes": [
+      "Kalçayı sehpada tutmamak ve barı göğse düşürmek."
+    ],
+    "safetyWarnings": [
+      "Güvenlik mandalı veya yardımcı olmadan ağır deneme yapma.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "incline-dumbbell-press",
+      "chest-press",
+      "pec-deck-fly"
+    ],
+    "animationAsset": "/training-assets/exercises/chest/bench-press.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/barbell.png",
+    "muscleImageAsset": "/training-assets/muscles/chest.png"
+  },
+  {
+    "id": "incline-dumbbell-press",
+    "turkishName": "Eğimli Dambıl Press",
+    "englishName": "Incline Dumbbell Press",
+    "bodyRegion": "chest",
+    "primaryMuscles": [
+      "Göğüs"
+    ],
+    "secondaryMuscles": [
+      "Ön omuz",
+      "Triceps"
+    ],
+    "equipment": "Dambıl",
+    "equipmentType": "Dambıl",
+    "difficulty": "Orta",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 90,
+    "instructions": [
+      "Sehpayı hafif eğimli ayarla; dambılları göğüs hizasında tut.",
+      "Dambılları kontrollü yukarı it, sonra omuzlarını zorlamadan geri indir.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İndirirken nefes al, iterken nefes ver.",
+    "commonMistakes": [
+      "Dambılları birbirine sertçe çarpmak."
+    ],
+    "safetyWarnings": [
+      "Ağırlığı tek başına güvenle kaldırabileceğin düzeyde seç.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "bench-press",
+      "chest-press",
+      "pec-deck-fly"
+    ],
+    "animationAsset": "/training-assets/exercises/chest/incline-dumbbell-press.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/dumbbell.png",
+    "muscleImageAsset": "/training-assets/muscles/chest.png"
+  },
+  {
+    "id": "chest-press",
+    "turkishName": "Göğüs Press Makinesi",
+    "englishName": "Chest Press",
+    "bodyRegion": "chest",
+    "primaryMuscles": [
+      "Göğüs"
+    ],
+    "secondaryMuscles": [
+      "Ön omuz",
+      "Triceps"
+    ],
+    "equipment": "Makine",
+    "equipmentType": "Makine",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Koltuğu tutacaklar göğüs hizasına gelecek şekilde ayarla.",
+      "Tutacakları öne it ve kontrollü biçimde geri getir.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Geri gelirken nefes al, iterken nefes ver.",
+    "commonMistakes": [
+      "Omuzları kulaklara çekmek."
+    ],
+    "safetyWarnings": [
+      "Makine ayarlarını hareketten önce kontrol et.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "bench-press",
+      "incline-dumbbell-press",
+      "pec-deck-fly"
+    ],
+    "animationAsset": "/training-assets/exercises/chest/chest-press.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/machine.png",
+    "muscleImageAsset": "/training-assets/muscles/chest.png"
+  },
+  {
+    "id": "pec-deck-fly",
+    "turkishName": "Pec Deck Açış",
+    "englishName": "Pec Deck Fly",
+    "bodyRegion": "chest",
+    "primaryMuscles": [
+      "Göğüs"
+    ],
+    "secondaryMuscles": [
+      "Ön omuz",
+      "Triceps"
+    ],
+    "equipment": "Makine",
+    "equipmentType": "Makine",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Dirsekleri omuz hizasının biraz altında tutarak makineye otur.",
+      "Kolları göğüs önünde yaklaştır, kontrollü aç.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Açarken nefes al, kapatırken nefes ver.",
+    "commonMistakes": [
+      "Omuzları öne düşürmek."
+    ],
+    "safetyWarnings": [
+      "Omuzda rahatsızlık hissedersen hareketi durdur.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "bench-press",
+      "incline-dumbbell-press",
+      "chest-press"
+    ],
+    "animationAsset": "/training-assets/exercises/chest/pec-deck-fly.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/machine.png",
+    "muscleImageAsset": "/training-assets/muscles/chest.png"
+  },
+  {
+    "id": "push-up",
+    "turkishName": "Şınav",
+    "englishName": "Push-up",
+    "bodyRegion": "chest",
+    "primaryMuscles": [
+      "Göğüs"
+    ],
+    "secondaryMuscles": [
+      "Ön omuz",
+      "Triceps"
+    ],
+    "equipment": "Ekipman gerektirmez",
+    "equipmentType": "Vücut Ağırlığı",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Eller omuz genişliğinde; baştan topuğa düz bir çizgi oluştur.",
+      "Dirsekleri bükerek gövdeyi indir ve yeri iterek yüksel.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İnerken nefes al, yükselirken nefes ver.",
+    "commonMistakes": [
+      "Belin çökmesine izin vermek."
+    ],
+    "safetyWarnings": [
+      "Gerekirse dizlerin yerde daha kolay sürümü uygula.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "bench-press",
+      "incline-dumbbell-press",
+      "chest-press"
+    ],
+    "animationAsset": "/training-assets/exercises/chest/push-up.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
+    "muscleImageAsset": "/training-assets/muscles/chest.png"
+  },
+  {
+    "id": "lat-pulldown",
+    "turkishName": "Lat Çekiş",
+    "englishName": "Lat Pulldown",
+    "bodyRegion": "back",
+    "primaryMuscles": [
+      "Latissimus",
+      "Üst sırt"
+    ],
+    "secondaryMuscles": [
+      "Biceps",
+      "Arka omuz"
+    ],
+    "equipment": "Kablo",
+    "equipmentType": "Kablo",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Diz pedlerini sabitle; barı omuz genişliğinden biraz açık tut.",
+      "Barı üst göğse doğru çek; kürek kemiklerini yaklaştır ve yavaşça bırak.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Yukarı uzanırken nefes al, çekerken nefes ver.",
+    "commonMistakes": [
+      "Barı enseye çekmek veya gövdeyi savurmak."
+    ],
+    "safetyWarnings": [
+      "Boynunu nötr konumda tut.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "seated-cable-row",
+      "barbell-row",
+      "one-arm-dumbbell-row"
+    ],
+    "animationAsset": "/training-assets/exercises/back/lat-pulldown.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/cable.png",
+    "muscleImageAsset": "/training-assets/muscles/back.png"
+  },
+  {
+    "id": "seated-cable-row",
+    "turkishName": "Oturarak Kablo Kürek",
+    "englishName": "Seated Cable Row",
+    "bodyRegion": "back",
+    "primaryMuscles": [
+      "Latissimus",
+      "Üst sırt"
+    ],
+    "secondaryMuscles": [
+      "Biceps",
+      "Arka omuz"
+    ],
+    "equipment": "Kablo",
+    "equipmentType": "Kablo",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Ayakları pedlere koy; sırtını uzun tut ve tutacağı kavra.",
+      "Tutacağı karına çek; kürek kemiklerini yaklaştırıp kolları kontrollü uzat.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Uzatırken nefes al, çekerken nefes ver.",
+    "commonMistakes": [
+      "Belden aşırı geriye yatmak."
+    ],
+    "safetyWarnings": [
+      "Belini yuvarlama.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "lat-pulldown",
+      "barbell-row",
+      "one-arm-dumbbell-row"
+    ],
+    "animationAsset": "/training-assets/exercises/back/seated-cable-row.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/cable.png",
+    "muscleImageAsset": "/training-assets/muscles/back.png"
+  },
+  {
+    "id": "barbell-row",
+    "turkishName": "Barla Eğilerek Kürek",
+    "englishName": "Barbell Row",
+    "bodyRegion": "back",
+    "primaryMuscles": [
+      "Latissimus",
+      "Üst sırt"
+    ],
+    "secondaryMuscles": [
+      "Biceps",
+      "Arka omuz"
+    ],
+    "equipment": "Bar",
+    "equipmentType": "Bar",
+    "difficulty": "Orta",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 90,
+    "instructions": [
+      "Dizleri hafif kır; kalçadan eğil ve omurgayı nötr tut.",
+      "Barı alt kaburgaya çekip kontrollü indir.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İndirirken nefes al, çekerken nefes ver.",
+    "commonMistakes": [
+      "Gövdeyi sallamak."
+    ],
+    "safetyWarnings": [
+      "Belini sabit tutabileceğin ağırlık seç.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "lat-pulldown",
+      "seated-cable-row",
+      "one-arm-dumbbell-row"
+    ],
+    "animationAsset": "/training-assets/exercises/back/barbell-row.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/barbell.png",
+    "muscleImageAsset": "/training-assets/muscles/back.png"
+  },
+  {
+    "id": "one-arm-dumbbell-row",
+    "turkishName": "Tek Kol Dambıl Kürek",
+    "englishName": "One Arm Dumbbell Row",
+    "bodyRegion": "back",
+    "primaryMuscles": [
+      "Latissimus",
+      "Üst sırt"
+    ],
+    "secondaryMuscles": [
+      "Biceps",
+      "Arka omuz"
+    ],
+    "equipment": "Dambıl",
+    "equipmentType": "Dambıl",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Bir elini ve dizini sehpaya koy; sırtını düz tut.",
+      "Dambılı kalçana doğru çek, yavaşça indir; sonra taraf değiştir.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İndirirken nefes al, çekerken nefes ver.",
+    "commonMistakes": [
+      "Omzu döndürerek ağırlığı savurmak."
+    ],
+    "safetyWarnings": [
+      "İki tarafı benzer kontrollü tekrarlarla çalıştır.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "lat-pulldown",
+      "seated-cable-row",
+      "barbell-row"
+    ],
+    "animationAsset": "/training-assets/exercises/back/one-arm-dumbbell-row.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/dumbbell.png",
+    "muscleImageAsset": "/training-assets/muscles/back.png"
+  },
+  {
+    "id": "assisted-pull-up",
+    "turkishName": "Destekli Barfiks",
+    "englishName": "Assisted Pull-up",
+    "bodyRegion": "back",
+    "primaryMuscles": [
+      "Latissimus",
+      "Üst sırt"
+    ],
+    "secondaryMuscles": [
+      "Biceps",
+      "Arka omuz"
+    ],
+    "equipment": "Makine",
+    "equipmentType": "Makine",
+    "difficulty": "Orta",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 90,
+    "instructions": [
+      "Destek miktarını ayarla; barı güvenli biçimde kavra.",
+      "Dirsekleri aşağı çekerek yüksel, yavaşça alçal.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Alçalırken nefes al, yükselirken nefes ver.",
+    "commonMistakes": [
+      "Boynu bara uzatmak."
+    ],
+    "safetyWarnings": [
+      "Desteği bir anda bırakma.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "lat-pulldown",
+      "seated-cable-row",
+      "barbell-row"
+    ],
+    "animationAsset": "/training-assets/exercises/back/assisted-pull-up.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/machine.png",
+    "muscleImageAsset": "/training-assets/muscles/back.png"
+  },
+  {
+    "id": "shoulder-press",
+    "turkishName": "Omuz Press",
+    "englishName": "Shoulder Press",
+    "bodyRegion": "shoulders",
+    "primaryMuscles": [
+      "Omuz"
+    ],
+    "secondaryMuscles": [
+      "Triceps",
+      "Üst sırt"
+    ],
+    "equipment": "Dambıl",
+    "equipmentType": "Dambıl",
+    "difficulty": "Orta",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 90,
+    "instructions": [
+      "Dambılları omuz hizasında tut; karın bölgeni sık.",
+      "Kolları baş üstüne kontrollü it ve omuz hizasına geri indir.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İndirirken nefes al, iterken nefes ver.",
+    "commonMistakes": [
+      "Beli aşırı geriye yatırmak."
+    ],
+    "safetyWarnings": [
+      "Omuz açıklığını zorlamadan hareket et.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "lateral-raise",
+      "front-raise",
+      "reverse-pec-deck"
+    ],
+    "animationAsset": "/training-assets/exercises/shoulders/shoulder-press.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/dumbbell.png",
+    "muscleImageAsset": "/training-assets/muscles/shoulders.png"
+  },
+  {
+    "id": "lateral-raise",
+    "turkishName": "Yana Dambıl Açış",
+    "englishName": "Dumbbell Lateral Raise",
+    "bodyRegion": "shoulders",
+    "primaryMuscles": [
+      "Omuz"
+    ],
+    "secondaryMuscles": [
+      "Triceps",
+      "Üst sırt"
+    ],
+    "equipment": "Dambıl",
+    "equipmentType": "Dambıl",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Dambılları yanlarda tut; dirsekleri hafif bük.",
+      "Kolları omuz hizasına kadar yana kaldır ve yavaş indir.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İndirirken nefes al, kaldırırken nefes ver.",
+    "commonMistakes": [
+      "Ağırlığı savurarak kaldırmak."
+    ],
+    "safetyWarnings": [
+      "Hafif ağırlıkla kontrollü çalış.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "shoulder-press",
+      "front-raise",
+      "reverse-pec-deck"
+    ],
+    "animationAsset": "/training-assets/exercises/shoulders/lateral-raise.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/dumbbell.png",
+    "muscleImageAsset": "/training-assets/muscles/shoulders.png"
+  },
+  {
+    "id": "front-raise",
+    "turkishName": "Öne Dambıl Kaldırış",
+    "englishName": "Front Raise",
+    "bodyRegion": "shoulders",
+    "primaryMuscles": [
+      "Omuz"
+    ],
+    "secondaryMuscles": [
+      "Triceps",
+      "Üst sırt"
+    ],
+    "equipment": "Dambıl",
+    "equipmentType": "Dambıl",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Dambılları bacakların önünde tut; gövdeni sabitle.",
+      "Kolları omuz hizasına kadar öne kaldır ve yavaş indir.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İndirirken nefes al, kaldırırken nefes ver.",
+    "commonMistakes": [
+      "Omuz hizasının çok üstüne çıkmak."
+    ],
+    "safetyWarnings": [
+      "Omuzda ağrı hissedersen dur.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "shoulder-press",
+      "lateral-raise",
+      "reverse-pec-deck"
+    ],
+    "animationAsset": "/training-assets/exercises/shoulders/front-raise.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/dumbbell.png",
+    "muscleImageAsset": "/training-assets/muscles/shoulders.png"
+  },
+  {
+    "id": "reverse-pec-deck",
+    "turkishName": "Ters Pec Deck",
+    "englishName": "Reverse Pec Deck",
+    "bodyRegion": "shoulders",
+    "primaryMuscles": [
+      "Omuz"
+    ],
+    "secondaryMuscles": [
+      "Triceps",
+      "Üst sırt"
+    ],
+    "equipment": "Makine",
+    "equipmentType": "Makine",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Makineye yüzün desteğe dönük otur; tutacakları kavra.",
+      "Kolları yanlara açarak kürek kemiklerini yaklaştır, sonra geri getir.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Geri gelirken nefes al, açarken nefes ver.",
+    "commonMistakes": [
+      "Boynu öne uzatmak."
+    ],
+    "safetyWarnings": [
+      "Tutacakları omuz hareket açıklığına göre ayarla.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "shoulder-press",
+      "lateral-raise",
+      "front-raise"
+    ],
+    "animationAsset": "/training-assets/exercises/shoulders/reverse-pec-deck.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/machine.png",
+    "muscleImageAsset": "/training-assets/muscles/shoulders.png"
+  },
+  {
+    "id": "face-pull",
+    "turkishName": "Yüze Kablo Çekiş",
+    "englishName": "Face Pull",
+    "bodyRegion": "shoulders",
+    "primaryMuscles": [
+      "Omuz"
+    ],
+    "secondaryMuscles": [
+      "Triceps",
+      "Üst sırt"
+    ],
+    "equipment": "Kablo",
+    "equipmentType": "Kablo",
+    "difficulty": "Orta",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 90,
+    "instructions": [
+      "Kabloyu yüz hizasına ayarla; ipi iki elle tut.",
+      "İpi yüze doğru çekerken dirsekleri yana aç ve kontrollü uzat.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Uzatırken nefes al, çekerken nefes ver.",
+    "commonMistakes": [
+      "Omuzları yükseltmek."
+    ],
+    "safetyWarnings": [
+      "Hareketi hafif yükle öğren.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "shoulder-press",
+      "lateral-raise",
+      "front-raise"
+    ],
+    "animationAsset": "/training-assets/exercises/shoulders/face-pull.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/cable.png",
+    "muscleImageAsset": "/training-assets/muscles/shoulders.png"
+  },
+  {
+    "id": "dumbbell-curl",
+    "turkishName": "Dambıl Biceps Kıvırma",
+    "englishName": "Dumbbell Curl",
+    "bodyRegion": "biceps",
+    "primaryMuscles": [
+      "Biceps"
+    ],
+    "secondaryMuscles": [
+      "Ön kol"
+    ],
+    "equipment": "Dambıl",
+    "equipmentType": "Dambıl",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Kolları yanlarında tut; dirsekleri gövdeye yakın bırak.",
+      "Dambılları dirsekten bükerek kaldır ve yavaş indir.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İndirirken nefes al, kaldırırken nefes ver.",
+    "commonMistakes": [
+      "Gövdeyi sallamak."
+    ],
+    "safetyWarnings": [
+      "Bileklerini düz tut.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "barbell-curl",
+      "hammer-curl",
+      "cable-curl"
+    ],
+    "animationAsset": "/training-assets/exercises/biceps/dumbbell-curl.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/dumbbell.png",
+    "muscleImageAsset": "/training-assets/muscles/biceps.png"
+  },
+  {
+    "id": "barbell-curl",
+    "turkishName": "Barla Biceps Kıvırma",
+    "englishName": "Barbell Curl",
+    "bodyRegion": "biceps",
+    "primaryMuscles": [
+      "Biceps"
+    ],
+    "secondaryMuscles": [
+      "Ön kol"
+    ],
+    "equipment": "Bar",
+    "equipmentType": "Bar",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Barı omuz genişliğinde tut; gövdeni sabitle.",
+      "Dirsekleri yerinde tutarak barı kaldırıp yavaş indir.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İndirirken nefes al, kaldırırken nefes ver.",
+    "commonMistakes": [
+      "Dirsekleri öne fırlatmak."
+    ],
+    "safetyWarnings": [
+      "Bileklerini zorlamayacak tutuş seç.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "dumbbell-curl",
+      "hammer-curl",
+      "cable-curl"
+    ],
+    "animationAsset": "/training-assets/exercises/biceps/barbell-curl.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/barbell.png",
+    "muscleImageAsset": "/training-assets/muscles/biceps.png"
+  },
+  {
+    "id": "hammer-curl",
+    "turkishName": "Çekiç Kıvırma",
+    "englishName": "Hammer Curl",
+    "bodyRegion": "biceps",
+    "primaryMuscles": [
+      "Biceps"
+    ],
+    "secondaryMuscles": [
+      "Ön kol"
+    ],
+    "equipment": "Dambıl",
+    "equipmentType": "Dambıl",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Avuç içlerin birbirine bakacak şekilde dambılları tut.",
+      "Dirsekleri sabit tutup dambılları kaldır; kontrollü indir.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İndirirken nefes al, kaldırırken nefes ver.",
+    "commonMistakes": [
+      "Omuzla ağırlığı kaldırmak."
+    ],
+    "safetyWarnings": [
+      "Bileği nötr tut.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "dumbbell-curl",
+      "barbell-curl",
+      "cable-curl"
+    ],
+    "animationAsset": "/training-assets/exercises/biceps/hammer-curl.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/dumbbell.png",
+    "muscleImageAsset": "/training-assets/muscles/biceps.png"
+  },
+  {
+    "id": "cable-curl",
+    "turkishName": "Kablo Biceps Kıvırma",
+    "englishName": "Cable Curl",
+    "bodyRegion": "biceps",
+    "primaryMuscles": [
+      "Biceps"
+    ],
+    "secondaryMuscles": [
+      "Ön kol"
+    ],
+    "equipment": "Kablo",
+    "equipmentType": "Kablo",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Kablo tutacağını al; dirsekleri gövdeye yakın tut.",
+      "Kabloyu göğse doğru çek ve yavaşça bırak.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Bırakırken nefes al, çekerken nefes ver.",
+    "commonMistakes": [
+      "Kabloyu savurarak çekmek."
+    ],
+    "safetyWarnings": [
+      "Makine ağırlığını kontrollü seç.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "dumbbell-curl",
+      "barbell-curl",
+      "hammer-curl"
+    ],
+    "animationAsset": "/training-assets/exercises/biceps/cable-curl.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/cable.png",
+    "muscleImageAsset": "/training-assets/muscles/biceps.png"
+  },
+  {
+    "id": "cable-pushdown",
+    "turkishName": "Kablo Triceps İtiş",
+    "englishName": "Cable Pushdown",
+    "bodyRegion": "triceps",
+    "primaryMuscles": [
+      "Triceps"
+    ],
+    "secondaryMuscles": [
+      "Omuz"
+    ],
+    "equipment": "Kablo",
+    "equipmentType": "Kablo",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Dirsekleri gövdene yakın tut; kablo tutacağını kavra.",
+      "Ön kolları aşağı aç; üst kolları sabit tutarak geri dön.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Dönerken nefes al, iterken nefes ver.",
+    "commonMistakes": [
+      "Omuzları ve gövdeyi öne atmak."
+    ],
+    "safetyWarnings": [
+      "Dirsekleri sertçe kilitleme.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "overhead-triceps-extension",
+      "bench-dip",
+      "close-grip-bench-press"
+    ],
+    "animationAsset": "/training-assets/exercises/triceps/cable-pushdown.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/cable.png",
+    "muscleImageAsset": "/training-assets/muscles/triceps.png"
+  },
+  {
+    "id": "overhead-triceps-extension",
+    "turkishName": "Baş Üstü Triceps Açış",
+    "englishName": "Overhead Triceps Extension",
+    "bodyRegion": "triceps",
+    "primaryMuscles": [
+      "Triceps"
+    ],
+    "secondaryMuscles": [
+      "Omuz"
+    ],
+    "equipment": "Dambıl",
+    "equipmentType": "Dambıl",
+    "difficulty": "Orta",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 90,
+    "instructions": [
+      "Dambılı baş üstünde iki elle tut; dirsekleri öne bakacak şekilde tut.",
+      "Dambılı baş arkasına yavaş indirip dirsekten yukarı aç.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İndirirken nefes al, açarken nefes ver.",
+    "commonMistakes": [
+      "Dirsekleri çok yana açmak."
+    ],
+    "safetyWarnings": [
+      "Omuz hareket açıklığını zorlamadan uygula.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "cable-pushdown",
+      "bench-dip",
+      "close-grip-bench-press"
+    ],
+    "animationAsset": "/training-assets/exercises/triceps/overhead-triceps-extension.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/dumbbell.png",
+    "muscleImageAsset": "/training-assets/muscles/triceps.png"
+  },
+  {
+    "id": "bench-dip",
+    "turkishName": "Sehpa Dip",
+    "englishName": "Bench Dip",
+    "bodyRegion": "triceps",
+    "primaryMuscles": [
+      "Triceps"
+    ],
+    "secondaryMuscles": [
+      "Omuz"
+    ],
+    "equipment": "Vücut Ağırlığı",
+    "equipmentType": "Vücut Ağırlığı",
+    "difficulty": "Orta",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 90,
+    "instructions": [
+      "Ellerini sağlam sehpaya koy; ayakların yerde olsun.",
+      "Dirsekleri hafif bükerek alçal ve kolları iterek yüksel.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İnerken nefes al, yükselirken nefes ver.",
+    "commonMistakes": [
+      "Omuzları aşırı geriye zorlamak."
+    ],
+    "safetyWarnings": [
+      "Omuzda rahatsızlık varsa alternatif seç.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "cable-pushdown",
+      "overhead-triceps-extension",
+      "close-grip-bench-press"
+    ],
+    "animationAsset": "/training-assets/exercises/triceps/bench-dip.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
+    "muscleImageAsset": "/training-assets/muscles/triceps.png"
+  },
+  {
+    "id": "close-grip-bench-press",
+    "turkishName": "Dar Tutuş Bench Press",
+    "englishName": "Close Grip Bench Press",
+    "bodyRegion": "triceps",
+    "primaryMuscles": [
+      "Triceps"
+    ],
+    "secondaryMuscles": [
+      "Omuz"
+    ],
+    "equipment": "Bar",
+    "equipmentType": "Bar",
+    "difficulty": "İleri",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 90,
+    "instructions": [
+      "Barı omuz genişliği civarında tut; ayaklarını sabitle.",
+      "Barı alt göğse kontrollü indir ve yukarı it.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İndirirken nefes al, iterken nefes ver.",
+    "commonMistakes": [
+      "Tutuşu gereğinden fazla daraltmak."
+    ],
+    "safetyWarnings": [
+      "Ağır yükte güvenlik desteği kullan.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "cable-pushdown",
+      "overhead-triceps-extension",
+      "bench-dip"
+    ],
+    "animationAsset": "/training-assets/exercises/triceps/close-grip-bench-press.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/barbell.png",
+    "muscleImageAsset": "/training-assets/muscles/triceps.png"
+  },
+  {
+    "id": "squat",
+    "turkishName": "Çömelme",
+    "englishName": "Squat",
+    "bodyRegion": "legs",
+    "primaryMuscles": [
+      "Ön bacak",
+      "Arka bacak"
+    ],
+    "secondaryMuscles": [
+      "Kalça",
+      "Baldır"
+    ],
+    "equipment": "Ekipman gerektirmez",
+    "equipmentType": "Vücut Ağırlığı",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Ayaklarını omuz genişliğinde aç; gövdeni dik tut.",
+      "Kalçayı geriye ve aşağı gönder, ayak tabanından iterek kalk.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İnerken nefes al, kalkarken nefes ver.",
+    "commonMistakes": [
+      "Dizleri içeri düşürmek."
+    ],
+    "safetyWarnings": [
+      "Ağrısız hareket açıklığında çalış.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "leg-press",
+      "leg-extension",
+      "leg-curl"
+    ],
+    "animationAsset": "/training-assets/exercises/legs/squat.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
+    "muscleImageAsset": "/training-assets/muscles/legs.png"
+  },
+  {
+    "id": "leg-press",
+    "turkishName": "Bacak Press",
+    "englishName": "Leg Press",
+    "bodyRegion": "legs",
+    "primaryMuscles": [
+      "Ön bacak",
+      "Arka bacak"
+    ],
+    "secondaryMuscles": [
+      "Kalça",
+      "Baldır"
+    ],
+    "equipment": "Makine",
+    "equipmentType": "Makine",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Sırtını koltuğa yasla; ayakları platforma dengeli yerleştir.",
+      "Platformu kontrollü it ve dizleri rahat açıklığa kadar geri bük.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Bükerken nefes al, iterken nefes ver.",
+    "commonMistakes": [
+      "Dizleri tamamen kilitlemek."
+    ],
+    "safetyWarnings": [
+      "Belini koltuktan kaldırma.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "squat",
+      "leg-extension",
+      "leg-curl"
+    ],
+    "animationAsset": "/training-assets/exercises/legs/leg-press.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/machine.png",
+    "muscleImageAsset": "/training-assets/muscles/legs.png"
+  },
+  {
+    "id": "leg-extension",
+    "turkishName": "Bacak Açma",
+    "englishName": "Leg Extension",
+    "bodyRegion": "legs",
+    "primaryMuscles": [
+      "Ön bacak",
+      "Arka bacak"
+    ],
+    "secondaryMuscles": [
+      "Kalça",
+      "Baldır"
+    ],
+    "equipment": "Makine",
+    "equipmentType": "Makine",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Koltuğu diz eklemi makine eksenine gelecek şekilde ayarla.",
+      "Alt bacakları kontrollü yükseltip yavaş indir.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İndirirken nefes al, yükseltirken nefes ver.",
+    "commonMistakes": [
+      "Ağırlığı hızla savurmak."
+    ],
+    "safetyWarnings": [
+      "Dizinde rahatsızlık varsa dur.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "squat",
+      "leg-press",
+      "leg-curl"
+    ],
+    "animationAsset": "/training-assets/exercises/legs/leg-extension.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/machine.png",
+    "muscleImageAsset": "/training-assets/muscles/legs.png"
+  },
+  {
+    "id": "leg-curl",
+    "turkishName": "Bacak Bükme",
+    "englishName": "Leg Curl",
+    "bodyRegion": "legs",
+    "primaryMuscles": [
+      "Ön bacak",
+      "Arka bacak"
+    ],
+    "secondaryMuscles": [
+      "Kalça",
+      "Baldır"
+    ],
+    "equipment": "Makine",
+    "equipmentType": "Makine",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Makine pedlerini bacak boyuna göre ayarla.",
+      "Topukları kalçaya yaklaştırıp kontrollü geri bırak.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Bırakırken nefes al, bükerken nefes ver.",
+    "commonMistakes": [
+      "Kalçayı koltuktan kaldırmak."
+    ],
+    "safetyWarnings": [
+      "Dizini zorlamayacak ayar kullan.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "squat",
+      "leg-press",
+      "leg-extension"
+    ],
+    "animationAsset": "/training-assets/exercises/legs/leg-curl.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/machine.png",
+    "muscleImageAsset": "/training-assets/muscles/legs.png"
+  },
+  {
+    "id": "calf-raise",
+    "turkishName": "Baldır Yükseltme",
+    "englishName": "Calf Raise",
+    "bodyRegion": "legs",
+    "primaryMuscles": [
+      "Ön bacak",
+      "Arka bacak"
+    ],
+    "secondaryMuscles": [
+      "Kalça",
+      "Baldır"
+    ],
+    "equipment": "Makine",
+    "equipmentType": "Makine",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Ayak önlerini platforma koy; gövdeni sabitle.",
+      "Topukları yükselt, tepede kısa dur ve yavaşça alçal.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Alçalırken nefes al, yükselirken nefes ver.",
+    "commonMistakes": [
+      "Ayak bileğini içe veya dışa yuvarlamak."
+    ],
+    "safetyWarnings": [
+      "Dengeni koruyacak destek kullan.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "squat",
+      "leg-press",
+      "leg-extension"
+    ],
+    "animationAsset": "/training-assets/exercises/legs/calf-raise.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/machine.png",
+    "muscleImageAsset": "/training-assets/muscles/legs.png"
+  },
+  {
+    "id": "walking-lunge",
+    "turkishName": "Yürüyen Hamle",
+    "englishName": "Walking Lunge",
+    "bodyRegion": "legs",
+    "primaryMuscles": [
+      "Ön bacak",
+      "Arka bacak"
+    ],
+    "secondaryMuscles": [
+      "Kalça",
+      "Baldır"
+    ],
+    "equipment": "Ekipman gerektirmez",
+    "equipmentType": "Vücut Ağırlığı",
+    "difficulty": "Orta",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 90,
+    "instructions": [
+      "Dik dur; öne kontrollü bir adım at.",
+      "Her iki dizi bükerek alçal, ön ayaktan itip sonraki adıma geç.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Alçalırken nefes al, yükselirken nefes ver.",
+    "commonMistakes": [
+      "Ön dizi içeri düşürmek."
+    ],
+    "safetyWarnings": [
+      "Denge için önce kısa adımlarla başla.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "squat",
+      "leg-press",
+      "leg-extension"
+    ],
+    "animationAsset": "/training-assets/exercises/legs/walking-lunge.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
+    "muscleImageAsset": "/training-assets/muscles/legs.png"
+  },
+  {
+    "id": "crunch",
+    "turkishName": "Mekik Kıvırma",
+    "englishName": "Crunch",
+    "bodyRegion": "abs",
+    "primaryMuscles": [
+      "Karın"
+    ],
+    "secondaryMuscles": [
+      "Kalça fleksörleri"
+    ],
+    "equipment": "Ekipman gerektirmez",
+    "equipmentType": "Vücut Ağırlığı",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Sırt üstü yat; dizlerini bük ve belini rahat bırak.",
+      "Omuzları yerden hafif kaldırıp kontrollü geri indir.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İnerken nefes al, yükselirken nefes ver.",
+    "commonMistakes": [
+      "Boynu ellerle çekmek."
+    ],
+    "safetyWarnings": [
+      "Boyun bölgesini nötr tut.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "plank",
+      "leg-raise",
+      "cable-crunch"
+    ],
+    "animationAsset": "/training-assets/exercises/abs/crunch.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
+    "muscleImageAsset": "/training-assets/muscles/abs.png"
+  },
+  {
+    "id": "plank",
+    "turkishName": "Ön Plank",
+    "englishName": "Plank",
+    "bodyRegion": "abs",
+    "primaryMuscles": [
+      "Karın"
+    ],
+    "secondaryMuscles": [
+      "Kalça fleksörleri"
+    ],
+    "equipment": "Ekipman gerektirmez",
+    "equipmentType": "Vücut Ağırlığı",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "20–40 sn",
+    "restSeconds": 60,
+    "instructions": [
+      "Dirsekleri omuz altına koy; vücudu düz hizala.",
+      "Karın ve kalçayı sıkıp konumu hedef süre boyunca koru.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Nefesi tutmadan düzenli alıp ver.",
+    "commonMistakes": [
+      "Belin çökmesine izin vermek."
+    ],
+    "safetyWarnings": [
+      "Bel ağrısı olursa hareketi bırak.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "crunch",
+      "leg-raise",
+      "cable-crunch"
+    ],
+    "animationAsset": "/training-assets/exercises/abs/plank.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
+    "muscleImageAsset": "/training-assets/muscles/abs.png"
+  },
+  {
+    "id": "leg-raise",
+    "turkishName": "Bacak Kaldırma",
+    "englishName": "Leg Raise",
+    "bodyRegion": "abs",
+    "primaryMuscles": [
+      "Karın"
+    ],
+    "secondaryMuscles": [
+      "Kalça fleksörleri"
+    ],
+    "equipment": "Ekipman gerektirmez",
+    "equipmentType": "Vücut Ağırlığı",
+    "difficulty": "Orta",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 90,
+    "instructions": [
+      "Sırt üstü yat; ellerini gövdenin yanına yerleştir.",
+      "Bacakları kontrollü kaldır ve belini zorlamadan indir.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Kaldırırken nefes ver, indirirken nefes al.",
+    "commonMistakes": [
+      "Beli aşırı kavislendirmek."
+    ],
+    "safetyWarnings": [
+      "Gerekirse dizleri bükerek uygula.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "crunch",
+      "plank",
+      "cable-crunch"
+    ],
+    "animationAsset": "/training-assets/exercises/abs/leg-raise.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
+    "muscleImageAsset": "/training-assets/muscles/abs.png"
+  },
+  {
+    "id": "cable-crunch",
+    "turkishName": "Kabloyla Karın Kıvırma",
+    "englishName": "Cable Crunch",
+    "bodyRegion": "abs",
+    "primaryMuscles": [
+      "Karın"
+    ],
+    "secondaryMuscles": [
+      "Kalça fleksörleri"
+    ],
+    "equipment": "Kablo",
+    "equipmentType": "Kablo",
+    "difficulty": "Orta",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 90,
+    "instructions": [
+      "Diz çökerek üst kabloyu tut; kalçayı sabit tut.",
+      "Kaburgaları kalçaya yaklaştırarak gövdeyi kıvır, sonra aç.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Açılırken nefes al, kıvırırken nefes ver.",
+    "commonMistakes": [
+      "Kollarla kabloyu çekmek."
+    ],
+    "safetyWarnings": [
+      "Belini ani hareketle bükme.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "crunch",
+      "plank",
+      "leg-raise"
+    ],
+    "animationAsset": "/training-assets/exercises/abs/cable-crunch.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/cable.png",
+    "muscleImageAsset": "/training-assets/muscles/abs.png"
+  },
+  {
+    "id": "hip-thrust",
+    "turkishName": "Kalça İtişi",
+    "englishName": "Hip Thrust",
+    "bodyRegion": "glutes",
+    "primaryMuscles": [
+      "Kalça"
+    ],
+    "secondaryMuscles": [
+      "Arka bacak"
+    ],
+    "equipment": "Bar",
+    "equipmentType": "Bar",
+    "difficulty": "Orta",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 90,
+    "instructions": [
+      "Üst sırtını sehpaya dayayıp ayaklarını yere bas.",
+      "Kalçayı kaldır, üstte kısa dur ve kontrollü indir.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İndirirken nefes al, kaldırırken nefes ver.",
+    "commonMistakes": [
+      "Belini aşırı geriye açmak."
+    ],
+    "safetyWarnings": [
+      "Barı kalçada koruyucu pedle kullan.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "glute-bridge",
+      "cable-kickback",
+      "romanian-deadlift"
+    ],
+    "animationAsset": "/training-assets/exercises/glutes/hip-thrust.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/barbell.png",
+    "muscleImageAsset": "/training-assets/muscles/glutes.png"
+  },
+  {
+    "id": "glute-bridge",
+    "turkishName": "Kalça Köprüsü",
+    "englishName": "Glute Bridge",
+    "bodyRegion": "glutes",
+    "primaryMuscles": [
+      "Kalça"
+    ],
+    "secondaryMuscles": [
+      "Arka bacak"
+    ],
+    "equipment": "Ekipman gerektirmez",
+    "equipmentType": "Vücut Ağırlığı",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Sırt üstü yat; dizleri bük ve ayaklarını yere bas.",
+      "Kalçayı yukarı kaldır, sık ve yavaşça indir.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İndirirken nefes al, kaldırırken nefes ver.",
+    "commonMistakes": [
+      "Belden aşırı yükselmek."
+    ],
+    "safetyWarnings": [
+      "Boynuna yük bindirme.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "hip-thrust",
+      "cable-kickback",
+      "romanian-deadlift"
+    ],
+    "animationAsset": "/training-assets/exercises/glutes/glute-bridge.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
+    "muscleImageAsset": "/training-assets/muscles/glutes.png"
+  },
+  {
+    "id": "cable-kickback",
+    "turkishName": "Kabloyla Kalça İtişi",
+    "englishName": "Cable Kickback",
+    "bodyRegion": "glutes",
+    "primaryMuscles": [
+      "Kalça"
+    ],
+    "secondaryMuscles": [
+      "Arka bacak"
+    ],
+    "equipment": "Kablo",
+    "equipmentType": "Kablo",
+    "difficulty": "Orta",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 90,
+    "instructions": [
+      "Ayak bileği kayışını tak; makineden destek al.",
+      "Bacağı geriye kontrollü uzatıp başlangıca getir.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Geri getirirken nefes al, iterken nefes ver.",
+    "commonMistakes": [
+      "Belini savurmak."
+    ],
+    "safetyWarnings": [
+      "Kayışın sağlam takıldığını kontrol et.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "hip-thrust",
+      "glute-bridge",
+      "romanian-deadlift"
+    ],
+    "animationAsset": "/training-assets/exercises/glutes/cable-kickback.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/cable.png",
+    "muscleImageAsset": "/training-assets/muscles/glutes.png"
+  },
+  {
+    "id": "romanian-deadlift",
+    "turkishName": "Romen Deadlift",
+    "englishName": "Romanian Deadlift",
+    "bodyRegion": "glutes",
+    "primaryMuscles": [
+      "Kalça"
+    ],
+    "secondaryMuscles": [
+      "Arka bacak"
+    ],
+    "equipment": "Dambıl",
+    "equipmentType": "Dambıl",
+    "difficulty": "Orta",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 90,
+    "instructions": [
+      "Dambılları önde tut; dizleri hafif bük ve sırtı nötr tut.",
+      "Kalçadan eğilip ağırlıkları bacak boyunca indir, kalçayı öne getirerek kalk.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İnerken nefes al, kalkarken nefes ver.",
+    "commonMistakes": [
+      "Belini yuvarlamak."
+    ],
+    "safetyWarnings": [
+      "Hareket açıklığını esnekliğine göre sınırla.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "hip-thrust",
+      "glute-bridge",
+      "cable-kickback"
+    ],
+    "animationAsset": "/training-assets/exercises/glutes/romanian-deadlift.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/dumbbell.png",
+    "muscleImageAsset": "/training-assets/muscles/glutes.png"
+  },
+  {
+    "id": "treadmill",
+    "turkishName": "Koşu Bandı",
+    "englishName": "Treadmill",
+    "bodyRegion": "cardio",
+    "primaryMuscles": [
+      "Kalp-damar sistemi"
+    ],
+    "secondaryMuscles": [
+      "Bacak",
+      "Sırt"
+    ],
+    "equipment": "Koşu Bandı",
+    "equipmentType": "Makine",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 1,
+    "recommendedReps": "10–20 dk",
+    "restSeconds": 60,
+    "instructions": [
+      "Banda düşük hızda çık; güvenlik mandalını tak.",
+      "Adım ritmini artır; bitirirken hızı kademeli azalt.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Nefesini düzenli ritimde sürdür.",
+    "commonMistakes": [
+      "Yüksek hızda aniden durmak."
+    ],
+    "safetyWarnings": [
+      "Tutunma ve acil durdurma düğmesini önceden öğren.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "elliptical",
+      "stationary-bike",
+      "rowing-machine"
+    ],
+    "animationAsset": "/training-assets/exercises/cardio/treadmill.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/treadmill.png",
+    "muscleImageAsset": "/training-assets/muscles/cardio.png"
+  },
+  {
+    "id": "elliptical",
+    "turkishName": "Eliptik Bisiklet",
+    "englishName": "Elliptical Trainer",
+    "bodyRegion": "cardio",
+    "primaryMuscles": [
+      "Kalp-damar sistemi"
+    ],
+    "secondaryMuscles": [
+      "Bacak",
+      "Sırt"
+    ],
+    "equipment": "Eliptik",
+    "equipmentType": "Makine",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 1,
+    "recommendedReps": "10–20 dk",
+    "restSeconds": 60,
+    "instructions": [
+      "Ayakları pedlere yerleştir; gövdeyi dik tut.",
+      "Pedleri akıcı ritimde döndür; direnç ve tempoyu kademeli ayarla.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Nefesini düzenli ritimde sürdür.",
+    "commonMistakes": [
+      "Omuzları gereksiz yere sıkmak."
+    ],
+    "safetyWarnings": [
+      "İnerken pedlerin tamamen durmasını bekle.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "treadmill",
+      "stationary-bike",
+      "rowing-machine"
+    ],
+    "animationAsset": "/training-assets/exercises/cardio/elliptical.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/elliptical.png",
+    "muscleImageAsset": "/training-assets/muscles/cardio.png"
+  },
+  {
+    "id": "stationary-bike",
+    "turkishName": "Kondisyon Bisikleti",
+    "englishName": "Stationary Bike",
+    "bodyRegion": "cardio",
+    "primaryMuscles": [
+      "Kalp-damar sistemi"
+    ],
+    "secondaryMuscles": [
+      "Bacak",
+      "Sırt"
+    ],
+    "equipment": "Bisiklet",
+    "equipmentType": "Makine",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 1,
+    "recommendedReps": "10–20 dk",
+    "restSeconds": 60,
+    "instructions": [
+      "Sele yüksekliğini bacak hafif bükülü kalacak şekilde ayarla.",
+      "Pedalları sabit ritimde çevir; direnci yavaşça değiştir.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Nefesini düzenli ritimde sürdür.",
+    "commonMistakes": [
+      "Dizleri içeri düşürmek."
+    ],
+    "safetyWarnings": [
+      "Sele ve gidon ayarını başlamadan kontrol et.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "treadmill",
+      "elliptical",
+      "rowing-machine"
+    ],
+    "animationAsset": "/training-assets/exercises/cardio/stationary-bike.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/bike.png",
+    "muscleImageAsset": "/training-assets/muscles/cardio.png"
+  },
+  {
+    "id": "rowing-machine",
+    "turkishName": "Kürek Makinesi",
+    "englishName": "Rowing Machine",
+    "bodyRegion": "cardio",
+    "primaryMuscles": [
+      "Kalp-damar sistemi"
+    ],
+    "secondaryMuscles": [
+      "Bacak",
+      "Sırt"
+    ],
+    "equipment": "Kürek Makinesi",
+    "equipmentType": "Makine",
+    "difficulty": "Orta",
+    "recommendedSets": 1,
+    "recommendedReps": "10–20 dk",
+    "restSeconds": 60,
+    "instructions": [
+      "Ayakları sabitle; dizleri bük, kolları öne uzat.",
+      "Önce bacaklarla it, sonra gövdeyi hafif açıp kolları çek; ters sırayla dön.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "İtişte nefes ver, dönüşte nefes al.",
+    "commonMistakes": [
+      "Sırtı yuvarlayarak çekmek."
+    ],
+    "safetyWarnings": [
+      "Düşük dirençle tekniği öğren.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "treadmill",
+      "elliptical",
+      "stationary-bike"
+    ],
+    "animationAsset": "/training-assets/exercises/cardio/rowing-machine.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/rower.png",
+    "muscleImageAsset": "/training-assets/muscles/cardio.png"
+  },
+  {
+    "id": "burpee",
+    "turkishName": "Burpee",
+    "englishName": "Burpee",
+    "bodyRegion": "full-body",
+    "primaryMuscles": [
+      "Tüm vücut"
+    ],
+    "secondaryMuscles": [
+      "Bacak",
+      "Omuz",
+      "Karın"
+    ],
+    "equipment": "Ekipman gerektirmez",
+    "equipmentType": "Vücut Ağırlığı",
+    "difficulty": "İleri",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 90,
+    "instructions": [
+      "Dik dur; çevrende yeterli boşluk bırak.",
+      "Çömel, ellerini yere koy, bacakları geriye uzat ve kontrollü kalk.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Efor sırasında nefes ver, geçişlerde nefes al.",
+    "commonMistakes": [
+      "Belini çökertmek."
+    ],
+    "safetyWarnings": [
+      "Yorulduğunda sıçramasız sürüme geç.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "jumping-jack"
+    ],
+    "animationAsset": "/training-assets/exercises/full-body/burpee.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
+    "muscleImageAsset": "/training-assets/muscles/full-body.png"
+  },
+  {
+    "id": "jumping-jack",
+    "turkishName": "Aç-Kapa Sıçrama",
+    "englishName": "Jumping Jack",
+    "bodyRegion": "full-body",
+    "primaryMuscles": [
+      "Tüm vücut"
+    ],
+    "secondaryMuscles": [
+      "Bacak",
+      "Omuz",
+      "Karın"
+    ],
+    "equipment": "Ekipman gerektirmez",
+    "equipmentType": "Vücut Ağırlığı",
+    "difficulty": "Başlangıç",
+    "recommendedSets": 3,
+    "recommendedReps": "8–12",
+    "restSeconds": 60,
+    "instructions": [
+      "Ayaklar bitişik, kollar yanda dik dur.",
+      "Ayakları açarken kolları baş üzerine götür; geri dön.",
+      "Hareketi acele etmeden başlangıç konumuna getir."
+    ],
+    "breathing": "Ritmik ve düzenli nefes alıp ver.",
+    "commonMistakes": [
+      "Dizleri sertçe kilitlemek."
+    ],
+    "safetyWarnings": [
+      "Yumuşak iniş yap; gerekirse sıçramadan adım at.",
+      "Ağrı veya baş dönmesi olursa hareketi bırak."
+    ],
+    "alternativeExerciseIds": [
+      "burpee"
+    ],
+    "animationAsset": "/training-assets/exercises/full-body/jumping-jack.mp4",
+    "equipmentImageAsset": "/training-assets/equipment/bodyweight.png",
+    "muscleImageAsset": "/training-assets/muscles/full-body.png"
+  }
+]

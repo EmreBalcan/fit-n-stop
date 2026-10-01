@@ -1,0 +1,59 @@
+.training-assistant{color:#f4f7f2;min-height:100%;padding:3px 2px 40px;font-family:Arial,Helvetica,sans-serif}
+.training-assistant button{cursor:pointer}
+.training-assistant button:disabled{opacity:.45;cursor:default}
+.training-intro{padding:18px 12px 23px;border-radius:20px;background:linear-gradient(145deg,#263c19,#111711 75%);border:1px solid #446527;box-shadow:0 15px 30px #0004}
+.training-intro>span,.training-head span{font-size:10px;letter-spacing:1.6px;color:#a7ef22;font-weight:900}
+.training-intro h1{font-size:29px;line-height:1.05;letter-spacing:-1px;margin:12px 0}
+.training-intro p,.training-assistant>p{color:#afbaad;font-size:12px;line-height:1.55;margin:0}
+.training-home-grid{display:grid;gap:10px;margin-top:15px}
+.training-home-grid>button{background:#f3f7ef;color:#192018;border:0;border-radius:15px;padding:16px;display:grid;grid-template-columns:38px 1fr 18px;gap:2px 11px;align-items:center;text-align:left;min-height:78px;box-shadow:0 8px 24px #0003}
+.training-home-grid>button>svg:first-child{grid-row:1/3;background:#e4f6ce;color:#699d0e;width:38px;height:38px;padding:9px;border-radius:11px}
+.training-home-grid>button>svg:last-child{grid-column:3;grid-row:1/3;width:18px;color:#91a18b}
+.training-home-grid strong{font-size:13px}.training-home-grid small{font-size:10px;color:#728070}
+.training-head{display:flex;align-items:center;gap:11px;margin:10px 0 19px}
+.training-head>button{width:38px;height:38px;border:1px solid #596e48;border-radius:10px;background:#25341f;color:#b5ef69;display:grid;place-items:center;flex:none}
+.training-head>button svg{width:18px}.training-head h2{font-size:22px;margin:4px 0 0;letter-spacing:-.6px}
+.training-search,.training-field input,.training-edit-fields input,.training-set-inputs input{height:46px;width:100%;background:#f3f7ef;border:1px solid #d2dec9;border-radius:10px;padding:0 12px;color:#172017;outline:none;font-size:13px}
+.training-search:focus,.training-field input:focus,.training-edit-fields input:focus,.training-set-inputs input:focus{border-color:#a7ef22;box-shadow:0 0 0 3px #a7ef2233}
+.training-filters{display:flex;gap:6px;overflow-x:auto;padding:11px 0 16px;scrollbar-width:none}
+.training-filters button{border:1px solid #485c3d;background:#24301f;color:#d6e2ce;border-radius:99px;white-space:nowrap;padding:8px 10px;font-size:10px;font-weight:800}
+.training-filters button.active{background:#a7ef22;border-color:#a7ef22;color:#182117}
+.training-region-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.training-region-grid button{min-width:0;min-height:156px;border:1px solid #3a4a33;background:#192019;color:#edf4e9;border-radius:15px;padding:10px;display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+.training-region-grid button.active{border-color:#a7ef22;background:#263a1c}
+.training-region-grid img{height:91px;width:100%;object-fit:contain;margin:0 auto 6px}
+.training-region-grid strong{font-size:12px}.training-region-grid small{color:#9dab96;font-size:10px;margin-top:3px}
+.training-list{display:grid;gap:10px;margin-top:13px}
+.training-exercise-card,.training-program-card,.training-edit-row,.training-history-row,.training-history-set{background:#f3f7ef;color:#172017;border-radius:14px;padding:11px;border:1px solid #dce7d7}
+.training-exercise-card{display:grid;grid-template-columns:90px 1fr;gap:10px}
+.training-video{width:90px;height:90px;border-radius:11px;overflow:hidden;background:#111511;position:relative}
+.training-video video{height:100%;width:100%;object-fit:cover;display:block}
+.training-video.large{width:100%;height:auto;aspect-ratio:1;border-radius:18px;border:1px solid #536748}
+.training-video-loading{position:absolute;inset:0;display:grid;place-items:center;color:#c0d4b7;background:#1a2118;font-size:11px}
+.training-exercise-info{display:flex;flex-direction:column;gap:4px;min-width:0}
+.training-exercise-info strong{font-size:13px}.training-exercise-info small{font-size:10px;color:#6f7c69}.training-exercise-info span{font-size:10px;color:#42503e;line-height:1.3}
+.training-card-actions{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.training-card-actions button,.training-program-card>div button,.training-alternatives button{border:1px solid #bfd4af;background:#edf8e5;color:#314b23;border-radius:8px;padding:10px 6px;font-size:10px;font-weight:850}
+.training-card-actions button:last-child,.training-program-card>div button:nth-child(2){background:#a7ef22;color:#16200d;border-color:#a7ef22}
+.training-primary,.training-secondary,.training-finish,.training-video-toggle{border:0;border-radius:12px;min-height:48px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;font-weight:900;margin-top:14px}
+.training-primary{background:#a7ef22;color:#121a0c}.training-secondary{background:#293b23;color:#d3efc1;border:1px solid #516b43}.training-finish{background:transparent;color:#e3d5d2;border:1px solid #82615b}.training-primary svg,.training-secondary svg,.training-video-toggle svg{width:17px}
+.training-video-toggle{background:#243321;color:#c9edaf;border:1px solid #48633a;margin:8px 0 15px;min-height:42px}
+.training-detail-visuals{display:grid;grid-template-columns:1fr 1fr;gap:10px}.training-detail-visuals img{width:100%;height:125px;object-fit:contain;background:#20281e;border:1px solid #3e5138;border-radius:12px}
+.training-facts{display:grid;gap:6px;margin:14px 0}.training-facts span{font-size:11px;color:#e1ebd9;background:#293723;padding:9px 11px;border-radius:9px}
+.training-assistant h3{font-size:15px;margin:22px 0 8px}.training-steps{font-size:12px;line-height:1.5;color:#d4dfd1;padding-left:22px}.training-steps li{padding:5px 0}.training-warning{background:#334426;color:#e9f4df;border:1px solid #6e914e;padding:12px;border-radius:11px;margin:17px 0;font-size:11px;line-height:1.5}
+.training-alternatives{display:grid;gap:6px}.training-alternatives button{display:flex;align-items:center;justify-content:space-between;text-align:left}.training-alternatives svg{width:15px}
+.training-program-card{display:grid;gap:7px}.training-program-card>strong{font-size:15px}.training-program-card>small{font-size:11px;color:#67755f}.training-program-card>div{display:grid;grid-template-columns:1fr 1.25fr 40px;gap:7px}.training-program-card>div button:last-child{display:grid;place-items:center;background:#fff0ee;border-color:#f0c6bf;color:#af4e41}.training-program-card>div button svg{width:16px}
+.training-field{display:grid;gap:6px;font-size:11px;font-weight:850;color:#dcebd1}.training-hint{font-size:11px;color:#aebba9;margin:13px 0}
+.training-edit-row{display:grid;gap:9px}.training-edit-title{display:flex;align-items:center;gap:4px}.training-edit-title strong{font-size:12px;flex:1;min-width:0}.training-edit-title button{width:28px;height:28px;border:0;background:#e4eddd;border-radius:7px;color:#3c5335;display:grid;place-items:center;touch-action:none}.training-edit-title svg{width:15px}.training-drag{cursor:grab!important}
+.training-edit-fields,.training-set-inputs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.training-edit-fields label,.training-set-inputs label{display:grid;gap:5px;color:#51614b;font-size:10px;font-weight:800}.training-edit-fields input{height:37px}
+.training-workout-progress{display:flex;justify-content:space-between;margin:8px 0 13px;color:#b5c6ad;font-size:11px}.training-current-set{display:grid;gap:6px;background:#25391f;border:1px solid #639147;border-radius:14px;padding:14px;margin-top:13px}.training-current-set strong{font-size:17px;color:#b6f474}.training-current-set span,.training-current-set small{font-size:11px;color:#d0dcc8}
+.training-set-inputs{margin-top:13px}.training-set-inputs label{color:#d0dfc8}.training-set-inputs input{height:48px}
+.training-rest{text-align:center;background:#263b20;border:1px solid #8bc253;border-radius:14px;padding:15px;margin:13px 0}.training-rest>svg{width:22px;color:#a7ef22}.training-rest>strong{display:block;font-size:32px;margin:4px}.training-rest>span{font-size:11px;color:#bdceaf}.training-rest>div{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:12px}.training-rest button{padding:8px 2px;background:#dff5cc;border:0;border-radius:7px;font-size:9px;font-weight:850;color:#243923}
+.training-summary-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:15px 0}.training-summary-grid>div{background:#f3f7ef;color:#152015;border-radius:12px;padding:15px;display:grid;gap:6px;min-height:76px}.training-summary-grid strong{font-size:17px;line-height:1.2;overflow-wrap:anywhere}.training-summary-grid small{color:#667862;font-size:10px;font-weight:750}
+.training-history-row{width:100%;display:grid;grid-template-columns:1fr 20px;gap:5px;text-align:left}.training-history-row strong{font-size:13px}.training-history-row small{font-size:10px;color:#657263;grid-column:1}.training-history-row svg{width:17px;grid-column:2;grid-row:1/3;align-self:center}.training-history-set{display:flex;justify-content:space-between;gap:8px;font-size:11px}.training-history-set strong{max-width:53%}.training-history-set span{text-align:right;color:#61705f}
+.training-empty,.training-error{background:#283222;color:#c9d7c0;padding:18px;border-radius:12px;font-size:12px;line-height:1.5}.training-error{background:#4a2723;color:#ffe1d9}
+.training-message{position:sticky;top:0;z-index:5;background:#a7ef22;color:#16200f;border-radius:10px;padding:11px 38px 11px 12px;font-size:11px;font-weight:800;margin-bottom:11px}.training-message button{position:absolute;right:8px;top:4px;border:0;background:none;font-size:23px;color:#23351b}
+.bottom-nav.training-nav{grid-template-columns:1fr 1fr 56px 1fr 1fr 1fr;padding:0 3px}
+.bottom-nav.training-nav button{min-width:0;font-size:8px}
+.bottom-nav.training-nav button span{white-space:nowrap}
+.bottom-nav.training-nav .scan-fab{width:52px;height:52px}
