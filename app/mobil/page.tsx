@@ -5,6 +5,7 @@ import { CalendarDays, Check, ChevronRight, Clock3, Dumbbell, Eye, EyeOff, Home,
 import { createClient } from "@supabase/supabase-js";
 import jsQR from "jsqr";
 import TrainingAssistant from "./training-assistant";
+import { dailyNoteFor } from "./daily-notes";
 import "./training.css";
 
 type Member = { id:number; fullName:string; phone:string; email:string|null; startDate:string; endDate:string; tcLast4:string; mustChangePassword:boolean; status:"active"|"frozen"; freezeUsed:boolean; frozenUntil:string|null };
@@ -18,6 +19,7 @@ const shortDate = (date:string) => new Intl.DateTimeFormat("tr-TR",{day:"2-digit
 
 export default function MobileAppPreview(){
   const today=trToday();
+  const [noteDate,setNoteDate]=useState(today);
   const picker=useRef<HTMLInputElement>(null);
   const [loggedIn,setLoggedIn]=useState(false);
   const [accessToken,setAccessToken]=useState("");
@@ -37,6 +39,8 @@ export default function MobileAppPreview(){
   const videoRef=useRef<HTMLVideoElement>(null);
   const scanBusy=useRef(false);
   const [cameraError,setCameraError]=useState("");
+
+  useEffect(()=>{const timer=window.setInterval(()=>setNoteDate(trToday()),60_000);return()=>window.clearInterval(timer)},[]);
 
   const memberFetch=async(url:string,init:RequestInit={})=>{
     const send=(token:string)=>fetch(url,{...init,headers:{...init.headers,Authorization:`Bearer ${token}`}});
@@ -157,7 +161,7 @@ export default function MobileAppPreview(){
       <section className={`today-card ${missed?"missed-card":""}`}><div className="section-line"><div><span>BUGÜN</span><h2>{missed?"Randevuya katılmadın":todayReservation?"Randevun":"Henüz randevun yok"}</h2></div><button className="calendar-pick" onClick={()=>picker.current?.showPicker()} aria-label="Başka gün seç"><CalendarDays/><input ref={picker} type="date" min={today} value={selectedDate} onChange={e=>chooseDate(e.target.value)}/></button></div>{todayReservation?<div className="appointment-row"><div className="date-box"><b>{today.slice(-2)}</b><small>{missed?"GEÇTİ":"BUGÜN"}</small></div><div><strong>{todayReservation.timeSlot}</strong><span>{missed?"Randevu saati geçti · Giriş yapılmadı":`${todaySlot?.count??0} / 25 kişi katılıyor`}</span></div><button onClick={()=>chooseDate(today)}><ChevronRight/></button></div>:<button className="empty-appointment" onClick={()=>chooseDate(today)}><Plus/> Bugün için randevu al</button>}</section>
       <button className="qr-main" onClick={()=>setQr(true)} disabled={entered||!todayReservation||missed}><span><QrCode/></span><div><small>{entered?"GİRİŞ TAMAMLANDI":missed?"RANDEVU GEÇTİ":todayReservation?"SALONA GİRİŞ":"RANDEVU GEREKLİ"}</small><strong>{entered?"Bugünkü girişin kaydedildi":missed?"Bu randevu için giriş yapılamaz":todayReservation?"QR Kodu Okut":"Önce bugün için randevu almalısın"}</strong></div><ChevronRight/></button>
       <div className="rule-note"><Clock3/><p>QR kod yalnızca bugünkü randevu saatinde çalışır. Her üye günde bir kez giriş yapabilir.</p></div></>}
-      {tab==="home"&&<><section className="gym-info"><div className="section-line"><div><span>SALON BİLGİLERİ</span><h2>Bugün seni neler bekliyor?</h2></div><Dumbbell/></div><div className="gym-info-grid"><article><Clock3/><small>Çalışma Saatleri</small><strong>06.00 – 22.00</strong></article><article><CalendarDays/><small>Günlük Hak</small><strong>1 randevu</strong></article></div></section><section className="motivation-card"><span>BUGÜNÜN NOTU</span><strong>Küçük adımlar, büyük değişimler.</strong><p>Antrenmana başlamadan önce ısınmayı unutma.</p></section></>}
+      {tab==="home"&&<><section className="gym-info"><div className="section-line"><div><span>SALON BİLGİLERİ</span><h2>Bugün seni neler bekliyor?</h2></div><Dumbbell/></div><div className="gym-info-grid"><article><Clock3/><small>Çalışma Saatleri</small><strong>06.00 – 22.00</strong></article><article><CalendarDays/><small>Günlük Hak</small><strong>1 randevu</strong></article></div></section><section className="motivation-card"><span>BUGÜNÜN NOTU</span><strong>{dailyNoteFor(noteDate)}</strong></section></>}
       {tab==="appointments"&&<section className="slots-screen"><div className="screen-title date-title"><div><span>RANDEVU</span><h1>Saatini seç</h1><p>{dateLabel(selectedDate)}</p></div><label className="date-control"><CalendarDays/><input type="date" min={today} value={selectedDate} onChange={e=>chooseDate(e.target.value)}/></label></div>{notice&&<div className="booking-notice">{notice}</div>}{error&&<div className="booking-error">{error}</div>}<div className="slot-list">{slots.map(slot=>{const past=isPast(slot);return <article key={slot.id} className={`${slot.mine?"selected":""} ${slot.count>=slot.capacity?"full":""} ${past?"past":""}`}><div><Clock3/><span><strong>{slot.time}</strong><small>{slot.count} / {slot.capacity} kişi{past?" · Saati geçti":""}</small></span></div><div className="capacity"><i style={{width:`${slot.count/slot.capacity*100}%`}}/></div><button disabled={past||(!slot.mine&&slot.count>=slot.capacity)} onClick={()=>reserve(slot)}>{slot.mine?"İptal Et":past?"Geçti":slot.count>=slot.capacity?"Dolu":"Randevu Al"}</button></article>})}</div><p className="one-booking"><ShieldCheck/> Her gün için yalnızca bir randevu oluşturabilirsiniz.</p></section>}
       {tab==="profile"&&<section className="profile-screen"><div className="profile-avatar">{member?.fullName.split(" ").map(x=>x[0]).join("").slice(0,2)}</div><h1>{member?.fullName}</h1><span>{member?.status==="frozen"?"Üyelik Donduruldu":"Aktif Üye"}</span><div className="profile-list"><div><small>TC Kimlik Numarası</small><strong>*******{member?.tcLast4}</strong></div><div><small>Telefon</small><strong>{member?.phone}</strong></div><div><small>Üyelik Başlangıcı</small><strong>{member&&fmt(member.startDate)}</strong></div><div><small>Üyelik Bitişi</small><strong>{member&&fmt(member.endDate)}</strong></div></div><div className="profile-actions"><button onClick={()=>{setChangeRequired(true);setNewPassword("");setNewPassword2("")}}>Şifremi Değiştir</button><button className="freeze-button" disabled={member?.freezeUsed} onClick={freezeMembership}>{member?.freezeUsed?"Dondurma hakkı kullanıldı":"Üyeliğimi 1 ay dondur"}</button></div>{error&&<div className="booking-error">{error}</div>}</section>}
       {tab==="training"&&member&&<TrainingAssistant memberId={member.id} request={memberFetch}/>}
@@ -166,3 +170,4 @@ export default function MobileAppPreview(){
     {qr&&todayReservation&&<div className="qr-sheet"><button className="close-qr" onClick={()=>setQr(false)} aria-label="Kamerayı kapat"><X/></button>{entered?<div className="qr-success"><div><Check/></div><span>GİRİŞ BAŞARILI</span><h2>İyi antrenmanlar!</h2><p>Bugünkü salon girişin kaydedildi.</p><button onClick={()=>setQr(false)}>Ana Sayfaya Dön</button></div>:<div className="scanner"><span>QR KODU OKUT</span><h2>Telefonunu girişteki<br/>QR koda doğrult</h2><div className="camera-box"><video ref={videoRef} autoPlay muted playsInline/><div className="scan-corners"/></div><p>{cameraError||`Randevu: Bugün, ${todayReservation.timeSlot}`}</p>{cameraError&&<button onClick={()=>{setQr(false);window.setTimeout(()=>setQr(true),100)}}>Kamerayı Yeniden Aç</button>}</div>}</div>}
   </div></div>;
 }
+
