@@ -34,6 +34,7 @@ export async function POST(request: Request) {
     const member = unwrap(await db.from("members").select("*").eq("id", memberId).single());
     if (member.status !== "active" || date < member.start_date || date > member.end_date) throw new Error("Seçilen tarih aktif üyelik süresinin dışında.");
     const existing = unwrap(await db.from("reservations").select("*").eq("member_id", memberId).eq("reservation_date", date).maybeSingle());
+    if (existing && (existing.reservation_date < current.date || existing.reservation_date === current.date && slotEnd(existing.time_slot) <= current.minutes)) throw new Error("Süresi geçmiş randevu değiştirilemez.");
     const { count: occupancy, error: countError } = await db.from("reservations").select("id", { count: "exact", head: true }).eq("reservation_date", date).eq("time_slot", timeSlot);
     if (countError) throw countError;
     const capacity = unwrap(await db.from("gym_settings").select("capacity").eq("id", 1).single()).capacity || CAPACITY;
@@ -51,7 +52,11 @@ export async function DELETE(request: Request) {
     const url = new URL(request.url), memberId = Number(url.searchParams.get("memberId")), date = url.searchParams.get("date") || "";
     if (!memberId || !validDate(date)) throw new Error("Randevu bilgileri eksik.");
     await requireMember(request, memberId);
-    unwrap(await adminSupabase().from("reservations").delete().eq("member_id", memberId).eq("reservation_date", date));
+    const db = adminSupabase(), current = now();
+    const existing = unwrap(await db.from("reservations").select("id,time_slot").eq("member_id", memberId).eq("reservation_date", date).maybeSingle());
+    if (!existing) throw new Error("Randevu bulunamadı.");
+    if (date < current.date || date === current.date && slotEnd(existing.time_slot) <= current.minutes) throw new Error("Süresi geçmiş randevu iptal edilemez.");
+    unwrap(await db.from("reservations").delete().eq("id", existing.id));
     await broadcastGymChange("reservations", date);
     return Response.json({ success: true });
   } catch (error) { return apiError(error); }

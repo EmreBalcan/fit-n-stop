@@ -169,3 +169,32 @@ td { padding:15px 18px; border-bottom:1px solid #eff2f0; color:#474e4a; font-siz
 .camera-box video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#0c0f0c}
 .camera-box .scan-corners{z-index:1;pointer-events:none}
 .camera-box:after{z-index:2;pointer-events:none}
+
+/* A past booking has the same muted treatment as any other elapsed slot. */
+.slots-screen .slot-list article.past{background:#e6ebe5;border-color:#d6ded4;color:#69736a;box-shadow:none;opacity:.67}
+.slots-screen .slot-list article.past.selected{background:#e3e8e0;border-color:#cbd6c6}
+.slots-screen .slot-list article.past button{background:#d8dfd5;color:#657062;border-color:#cbd3c7;cursor:not-allowed}
+.slots-screen .slot-list article.past .capacity{opacity:.4}
+
+/* Light mode extends into the welcome hero and training surfaces. */
+.theme-light .member-hero{background:linear-gradient(135deg,#fff 0%,#f0f8e9 65%,#dcebcf 100%);color:#1d2a1b;border:1px solid #cbdcc1;box-shadow:0 10px 25px #263c1a19}
+.theme-light .member-hero>span,.theme-light .member-hero>p svg{color:#608e14}
+.theme-light .member-hero>p{background:#e6f3d9;border-color:#cddfbd;color:#3e5734}
+.theme-light .membership-dates{background:#ffffffc9;border-color:#ccdbc3}
+.theme-light .membership-dates small{color:#647560}
+.theme-light .membership-dates i{background:#c8d8bd}
+.theme-light .hero-silhouette{opacity:.16}
+.theme-light .training-intro{background:linear-gradient(135deg,#fff,#e8f4df);color:#1b2818;border-color:#c9ddbc;box-shadow:0 10px 25px #263c1a19}
+.theme-light .training-intro>span,.theme-light .training-head span{color:#5e8c16}
+.theme-light .training-intro p,.theme-light .training-assistant>p,.theme-light .training-steps{color:#52634d}
+.theme-light .training-warning{background:#fff8e9;color:#66572e;border-color:#ead7a5}
+.theme-light .training-empty{background:#edf3e9;color:#51614b}
+.theme-light .training-head>button,.theme-light .training-filters button,.theme-light .training-secondary,.theme-light .training-video-toggle,.theme-light .training-facts span,.theme-light .training-current-set,.theme-light .training-rest,.theme-light .training-map-switch{background:#eaf3e3;color:#314b2b;border-color:#c4d9b8}
+.theme-light .training-filters button.active,.theme-light .training-map-switch button.active{background:#a7ef22;color:#1a2715;border-color:#a7ef22}
+.theme-light .training-region-grid button.active{background:#e4f4d9;border-color:#9cca83}
+.theme-light .training-finish{color:#8b3e36;border-color:#d6aaa5}
+.theme-light .training-current-set strong,.theme-light .training-rest>svg{color:#547d24}
+.theme-light .training-current-set span,.theme-light .training-current-set small,.theme-light .training-rest>span,.theme-light .training-set-inputs label{color:#586b52}
+.theme-light .training-map-switch button{color:#5b6d55}
+.theme-light .training-edit-title button,.theme-light .training-card-actions button,.theme-light .training-program-card>div button,.theme-light .training-alternatives button{background:#ebf4e6;color:#35532b;border-color:#c9dcbc}
+.theme-light .training-card-actions button:last-child,.theme-light .training-program-card>div button:nth-child(2){background:#a7ef22;color:#172114;border-color:#a7ef22}

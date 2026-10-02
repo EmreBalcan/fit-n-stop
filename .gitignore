@@ -44,3 +44,6 @@ next-env.d.ts
 /.codex/
 /outputs/
 /work/
+
+# APK delivered in the Site release archive; repository objects have a size limit.
+/public/fit-n-stop-v1.5.apk
