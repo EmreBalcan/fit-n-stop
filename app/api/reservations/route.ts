@@ -65,7 +65,7 @@ export async function DELETE(request: Request) {
     if (!existing) throw new Error("Randevu bulunamadı.");
     if (date < current.date || date === current.date && slotEnd(existing.time_slot) <= current.minutes) throw new Error("Süresi geçmiş randevu iptal edilemez.");
     if (existing.second_chance_used && existing.missed_time_slot && existing.time_slot !== existing.missed_time_slot) {
-      unwrap(await db.from("reservations").update({ time_slot: existing.missed_time_slot }).eq("id", existing.id).eq("time_slot", existing.time_slot));
+      unwrap(await db.from("reservations").update({ time_slot: existing.missed_time_slot, second_chance_used: false }).eq("id", existing.id).eq("time_slot", existing.time_slot));
     } else {
       unwrap(await db.from("reservations").delete().eq("id", existing.id));
     }
