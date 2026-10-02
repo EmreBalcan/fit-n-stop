@@ -17,6 +17,7 @@ type Attendance = { id:number; memberId:number; date:string; checkedInAt:string;
 type GymInfo = { about:string; address:string; trainerName:string; phone:string };
 type TodaySession = { id:string; name:string; finishedAt:string; durationSeconds:number; setsCount:number; pending:boolean };
 const TIMES = ["06.00 – 08.00","08.00 – 10.00","10.00 – 12.00","12.00 – 14.00","14.00 – 16.00","16.00 – 18.00","18.00 – 20.00","20.00 – 22.00"];
+const APK_URL = "https://fit-n-stop-admin.emrebalcan494.chatgpt.site/fit-n-stop-v1.5.apk";
 const trToday = () => new Intl.DateTimeFormat("en-CA",{timeZone:"Europe/Istanbul",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
 const trDateFor = (value:string) => new Intl.DateTimeFormat("en-CA",{timeZone:"Europe/Istanbul",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date(value));
 const trTimeFor = (value:string) => new Intl.DateTimeFormat("tr-TR",{timeZone:"Europe/Istanbul",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).format(new Date(value));
@@ -55,10 +56,12 @@ export default function MobileAppPreview(){
   const videoRef=useRef<HTMLVideoElement>(null);
   const scanBusy=useRef(false);
   const [cameraError,setCameraError]=useState("");
+  const [scannerUpdateRequired,setScannerUpdateRequired]=useState(false);
   const [nativeScanning,setNativeScanning]=useState(false);
 
   useEffect(()=>{const timer=window.setInterval(()=>setNoteDate(trToday()),60_000);return()=>window.clearInterval(timer)},[]);
   useEffect(()=>{try{setTheme(localStorage.getItem("fitnstop-theme")==="dark"?"dark":"light")}catch{/* Use the light default. */}},[]);
+  useEffect(()=>{setScannerUpdateRequired(Capacitor.getPlatform()==="android"&&!Capacitor.isPluginAvailable("CapacitorBarcodeScanner"))},[]);
   function chooseTheme(value:"light"|"dark"){setTheme(value);try{localStorage.setItem("fitnstop-theme",value)}catch{/* Keep the current choice for this session. */}}
 
   const memberFetch=async(url:string,init:RequestInit={})=>{
@@ -176,13 +179,14 @@ export default function MobileAppPreview(){
     if(!todayReservation||!attendanceLoaded||entered||missed||nativeScanning)return;
     setCameraError("");
     if(!Capacitor.isNativePlatform()){setQr(true);return;}
+    if(!Capacitor.isPluginAvailable("CapacitorBarcodeScanner")){setScannerUpdateRequired(true);return;}
     setNativeScanning(true);
     try{
       const result=await CapacitorBarcodeScanner.scanBarcode({hint:CapacitorBarcodeScannerTypeHint.QR_CODE,cameraDirection:CapacitorBarcodeScannerCameraDirection.BACK,scanInstructions:"Salon giriş QR kodunu okutun",cancelButtonAccessibilityLabel:"Taramayı kapat",android:{scanningLibrary:CapacitorBarcodeScannerAndroidScanningLibrary.ZXING}});
       if(!result.ScanResult)return;
       if(!result.ScanResult.startsWith("FITNSTOP-GIRIS:")){setCameraError("Bu kod salon giriş kodu değil. Yönetici panelindeki Giriş QR kodunu okutun.");return;}
       await checkIn(result.ScanResult);
-    }catch(error){setCameraError(error instanceof Error?`Kamera açılamadı: ${error.message}`:"Kamera açılamadı. Uygulama izinlerini kontrol edin.")}
+    }catch(error){const message=error instanceof Error?error.message:"";if(/not implemented on android/i.test(message)){setScannerUpdateRequired(true)}else{setCameraError(message?`Kamera açılamadı: ${message}`:"Kamera açılamadı. Uygulama izinlerini kontrol edin.")}}
     finally{setNativeScanning(false)}
   }
   async function freezeMembership(){
@@ -217,7 +221,7 @@ export default function MobileAppPreview(){
     <main className="mobile-content">
       {tab==="home"&&<><section className="member-hero"><div className="hero-silhouette"/><span>HOŞ GELDİN</span><h1>{member?.fullName}</h1><p><ShieldCheck/> {member?.status==="frozen"?"Üyelik Donduruldu":"Aktif Üye"}</p><div className="membership-dates"><div><small>Başlangıç</small><strong>{member&&fmt(member.startDate)}</strong></div><i/><div><small>Bitiş</small><strong>{member&&fmt(member.endDate)}</strong></div></div></section>
       <section className={`today-card ${missed?"missed-card":""}`}><div className="section-line"><div><span>BUGÜN</span><h2>{missed?"Randevuya katılmadın":todayReservation?"Randevun":"Henüz randevun yok"}</h2></div><button className="calendar-pick" onClick={()=>picker.current?.showPicker()} aria-label="Başka gün seç"><CalendarDays/><input ref={picker} type="date" min={today} value={selectedDate} onChange={e=>chooseDate(e.target.value)}/></button></div>{todayReservation?<div className="appointment-row"><div className="date-box"><b>{today.slice(-2)}</b><small>{missed?"GEÇTİ":"BUGÜN"}</small></div><div><strong>{todayReservation.timeSlot}</strong><span>{missed?"Randevu saati geçti · Giriş yapılmadı":`${todaySlot?.count??0} / 25 kişi katılıyor`}</span></div><button onClick={()=>chooseDate(today)}><ChevronRight/></button></div>:<button className="empty-appointment" onClick={()=>chooseDate(today)}><Plus/> Bugün için randevu al</button>}</section>
-      <button className="qr-main" onClick={()=>{if(entered){setTab("todayVisit");void loadTodaySessions()}else void openScanner()}} disabled={!attendanceLoaded||nativeScanning||(!entered&&(!todayReservation||missed))}><span><QrCode/></span><div><small>{entered?"GİRİŞ TAMAMLANDI":missed?"RANDEVU GEÇTİ":todayReservation?"SALONA GİRİŞ":"RANDEVU GEREKLİ"}</small><strong>{entered?"Bugünkü girişin kaydedildi":missed?"Bu randevu için giriş yapılamaz":nativeScanning?"Kamera açılıyor...":todayReservation?"QR Kodu Okut":"Önce bugün için randevu almalısın"}</strong></div><ChevronRight/></button>{cameraError&&!qr&&<div className="booking-error">{cameraError}</div>}
+      <button className="qr-main" onClick={()=>{if(entered){setTab("todayVisit");void loadTodaySessions()}else void openScanner()}} disabled={!attendanceLoaded||nativeScanning||(!entered&&(!todayReservation||missed))}><span><QrCode/></span><div><small>{entered?"GİRİŞ TAMAMLANDI":missed?"RANDEVU GEÇTİ":todayReservation?"SALONA GİRİŞ":"RANDEVU GEREKLİ"}</small><strong>{entered?"Bugünkü girişin kaydedildi":missed?"Bu randevu için giriş yapılamaz":nativeScanning?"Kamera açılıyor...":todayReservation?"QR Kodu Okut":"Önce bugün için randevu almalısın"}</strong></div><ChevronRight/></button>{scannerUpdateRequired&&<div className="app-update-card"><strong>QR kamerası için uygulamayı güncelle</strong><p>Bu kurulumda QR tarayıcı bulunmuyor. Telefon tarayıcısında 1.5 APK’yı indirip mevcut uygulamanın üzerine kur.</p><a href={APK_URL} target="_blank" rel="noreferrer">1.5 APK’yı indir</a></div>}{cameraError&&!qr&&<div className="booking-error">{cameraError}</div>}
       <div className="rule-note"><Clock3/><p>Günde bir kez giriş yapabilirsin. İlk randevuna gidemezsen seans geçtikten sonra bir kez daha randevu alabilirsin.</p></div></>}
       {tab==="home"&&<><section className="gym-info"><div className="section-line"><div><span>SALON BİLGİLERİ</span><h2>Bugün seni neler bekliyor?</h2></div><Dumbbell/></div><div className="gym-info-grid"><article><Clock3/><small>Çalışma Saatleri</small><strong>06.00 – 22.00</strong></article><article><CalendarDays/><small>Günlük Hak</small><strong>1 giriş · en çok 2 randevu</strong></article></div></section><section className="motivation-card"><span>BUGÜNÜN NOTU</span><strong>{dailyNoteFor(noteDate)}</strong></section></>}
       {tab==="todayVisit"&&<section className="visit-screen"><button className="mobile-back" onClick={()=>setTab("home")}>← Ana sayfaya dön</button><div className="screen-title"><span>BUGÜNKÜ GİRİŞ</span><h1>Salon ziyaretin</h1><p>{dateLabel(today)}</p></div><div className="visit-entry-card"><Check/><div><small>GİRİŞ TAMAMLANDI</small><strong>{attendance?.checkedInAt?.slice(0,5)||"Saat bilgisi yükleniyor"}</strong><span>{attendance?.reservationTimeSlot?`Randevu: ${attendance.reservationTimeSlot}`:"Bugünkü salon girişin kaydedildi."}</span></div></div><div className="visit-history-title"><h2>Bugünkü antrenmanların</h2><button onClick={()=>void loadTodaySessions()} aria-label="Antrenman geçmişini yenile"><RotateCcw size={17}/></button></div>{todaySessionsLoading?<p className="visit-empty">Antrenmanlar yükleniyor...</p>:todaySessions.length?todaySessions.map(session=><article className="visit-session" key={session.id}><Dumbbell/><div><strong>{session.name}</strong><span>{trTimeFor(session.finishedAt)} · {Math.floor(session.durationSeconds/60)} dk · {session.setsCount} set{session.pending?" · Eşitlenmeyi bekliyor":""}</span></div></article>):<p className="visit-empty">Bugün kaydedilmiş antrenmanın yok.</p>}</section>}
