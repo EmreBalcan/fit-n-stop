@@ -198,3 +198,50 @@ td { padding:15px 18px; border-bottom:1px solid #eff2f0; color:#474e4a; font-siz
 .theme-light .training-map-switch button{color:#5b6d55}
 .theme-light .training-edit-title button,.theme-light .training-card-actions button,.theme-light .training-program-card>div button,.theme-light .training-alternatives button{background:#ebf4e6;color:#35532b;border-color:#c9dcbc}
 .theme-light .training-card-actions button:last-child,.theme-light .training-program-card>div button:nth-child(2){background:#a7ef22;color:#172114;border-color:#a7ef22}
+
+/* Keep every app surface light while retaining the gym photograph. */
+.app-scene:has(.theme-light){background:#edf4e9}
+.app-scene:has(.theme-light):before{background:linear-gradient(#f8fbf4a8,#e8f1e2c9),url('/gym-atmosphere-v1.png') center/cover no-repeat}
+.app-scene:has(.theme-light):after{background:repeating-linear-gradient(60deg,transparent 0 35px,#6586500a 36px 37px)}
+.login-scene.theme-light{background:linear-gradient(#f8fbf5d9,#edf5e9e0),url('/gym-atmosphere-v1.png') center/cover no-repeat}
+.login-scene.theme-light .mobile-brand,.login-scene.theme-light .login-copy h1{color:#233220}
+.login-scene.theme-light .mobile-brand b{background:#e1edd9;color:#273724}
+.login-scene.theme-light .mobile-brand i,.login-scene.theme-light .login-copy>span{color:#567d42}
+.login-scene.theme-light .login-copy p,.login-scene.theme-light .login-card label,.login-scene.theme-light .login-card form>small{color:#50634b}
+.login-scene.theme-light .login-card input{background:#ffffffeb;border-color:#bdceb5;color:#21311f}
+.login-scene.theme-light .login-button{background:#d6e8c8;color:#25421f}
+.login-scene.theme-light .athlete-shape{opacity:.08}
+.theme-light .mini-brand b{background:#dcead4;color:#21301f}
+.theme-light .mini-brand i,.theme-light .screen-title>span,.theme-light .section-line span{color:#547e42}
+.theme-light .mobile-header>button,.theme-light .calendar-pick,.theme-light .date-control{background:#e6f0df;color:#45673d;border:1px solid #cbdcc2;box-shadow:none}
+.theme-light .member-hero:before{border-color:#7cac62;opacity:.08}
+.theme-light .hero-silhouette{background:linear-gradient(145deg,#d7eacb,#bcd4ad 55%,#eff6e9)}
+.theme-light .qr-main{background:#f7fbf4;color:#243421;border:1px solid #cbdcc3;box-shadow:0 9px 23px #29451b13}
+.theme-light .qr-main>span,.theme-light .bottom-nav .scan-fab{background:#d9ebcc;color:#345b30;border-color:#c0d8b1;box-shadow:0 7px 18px #344c231a}
+.theme-light .qr-main small,.theme-light .rule-note svg{color:#588447}
+.theme-light .qr-main:disabled{background:#eaf1e6;color:#667464;border-color:#d5e0cf}
+.theme-light .qr-main:disabled>span{background:#e0eadb;color:#68805e}
+.theme-light .motivation-card{background:linear-gradient(135deg,#fff,#e9f3e3);color:#243521;border:1px solid #cbdcc4;box-shadow:0 8px 22px #28431c12}
+.theme-light .motivation-card span{color:#557e42}
+.theme-light .motivation-card p{color:#60735b}
+.theme-light .profile-avatar{background:#dcebd2;color:#395b30;border:1px solid #bbd2ad}
+.theme-light .profile-actions button,.theme-light .profile-actions button:first-child,.theme-light .profile-actions .freeze-button{background:#edf5e7;color:#315229;border-color:#c5d9b9}
+.theme-light .profile-actions .freeze-button:disabled{background:#eef1ec;color:#7d8979;border-color:#d9e0d5}
+.theme-light .theme-choice button.active,.theme-light .slot-list article.selected button,.theme-light .training-primary,.theme-light .training-filters button.active,.theme-light .training-detail-tabs button.active,.theme-light .training-map-switch button.active,.theme-light .training-level-card button{background:#d7eac9;color:#27451f;border-color:#b9d5a9}
+.theme-light .slot-list article.selected{background:#f3f9ef;border-color:#adcd9a}
+.theme-light .slot-list article.selected button{background:#e4f1da;color:#315a29}
+.theme-light .salon-detail a,.theme-light .mobile-back{color:#537d40}
+.theme-light .qr-sheet{background:#f6faf3;color:#253722}
+.theme-light .scanner h2,.theme-light .qr-success h2{color:#253722}
+.theme-light .scanner p,.theme-light .qr-success p{color:#61745b}
+.theme-light .close-qr{background:#e6f0df;color:#3e5e36;border-color:#c8d9bf}
+.theme-light .training-preview,.theme-light .training-video,.theme-light .training-video-loading,.theme-light .training-detail-visuals img,.theme-light .training-muscle-views img,.theme-light .training-equipment-panel img,.theme-light .training-map-stage,.theme-light .training-level-card>img{background:#e8f0e3;border-color:#c5d8bb}
+.theme-light .training-preview.large span{background:linear-gradient(transparent,#f0f7ebe8);color:#365832}
+.theme-light .training-home-grid>button>svg:first-child,.theme-light .training-edit-title button{background:#e1f0d7;color:#547f42}
+.theme-light .training-detail-tabs button,.theme-light .training-equipment-panel small,.theme-light .training-summary-grid small,.theme-light .training-level-card small{color:#5f7359}
+.theme-light .training-map-heading span,.theme-light .training-en-name{color:#557e42}
+.theme-light .training-map-hotspot{background:#e1efd7;color:#31532a;border-color:#b3d29f;box-shadow:0 0 0 4px #d7eac966,0 2px 9px #46643929}
+.theme-light .training-error{background:#fff0eb;color:#93473b}
+.theme-light .training-message{background:#dceccc;color:#2b4a24}
+.theme-light .training-rest button{background:#dceccc;color:#2d4c26}
+.missed-previous{padding:10px 12px;margin:0 0 12px;background:#e8ede6;border:1px solid #d7dfd3;border-radius:10px;color:#6b7767;font-size:11px;font-weight:750}

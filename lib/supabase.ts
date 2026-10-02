@@ -28,7 +28,7 @@ export function rowToMember(row: Record<string, any>) {
 }
 
 export function rowToReservation(row: Record<string, any>) {
-  return { id: row.id, memberId: row.member_id, date: row.reservation_date, timeSlot: row.time_slot, createdAt: row.created_at };
+  return { id: row.id, memberId: row.member_id, date: row.reservation_date, timeSlot: row.time_slot, missedTimeSlot: row.missed_time_slot || null, secondChanceUsed: !!row.second_chance_used, createdAt: row.created_at };
 }
 
 export function rowToAttendance(row: Record<string, any>) {
