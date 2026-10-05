@@ -55,3 +55,13 @@ export async function POST(request: Request) {
     return Response.json({ session: unwrap(result), alreadySaved: false });
   } catch (error) { return apiError(error); }
 }
+
+export async function DELETE(request: Request) {
+  try {
+    const member = await requireMember(request);
+    const id = new URL(request.url).searchParams.get("id");
+    if (!uuid(id)) throw new Error("Antrenman kaydı geçersiz.");
+    unwrap(await adminSupabase().from("training_sessions").delete().eq("client_session_id", id).eq("member_id", member.id));
+    return Response.json({ ok: true });
+  } catch (error) { return apiError(error); }
+}

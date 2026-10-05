@@ -22,7 +22,7 @@ export function rowToMember(row: Record<string, any>) {
     startDate: row.start_date, endDate: row.end_date, status: row.status === "expired" ? "cancelled" : row.status,
     notes: row.notes || "", createdAt: row.created_at, updatedAt: row.updated_at,
     tcLast4: row.tc_no?.slice(-4), mustChangePassword: row.must_change_password,
-    freezeUsed: row.freeze_used, frozenUntil: row.frozen_until,
+    freezeUsed: row.freeze_used, freezeStartDate: row.freeze_start_date || null, frozenUntil: row.frozen_until,
     hasPassword: !!row.auth_user_id,
   };
 }
@@ -33,7 +33,9 @@ export function rowToReservation(row: Record<string, any>) {
 
 export function rowToAttendance(row: Record<string, any>) {
   const checkedInAt = row.entry_time ? new Intl.DateTimeFormat("tr-TR", { timeZone: "Europe/Istanbul", hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23" }).format(new Date(row.entry_time)) : "";
-  return { id: row.id, memberId: row.member_id, date: row.entry_date, checkedInAt, reservationTimeSlot: row.reserved_time_slot };
+  const checkedOutAt = row.exit_time ? new Intl.DateTimeFormat("tr-TR", { timeZone: "Europe/Istanbul", hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23" }).format(new Date(row.exit_time)) : null;
+  const durationMinutes = row.entry_time && row.exit_time ? Math.max(0, Math.round((Date.parse(row.exit_time) - Date.parse(row.entry_time)) / 60000)) : null;
+  return { id: row.id, memberId: row.member_id, date: row.entry_date, checkedInAt, checkedOutAt, exitMethod: row.exit_method || null, durationMinutes, reservationTimeSlot: row.reserved_time_slot };
 }
 
 export function unwrap<T>(result: { data: T; error: { message: string } | null }): NonNullable<T> {

@@ -244,6 +244,25 @@ td { padding:15px 18px; border-bottom:1px solid #eff2f0; color:#474e4a; font-siz
 .theme-light .training-error{background:#fff0eb;color:#93473b}
 .theme-light .training-message{background:#dceccc;color:#2b4a24}
 .theme-light .training-rest button{background:#dceccc;color:#2d4c26}
+
+/* October 2026 mobile experience refresh */
+.app-scene:before{background-image:linear-gradient(rgba(4,6,4,.45),rgba(3,4,3,.625)),url('/gym-cover-v2.png')}
+.phone-app{background-image:linear-gradient(180deg,rgba(9,12,9,.61),rgba(7,9,7,.77)),url('/gym-cover-v2.png')}
+.phone-app.theme-light{background-image:linear-gradient(180deg,rgba(249,252,246,.82),rgba(239,246,233,.89)),url('/gym-cover-v2.png')}
+.app-scene:has(.theme-light):before{background-image:linear-gradient(#f8fbf4a8,#e8f1e2c9),url('/gym-cover-v2.png')}
+.login-scene{background:#080b08}.login-cover{position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,5,3,.24),rgba(3,5,3,.79)),url('/gym-cover-v2.png') center/cover no-repeat;filter:saturate(.95);transform:scale(1.01)}
+.login-scene.theme-light{background:#edf5e9}.login-scene.theme-light .login-cover{background:linear-gradient(#f8fbf5b8,#edf5e9d7),url('/gym-cover-v2.png') center/cover no-repeat}
+.login-button{background:#9fee18;color:#10150d;box-shadow:0 10px 28px #78b70870;border:1px solid #c7ff60;font-size:14px;letter-spacing:.15px}
+.login-scene.theme-light .login-button{background:#47722f;color:#fff;box-shadow:0 10px 24px #29451f4a;border:1px solid #365b23}
+.member-hero{background-image:linear-gradient(135deg,#0b0f0bd9,#172413c7),url('/gym-cover-v2.png');background-size:cover;background-position:center 42%}
+.theme-light .member-hero{background-image:linear-gradient(135deg,#ffffffdf,#eaf4e1d9),url('/gym-cover-v2.png');background-size:cover;background-position:center 42%}
+.checkout-button{width:100%;min-height:48px;margin:10px 0;border:0;border-radius:12px;background:#a7ef22;color:#172015;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:900}.checkout-button svg{width:19px}
+.visit-stats{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:11px 0 18px}.visit-stats>div{display:grid;gap:5px;background:#172017;color:#f6f8f4;border:1px solid #354c31;border-radius:13px;padding:14px}.visit-stats small{font-size:9px;color:#9bad94;font-weight:850;letter-spacing:.6px}.visit-stats strong{font-size:17px}
+.freeze-picker{margin:12px 0;padding:15px;text-align:left;background:#182016;color:#edf4e9;border:1px solid #405b38;border-radius:14px}.freeze-picker>strong{font-size:14px}.freeze-picker>p{font-size:11px;line-height:1.45;color:#b8c7b2}.freeze-picker>input{width:100%;height:44px;border:1px solid #526b49;border-radius:9px;background:#f7faf5;color:#172015;padding:0 10px}.freeze-picker>div{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.freeze-picker button{height:42px;border-radius:9px;border:1px solid #566d4e;background:#293a24;color:#e7f2e2;font-weight:850}.freeze-picker button:last-child{background:#a7ef22;color:#172015;border-color:#a7ef22}
+.theme-light .visit-stats>div,.theme-light .freeze-picker{background:#fff;color:#243621;border-color:#cbdcc2}.theme-light .visit-stats small,.theme-light .freeze-picker>p{color:#60715b}.theme-light .checkout-button{background:#47722f;color:#fff}.theme-light .freeze-picker button{background:#eef5e9;color:#385632;border-color:#c7d8bf}.theme-light .freeze-picker button:last-child{background:#47722f;color:#fff;border-color:#47722f}
+.slot-list article button:disabled{cursor:wait}.slot-list article.past button:disabled{cursor:default}
+.qr-switch{grid-template-columns:repeat(3,1fr)}
+.theme-light .training-history-delete{background:#fff0ed;color:#a3463b;border-color:#e5bbb5}
 .missed-previous{padding:10px 12px;margin:0 0 12px;background:#e8ede6;border:1px solid #d7dfd3;border-radius:10px;color:#6b7767;font-size:11px;font-weight:750}
 .app-update-card{margin:10px 0 0;padding:14px;border-radius:12px;background:#f4f8ed;border:1px solid #bdd5a9;color:#273e23;display:grid;gap:8px;box-shadow:0 6px 18px #1d371217}
 .app-update-card strong{font-size:13px}.app-update-card p{margin:0;font-size:11px;line-height:1.5;color:#506649}.app-update-card a{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 12px;border-radius:8px;background:#dceeca;color:#2b5025;font-size:11px;font-weight:850;text-decoration:none}
