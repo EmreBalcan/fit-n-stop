@@ -14,11 +14,11 @@ export async function GET(request: Request) {
   try {
     requireAdmin(request);
     const db = adminSupabase();
-    const [members, reservations, attendances, users] = await Promise.all([db.from("members").select("*").order("created_at", { ascending: false }), db.from("reservations").select("*").order("reservation_date"), db.from("attendances").select("*").order("entry_date", { ascending: false }), db.auth.admin.listUsers({ page: 1, perPage: 1000 })]);
+    const [members, reservations, attendances, qrEvents, users] = await Promise.all([db.from("members").select("*").order("created_at", { ascending: false }), db.from("reservations").select("*").order("reservation_date"), db.from("attendances").select("*").order("entry_date", { ascending: false }), db.from("qr_scan_events").select("*, members(full_name)").order("event_time", { ascending: false }).limit(200), db.auth.admin.listUsers({ page: 1, perPage: 1000 })]);
     const rows = unwrap(members), bookings = unwrap(reservations).map(rowToReservation), visits = unwrap(attendances).map(rowToAttendance);
     if (users.error) throw users.error;
     const notes = new Map(users.data.users.map((user) => [user.id, user.user_metadata?.notes || ""]));
-    return Response.json({ members: rows.map((row) => ({ ...rowToMember(row), notes: notes.get(row.auth_user_id) || "", reservations: bookings.filter((r) => r.memberId === row.id), attendances: visits.filter((v) => v.memberId === row.id), visitCount: visits.filter((v) => v.memberId === row.id).length })) });
+    return Response.json({ members: rows.map((row) => ({ ...rowToMember(row), notes: notes.get(row.auth_user_id) || "", reservations: bookings.filter((r) => r.memberId === row.id), attendances: visits.filter((v) => v.memberId === row.id), visitCount: visits.filter((v) => v.memberId === row.id).length })), qrEvents: unwrap(qrEvents).map((event) => ({ id: event.id, memberId: event.member_id, memberName: event.members?.full_name || "Bilinmeyen üye", date: event.event_date, time: new Intl.DateTimeFormat("tr-TR", { timeZone: "Europe/Istanbul", hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23" }).format(new Date(event.event_time)), message: event.message })) });
   } catch (error) { return apiError(error, 500); }
 }
 

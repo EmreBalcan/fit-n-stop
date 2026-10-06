@@ -31,7 +31,11 @@ export async function POST(request: Request) {
       await broadcastGymChange("attendances", current.date);
       return Response.json({ attendance: rowToAttendance(row), alreadyExited: false });
     }
-    if (!settings.entrance_qr_token || qrValue !== `FITNSTOP-GIRIS:${settings.entrance_qr_token}`) throw new Error("QR kodu geçersiz. Salondaki güncel giriş veya çıkış kodunu okutun.");
+    if (!settings.entrance_qr_token || qrValue !== `FITNSTOP-GIRIS:${settings.entrance_qr_token}`) {
+      await db.from("qr_scan_events").insert({ member_id: memberId, event_date: current.date, event_type: "invalid", message: "Geçersiz QR kodu okutuldu" });
+      await broadcastGymChange("qr_scan_events", current.date);
+      throw new Error("QR kodu geçersiz. Salondaki güncel giriş veya çıkış kodunu okutun.");
+    }
     const reservation = unwrap(await db.from("reservations").select("*").eq("member_id", memberId).eq("reservation_date", current.date).maybeSingle());
     if (!reservation) throw new Error("Bugün için randevu bulunamadı.");
     const existing = unwrap(await db.from("attendances").select("*").eq("member_id", memberId).eq("entry_date", current.date).maybeSingle());
