@@ -26,7 +26,7 @@ const minutes=(seconds:number)=>`${Math.floor(seconds/60)} dk ${seconds%60} sn`;
 const round=(value:number)=>Math.round(value*10)/10;
 const uuid=()=>crypto.randomUUID();
 
-export default function TrainingAssistant({memberId,request}:{memberId:number;request:(url:string,init?:RequestInit)=>Promise<Response>}){
+export default function TrainingAssistant({memberId,request,checkedOutAt}:{memberId:number;request:(url:string,init?:RequestInit)=>Promise<Response>;checkedOutAt?:string|null}){
   const key=`fitnstop-training-${memberId}`;
   const requestRef=useRef(request);requestRef.current=request;
   const [catalog,setCatalog]=useState<Exercise[]>([]),[catalogError,setCatalogError]=useState("");
@@ -57,6 +57,11 @@ export default function TrainingAssistant({memberId,request}:{memberId:number;re
   },[memberId]);
 
   useEffect(()=>{if(workout)putLocal("active",workout);else localStorage.removeItem(`${key}:active`)},[workout,memberId]);
+  useEffect(()=>{
+    if(!checkedOutAt||!workout)return;
+    if(workout.completedSets.length){void saveWorkout();setMessage("Salon çıkışı yapıldığı için antrenmanın otomatik kapatılıp kaydedildi.");}
+    else{setWorkout(null);setScreen("home");setMessage("Salon çıkışı yapıldığı için başlanmış antrenman kapatıldı.");}
+  },[checkedOutAt,workout?.clientSessionId]);
   useEffect(()=>{const scroller=document.querySelector<HTMLElement>(".mobile-content");if(scroller)scroller.scrollTop=0},[screen,selected?.id,region]);
   useEffect(()=>{if(!workout?.restUntil||workout.restPaused){setSecondsLeft(workout?.restRemaining||0);return}const tick=()=>{const left=Math.max(0,Math.ceil((workout.restUntil-Date.now())/1000));setSecondsLeft(left);if(left===0)setWorkout(current=>current?{...current,restUntil:0,restRemaining:0}:null)};tick();const timer=window.setInterval(tick,500);return()=>window.clearInterval(timer)},[workout?.restUntil,workout?.restPaused,workout?.restRemaining]);
 
