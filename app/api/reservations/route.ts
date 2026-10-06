@@ -33,6 +33,7 @@ export async function POST(request: Request) {
     if (closed) throw new Error(closed.reason || "Salon kapalı.");
     const member = unwrap(await db.from("members").select("*").eq("id", memberId).single());
     if (member.status !== "active" || date < member.start_date || date > member.end_date) throw new Error("Seçilen tarih aktif üyelik süresinin dışında.");
+    if (member.freeze_start_date && member.frozen_until && date >= member.freeze_start_date && date < member.frozen_until) throw new Error("Üyeliğinin dondurulduğu tarihlere randevu alamazsın.");
     const visit = unwrap(await db.from("attendances").select("id").eq("member_id", memberId).eq("entry_date", date).limit(1));
     if (visit.length) throw new Error("Bugünkü salon girişin yapıldı. Aynı gün yeni randevu alınamaz.");
     const existing = unwrap(await db.from("reservations").select("*").eq("member_id", memberId).eq("reservation_date", date).maybeSingle());

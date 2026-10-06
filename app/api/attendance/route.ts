@@ -18,8 +18,9 @@ export async function POST(request: Request) {
   try {
     const { memberId, qrValue } = await request.json() as { memberId?: number; qrValue?: string };
     if (!memberId) throw new Error("Üye bilgisi eksik.");
-    await requireMember(request, memberId);
+    const authorizedMember = await requireMember(request, memberId);
     const db = adminSupabase(), current = now();
+    if (authorizedMember.freezeStartDate && authorizedMember.frozenUntil && current.date >= authorizedMember.freezeStartDate && current.date < authorizedMember.frozenUntil) throw new Error("Üyeliğin bugün dondurulmuş durumda.");
     const settings = unwrap(await db.from("gym_settings").select("entrance_qr_token,exit_qr_token").eq("id", 1).single());
     const isExit = !!settings.exit_qr_token && qrValue === `FITNSTOP-CIKIS:${settings.exit_qr_token}`;
     if (isExit) {

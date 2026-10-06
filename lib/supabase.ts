@@ -17,9 +17,13 @@ export function adminSupabase() {
 export const authEmail = (tc: string) => `${tc}@fitnstop.app`;
 
 export function rowToMember(row: Record<string, any>) {
+  const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Istanbul", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+  const freezeIsActive = !!row.freeze_start_date && !!row.frozen_until && today >= row.freeze_start_date && today < row.frozen_until;
+  const freezeHasEnded = !!row.frozen_until && today >= row.frozen_until;
+  const storedStatus = row.status === "expired" ? "cancelled" : row.status;
   return {
     id: row.id, fullName: row.full_name, phone: row.phone, email: row.email,
-    startDate: row.start_date, endDate: row.end_date, status: row.status === "expired" ? "cancelled" : row.status,
+    startDate: row.start_date, endDate: row.end_date, status: freezeIsActive ? "frozen" : storedStatus === "frozen" && freezeHasEnded ? "active" : storedStatus,
     notes: row.notes || "", createdAt: row.created_at, updatedAt: row.updated_at,
     tcLast4: row.tc_no?.slice(-4), mustChangePassword: row.must_change_password,
     freezeUsed: row.freeze_used, freezeStartDate: row.freeze_start_date || null, frozenUntil: row.frozen_until,
