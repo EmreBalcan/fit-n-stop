@@ -35,7 +35,7 @@ export async function POST(request: Request) {
     if (!uuid(body.clientSessionId) || !body.programName?.trim() || body.programName.length > 80
       || !body.startedAt || !body.finishedAt || !Number.isFinite(Date.parse(body.startedAt)) || !Number.isFinite(Date.parse(body.finishedAt))
       || typeof body.durationSeconds !== "number" || !Number.isInteger(body.durationSeconds) || body.durationSeconds < 0 || body.durationSeconds > 86400
-      || !Array.isArray(body.sets) || body.sets.length === 0 || body.sets.length > 500 || !body.sets.every(validSet)) throw new Error("Antrenman kaydı geçersiz.");
+      || !Array.isArray(body.sets) || body.sets.length > 500 || !body.sets.every(validSet)) throw new Error("Antrenman kaydı geçersiz.");
     const db = adminSupabase();
     const existing = unwrap(await db.from("training_sessions").select("*").eq("client_session_id", body.clientSessionId).eq("member_id", member.id).maybeSingle());
     if (existing) return Response.json({ session: existing, alreadySaved: true });
