@@ -3,8 +3,9 @@ import { adminSupabase, authEmail, rowToAttendance, rowToMember, rowToReservatio
 
 type Payload = { id?: number; fullName?: string; phone?: string; email?: string; startDate?: string; endDate?: string; status?: "active" | "frozen" | "cancelled"; notes?: string; tcNo?: string; password?: string };
 function clean(raw: Payload) {
-  const full_name = raw.fullName?.trim() || "", phone = raw.phone?.trim() || "", start_date = raw.startDate || "", end_date = raw.endDate || "";
+  const full_name = raw.fullName?.trim() || "", phone = (raw.phone || "").replace(/\D/g, ""), start_date = raw.startDate || "", end_date = raw.endDate || "";
   if (!full_name || !phone || !start_date || !end_date) throw new Error("Ad soyad, telefon ve üyelik tarihleri zorunludur.");
+  if (phone.length > 11) throw new Error("Telefon numarası en fazla 11 haneli olabilir.");
   if (end_date < start_date) throw new Error("Bitiş tarihi başlangıç tarihinden önce olamaz.");
   return { full_name, phone, email: raw.email?.trim() || null, start_date, end_date, status: raw.status === "cancelled" ? "expired" : raw.status || "active" };
 }
@@ -14,6 +15,9 @@ export async function GET(request: Request) {
   try {
     requireAdmin(request);
     const db = adminSupabase();
+    const duplicate = await db.from("members").select("id").eq("tc_no", tc).maybeSingle();
+    if (duplicate.error) throw duplicate.error;
+    if (duplicate.data) throw new Error("Bu TC kimlik numarasıyla kayıtlı bir üye zaten bulunuyor.");
     const [members, reservations, attendances, qrEvents, users] = await Promise.all([db.from("members").select("*").order("created_at", { ascending: false }), db.from("reservations").select("*").order("reservation_date"), db.from("attendances").select("*").order("entry_date", { ascending: false }), db.from("qr_scan_events").select("*, members(full_name)").order("event_time", { ascending: false }).limit(200), db.auth.admin.listUsers({ page: 1, perPage: 1000 })]);
     const rows = unwrap(members), bookings = unwrap(reservations).map(rowToReservation), visits = unwrap(attendances).map(rowToAttendance);
     if (users.error) throw users.error;
@@ -45,7 +49,7 @@ export async function PUT(request: Request) {
     if (!raw.id) throw new Error("Üye kimliği eksik.");
     const db = adminSupabase(), prior = unwrap(await db.from("members").select("*").eq("id", raw.id).single());
     const update: Record<string, unknown> = { ...clean(raw), updated_at: new Date().toISOString() };
-    if (raw.tcNo) { const tc = checkTc(raw.tcNo); if (!prior.auth_user_id) throw new Error("Üyenin giriş hesabı bulunamadı."); const { error } = await db.auth.admin.updateUserById(prior.auth_user_id, { email: authEmail(tc), email_confirm: true }); if (error) throw error; update.tc_no = tc; }
+    if (raw.tcNo) { const tc = checkTc(raw.tcNo); const duplicate = await db.from("members").select("id").eq("tc_no", tc).neq("id", raw.id).maybeSingle(); if (duplicate.error) throw duplicate.error; if (duplicate.data) throw new Error("Bu TC kimlik numarasıyla kayıtlı başka bir üye bulunuyor."); if (!prior.auth_user_id) throw new Error("Üyenin giriş hesabı bulunamadı."); const { error } = await db.auth.admin.updateUserById(prior.auth_user_id, { email: authEmail(tc), email_confirm: true }); if (error) throw error; update.tc_no = tc; }
     if (raw.password) { if (raw.password.length < 6) throw new Error("Geçici şifre en az 6 karakter olmalıdır."); if (!prior.auth_user_id) throw new Error("Üyenin giriş hesabı bulunamadı."); const { error } = await db.auth.admin.updateUserById(prior.auth_user_id, { password: raw.password }); if (error) throw error; update.must_change_password = true; }
     if (prior.auth_user_id) { const { error } = await db.auth.admin.updateUserById(prior.auth_user_id, { user_metadata: { notes: raw.notes?.trim() || "" } }); if (error) throw error; }
     const row = unwrap(await db.from("members").update(update).eq("id", raw.id).select().single());
