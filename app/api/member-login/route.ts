@@ -9,6 +9,8 @@ export async function POST(request: Request) {
     if (error || !data.session) throw new Error("TC kimlik numarası veya şifre hatalı.");
     const row = unwrap(await adminSupabase().from("members").select("*").eq("auth_user_id", data.user.id).single());
     if (row.status === "cancelled") throw new Error("Üyeliğiniz aktif değil. Salon yönetimiyle görüşün.");
+    const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Istanbul", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+    if (!row.end_date || row.end_date < today) throw new Error("Üyelik süreniz sona erdi. Giriş yapabilmek için salon yönetimiyle görüşün.");
     return Response.json({ member: rowToMember(row), accessToken: data.session.access_token, refreshToken: data.session.refresh_token });
   } catch (error) { return apiError(error, 401); }
 }

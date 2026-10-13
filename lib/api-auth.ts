@@ -15,6 +15,8 @@ export async function requireMember(request: Request, memberId?: number) {
   const { data, error } = await db.auth.getUser(token);
   if (error || !data.user) throw new Error("Oturum geçersiz.");
   const row = unwrap(await db.from("members").select("*").eq("auth_user_id", data.user.id).single());
+  const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Istanbul", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+  if (row.status === "expired" || row.status === "cancelled" || row.end_date < today) throw new Error("Üyelik süreniz sona erdi. Salon yönetimiyle görüşün.");
   if (memberId && row.id !== memberId) throw new Error("Bu işlem için yetkiniz yok.");
   return row;
 }
