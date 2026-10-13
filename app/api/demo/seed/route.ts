@@ -2,8 +2,8 @@ import { apiError, requireAdmin } from "../../../../lib/api-auth";
 import { adminSupabase, authEmail, unwrap } from "../../../../lib/supabase";
 
 const samples = [
-  ["11111111111", "Ayşe Yılmaz", "0500 000 00 01"],
-  ["22222222222", "Yusuf Demir", "0500 000 00 02"],
+  ["10101010101", "Deniz Yıldız", "0500 000 00 10"],
+  ["12121212121", "Ece Kurt", "0500 000 00 12"],
   ["33333333333", "Zeynep Kaya", "0500 000 00 03"],
   ["44444444444", "Can Arslan", "0500 000 00 04"],
   ["55555555555", "Elif Şahin", "0500 000 00 05"],
@@ -40,4 +40,5 @@ async function seed(request:Request) {
 
 export const POST = seed;
 export const GET = seed;
+
 
