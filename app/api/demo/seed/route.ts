@@ -13,7 +13,7 @@ const samples = [
   ["99999999999", "Selin Aksoy", "0500 000 00 09"],
 ] as const;
 
-export async function POST(request:Request) {
+async function seed(request:Request) {
   try {
     requireAdmin(request);
     const db = adminSupabase(), results:string[] = [];
@@ -37,3 +37,7 @@ export async function POST(request:Request) {
     return Response.json({success:true, accounts:results});
   } catch(error) { return apiError(error, 500); }
 }
+
+export const POST = seed;
+export const GET = seed;
+
