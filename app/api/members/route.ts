@@ -15,9 +15,6 @@ export async function GET(request: Request) {
   try {
     requireAdmin(request);
     const db = adminSupabase();
-    const duplicate = await db.from("members").select("id").eq("tc_no", tc).maybeSingle();
-    if (duplicate.error) throw duplicate.error;
-    if (duplicate.data) throw new Error("Bu TC kimlik numarasıyla kayıtlı bir üye zaten bulunuyor.");
     const [members, reservations, attendances, qrEvents, users] = await Promise.all([db.from("members").select("*").order("created_at", { ascending: false }), db.from("reservations").select("*").order("reservation_date"), db.from("attendances").select("*").order("entry_date", { ascending: false }), db.from("qr_scan_events").select("*, members(full_name)").order("event_time", { ascending: false }).limit(200), db.auth.admin.listUsers({ page: 1, perPage: 1000 })]);
     const rows = unwrap(members), bookings = unwrap(reservations).map(rowToReservation), visits = unwrap(attendances).map(rowToAttendance);
     if (users.error) throw users.error;

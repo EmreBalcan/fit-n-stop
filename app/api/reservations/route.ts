@@ -5,7 +5,7 @@ const SLOTS = ["06.00 – 08.00", "08.00 – 10.00", "10.00 – 12.00", "12.00 �
 const CAPACITY = 25;
 const validDate = (date: string) => /^\d{4}-\d{2}-\d{2}$/.test(date);
 function now() { const parts = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Istanbul", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date()); const get = (type: string) => parts.find((p) => p.type === type)?.value || ""; return { date: `${get("year")}-${get("month")}-${get("day")}`, minutes: Number(get("hour")) * 60 + Number(get("minute")) }; }
-function slotEnd(slot: string) { const m = slot.match(/–\s*(\d{2})\.(\d{2})/); return m ? Number(m[1]) * 60 + Number(m[2]) : -1; }
+function slotEnd(slot: string) { const m = slot.match(/[-–]\s*(\d{2})\.(\d{2})/); return m ? Number(m[1]) * 60 + Number(m[2]) : -1; }
 
 export async function GET(request: Request) {
   try {

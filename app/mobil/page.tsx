@@ -207,17 +207,20 @@ export default function MobileAppPreview(){
     const data:any=await response.json();if(!response.ok){setError(data.error||"Üyelik dondurulamadı.");return;}
     setMember(data.member);setFreezePicker(false);
   }
-  function isPast(slot:Slot){
-    if(selectedDate<today)return true;
-    if(selectedDate>today)return false;
-    const end=slot.time.match(/–\s*(\d{2})\.(\d{2})/);if(!end)return false;
+  function isPastTimeSlot(timeSlot:string,date=selectedDate){
+    if(date<today)return true;
+    if(date>today)return false;
+    const end=timeSlot.match(/[-–]\s*(\d{2})\.(\d{2})/);if(!end)return false;
     const parts=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Istanbul",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).format(new Date()).split(":");
     return Number(end[1])*60+Number(end[2]) <= Number(parts[0])*60+Number(parts[1]);
   }
-  function reservationEnded(timeSlot:string){const end=timeSlot.match(/–\s*(\d{2})\.(\d{2})/);if(!end)return false;const parts=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Istanbul",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).format(new Date()).split(":");return Number(end[1])*60+Number(end[2])<=Number(parts[0])*60+Number(parts[1]);}
+  function isPast(slot:Slot){
+    return isPastTimeSlot(slot.time);
+  }
+  function reservationEnded(timeSlot:string){return isPastTimeSlot(timeSlot,today);}
   async function chooseDate(date:string){if(!date)return;setSelectedDate(date);setTab("appointments");setError("");setNotice("");await loadDate(date);}
   const selectedReservation=slots.find(slot=>slot.mine);
-  const selectedExpired=!!selectedReservation&&isPast(selectedReservation);
+  const selectedExpired=!!selectedReservationRecord&&isPastTimeSlot(selectedReservationRecord.timeSlot);
   const secondChanceSpent=!!selectedReservationRecord?.secondChanceUsed&&selectedReservationRecord.timeSlot!==selectedReservationRecord.missedTimeSlot;
   const canBookSelected=!selectedDateAttended&&(!selectedReservationRecord||selectedExpired&&!secondChanceSpent);
   const todaySlot=todayReservation?slots.find(slot=>selectedDate===today&&slot.time===todayReservation.timeSlot)??{id:0,time:todayReservation.timeSlot,count:0,capacity:25,mine:true}:null;
