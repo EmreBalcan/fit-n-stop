@@ -9,6 +9,16 @@ FİT N STOP; spor salonu yöneticileri ve üyeleri için geliştirilmiş, web ta
 - **Mobil uygulama:** https://fit-n-stop-admin.emrebalcan494.chatgpt.site/mobil
 - **Android APK:** https://fit-n-stop-admin.emrebalcan494.chatgpt.site/fit-n-stop-v1.7.apk
 
+## Ekran görüntüleri
+
+### Yönetici paneli
+
+![FİT N STOP yönetici paneli](docs/screenshots/admin-panel.png)
+
+### Mobil uygulama
+
+<img src="docs/screenshots/mobile-app.jpg" alt="FİT N STOP mobil uygulama" width="420">
+
 ## Yönetici paneli
 
 Yönetici paneli salonun günlük operasyonlarını tek ekrandan yönetir.
