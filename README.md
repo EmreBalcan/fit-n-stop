@@ -13,11 +13,19 @@ FİT N STOP; spor salonu yöneticileri ve üyeleri için geliştirilmiş, web ta
 
 ### Yönetici paneli
 
-![FİT N STOP yönetici paneli](docs/screenshots/admin-panel.png)
+| Genel bakış | Üye yönetimi | Randevular |
+|---|---|---|
+| ![Yönetici paneli genel bakış](docs/screenshots/admin-dashboard.png) | ![Yönetici paneli üye yönetimi](docs/screenshots/admin-members.png) | ![Yönetici paneli randevular](docs/screenshots/admin-reservations.png) |
 
 ### Mobil uygulama
 
-<img src="docs/screenshots/mobile-app.jpg" alt="FİT N STOP mobil uygulama" width="420">
+| Giriş | Ana sayfa | Randevu |
+|---|---|---|
+| <img src="docs/screenshots/mobile-login.png" alt="Mobil uygulama giriş ekranı" width="260"> | <img src="docs/screenshots/mobile-home.png" alt="Mobil uygulama ana sayfası" width="260"> | <img src="docs/screenshots/mobile-reservations.png" alt="Mobil uygulama randevu ekranı" width="260"> |
+
+| Antrenman Asistanı | Profil | Salon |
+|---|---|---|
+| <img src="docs/screenshots/mobile-training.png" alt="Mobil uygulama Antrenman Asistanı" width="260"> | <img src="docs/screenshots/mobile-profile.png" alt="Mobil uygulama profil ekranı" width="260"> | <img src="docs/screenshots/mobile-gym.png" alt="Mobil uygulama salon ekranı" width="260"> |
 
 ## Yönetici paneli
 
